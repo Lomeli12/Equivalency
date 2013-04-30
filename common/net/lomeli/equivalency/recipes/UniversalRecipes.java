@@ -56,6 +56,9 @@ public class UniversalRecipes
 				// 2 Uranium -> 1 Diamond
 				TransmutationHelper.addRecipe(Item.diamond, transmutationStone, 
 					new Object[]{uraniumDrop(), uraniumDrop()});
+				// 2 Diamond -> 4 Uranium
+				TransmutationHelper.addRecipe(new ItemStack(uraniumDrop().getItem(), 4), transmutationStone, 
+						new Object[]{Item.diamond, Item.diamond});
 			}
 			if(silverIngot() != null && leadIngot() != null)
 			{

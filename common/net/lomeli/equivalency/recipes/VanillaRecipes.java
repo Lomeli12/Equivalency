@@ -41,8 +41,8 @@ public class VanillaRecipes
 		TransmutationHelper.addRecipe(new ItemStack(Item.ingotGold, 8), 
 			stone, new Object[]{Item.emerald});
 			
-		// 5 Blaze rods -> 1 Diamond
-		TransmutationHelper.addRecipe(Item.diamond, stone, new Object[]{
-			Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod});
+		// 5 Blaze rods -> 1 Diamond Disabled due to exploit
+		//TransmutationHelper.addRecipe(Item.diamond, stone, new Object[]{
+		//	Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod});
 	}
 }
