@@ -1,4 +1,4 @@
-package net.lomeli.equivalency.ee3;
+package net.lomeli.equivalency.mods.ee3;
 
 import cpw.mods.fml.common.Loader;
 

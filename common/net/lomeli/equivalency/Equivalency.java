@@ -1,18 +1,22 @@
 package net.lomeli.equivalency;
 
-import net.lomeli.equivalency.ee3.AddonEE3;
-import net.lomeli.equivalency.forestry.AddonForestry;
 import net.lomeli.equivalency.helper.TransmutationHelper;
-import net.lomeli.equivalency.ic2.AddonIC2;
 import net.lomeli.equivalency.lib.Strings;
-import net.lomeli.equivalency.magiks.AddonMechroMagiks;
+import net.lomeli.equivalency.mods.AddonForestry;
+import net.lomeli.equivalency.mods.AddonMechroMagiks;
+import net.lomeli.equivalency.mods.AddonRailCraft;
+import net.lomeli.equivalency.mods.AddonThaumCraft;
+import net.lomeli.equivalency.mods.AddonThermalExpansion;
+import net.lomeli.equivalency.mods.ee3.AddonEE3;
+import net.lomeli.equivalency.mods.ic2.AddonIC2;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
 import net.lomeli.equivalency.recipes.MagiksRecipes;
+import net.lomeli.equivalency.recipes.RailCraftRecipes;
 import net.lomeli.equivalency.recipes.TERecipes;
+import net.lomeli.equivalency.recipes.ThaumCraftRecipes;
 import net.lomeli.equivalency.recipes.UniversalRecipes;
 import net.lomeli.equivalency.recipes.VanillaRecipes;
-import net.lomeli.equivalency.te.AddonThermalExpansion;
 
 import net.minecraft.item.ItemStack;
 
@@ -28,15 +32,14 @@ import cpw.mods.fml.common.network.NetworkMod;
 public class Equivalency 
 {
 	@Init
-    public void main(FMLInitializationEvent event)
-    {
+	public void main(FMLInitializationEvent event)
+	{
 		if(AddonEE3.checkEE3())
 		{
 			TransmutationHelper.addStones();
 			for(ItemStack transmutationStone : TransmutationHelper.transmutationStones)
 			{
 				VanillaRecipes.loadRecipes(transmutationStone);
-			
 			}
 		}
     }
@@ -61,13 +64,16 @@ public class Equivalency
 				if(AddonMechroMagiks.checkMM())
 					MagiksRecipes.loadRecipes(transmutationStone);
 				
-				if(AddonIC2.checkIC2() || AddonThermalExpansion.checkTE() 
-					|| AddonForestry.checkForestry() || AddonMechroMagiks.checkMM())
-				{
-					UniversalRecipes.loadRecipes(transmutationStone);
-				}
-			}
+				if(AddonThaumCraft.checkThaumCraft())
+					ThaumCraftRecipes.loadRecipes(transmutationStone);
 				
+				if(AddonRailCraft.checkRailcraft())
+					RailCraftRecipes.loadRecipes(transmutationStone);
+				
+				if(AddonIC2.checkIC2() || AddonThermalExpansion.checkTE() 
+						|| AddonForestry.checkForestry() || AddonMechroMagiks.checkMM())
+					UniversalRecipes.loadRecipes(transmutationStone);
+			}
 		}
-    }
+	}
 }

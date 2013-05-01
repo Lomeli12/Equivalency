@@ -10,6 +10,8 @@
         <delete dir="${dir.development}\mcp\src\minecraft\smalldeadguy" />
         <delete dir="${dir.development}\mcp\src\minecraft\extrabiomes" />
         <delete dir="${dir.development}\mcp\src\minecraft\thaumcraft" />
+        <delete dir="${dir.development}\mcp\src\minecraft\forestry" />
+        <delete dir="${dir.development}\mcp\src\minecraft\thermalexpansion" />
 		<delete dir="${dir.development}\mcp\reobf\minecraft" />
 	</target>
 	
@@ -49,6 +51,7 @@
 		<mkdir dir="..\..\${dir.share}\${dir.modname}\${release.minecraft.version}\${release.mod.version}" />
 		<jar destfile="..\..\${dir.share}\${dir.modname}\${release.minecraft.version}\${release.mod.version}\${release.mod.name}-universal-${release.mod.version}.jar">
 			<fileset dir="${dir.development}\mcp\src\common\"	includes="mcmod.info" />
+            <fileset dir="${dir.development}\mcp\src\common\"	includes="Recipes.txt" />
 			<fileset dir="${dir.development}\mcp\reobf\minecraft" />
 		</jar>
 		

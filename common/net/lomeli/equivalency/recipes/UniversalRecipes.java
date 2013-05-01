@@ -156,4 +156,34 @@ public class UniversalRecipes
 		}
 		return null;
 	}
+	
+	public static void copperTin(ItemStack copper, ItemStack tin, ItemStack transmutationStone)
+	{
+		// 3 Copper Ingot -> Tin Ingot
+		TransmutationHelper.addRecipe(tin, transmutationStone, 
+			new Object[]{ copper, copper, copper });
+		// 1 Tin Ingot -> 3 Copper Ingot
+		TransmutationHelper.addRecipe(new ItemStack(copper.getItem(), 3), transmutationStone, 
+					new Object[]{ tin });
+	}
+	
+	public static void bronzeTin(ItemStack bronze, ItemStack tin, ItemStack transmutationStone)
+	{
+		// 4 Bronze -> 2 Tin
+		TransmutationHelper.addRecipe(new ItemStack(tin.getItem(), 2), transmutationStone,
+			new Object[]{ bronze, bronze, bronze, bronze});
+		// 2 Tin -> 4 Bronze
+		TransmutationHelper.addRecipe(new ItemStack(bronze.getItem(), 4), transmutationStone,
+			new Object[]{ tin, tin});
+	}
+	
+	public static void uraniumDiamond(ItemStack uranium, ItemStack transmutationStone)
+	{
+		// 4 Uranium -> 2 Diamond
+		TransmutationHelper.addRecipe(new ItemStack(Item.diamond, 2), transmutationStone, 
+			new Object[]{uranium, uranium, uranium, uranium});
+		// 2 Diamond -> 4 Uranium
+		TransmutationHelper.addRecipe(new ItemStack(uranium.getItem(), 4), transmutationStone,
+			new Object[]{ Item.diamond, Item.diamond });
+	}
 }

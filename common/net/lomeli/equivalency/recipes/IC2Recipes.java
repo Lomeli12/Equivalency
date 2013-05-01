@@ -1,7 +1,7 @@
 package net.lomeli.equivalency.recipes;
 
 import net.lomeli.equivalency.helper.TransmutationHelper;
-import net.lomeli.equivalency.ic2.IC2ItemAPI;
+import net.lomeli.equivalency.mods.ic2.IC2ItemAPI;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -12,6 +12,7 @@ public class IC2Recipes
 	public static ItemStack bronzeIngot  = IC2ItemAPI.getItem("bronzeIngot");
 	public static ItemStack uraniumDrop = IC2ItemAPI.getItem("uraniumDrop");
 	public static ItemStack stickyResin = IC2ItemAPI.getItem("resin");
+	public static ItemStack refinedIronIngot = IC2ItemAPI.getItem("refinedIronIngot");
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{
@@ -20,19 +21,18 @@ public class IC2Recipes
 		UniversalRecipes.ingotBronze.add(bronzeIngot);
 		UniversalRecipes.uranium.add(uraniumDrop);
 		
-		// Resin -> leather
+		// 3 Resin -> Leather
 		TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[]
-			{ stickyResin });
-		// leather -> Resin
-		TransmutationHelper.addRecipe(stickyResin, transmutationStone, new Object[]
+			{ stickyResin, stickyResin, stickyResin });
+		// Leather -> 3 Resin
+		TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 3), transmutationStone, new Object[]
 			{ Item.leather });
 		
-		// 3 Copper Ingot -> Tin Ingot
-		TransmutationHelper.addRecipe(tinIngot, transmutationStone, 
-			new Object[]{ copperIngot, copperIngot, copperIngot });
-		// 1 Tin Ingot -> 3 Copper Ingot
-		TransmutationHelper.addRecipe(new ItemStack(copperIngot.getItem(), 3), transmutationStone, 
-			new Object[]{ tinIngot });
+		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
+		
+		UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
+		
+		UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
 		
 		// 7 Bronze -> 1 Uranium
 		TransmutationHelper.addRecipe(uraniumDrop, transmutationStone, 
@@ -42,8 +42,5 @@ public class IC2Recipes
 		TransmutationHelper.addRecipe(new ItemStack(bronzeIngot.getItem(), 7), 
 			transmutationStone, new Object[]{ uraniumDrop });
 		
-		// 2 Uranium -> 1 Diamond
-		TransmutationHelper.addRecipe(Item.diamond, transmutationStone, 
-			new Object[]{uraniumDrop, uraniumDrop});
 	}
 }

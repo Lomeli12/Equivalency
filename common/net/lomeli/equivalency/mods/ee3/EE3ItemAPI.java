@@ -1,4 +1,4 @@
-package net.lomeli.equivalency.ee3;
+package net.lomeli.equivalency.mods.ee3;
 
 import net.lomeli.equivalency.lib.Strings;
 import net.minecraft.block.Block;

@@ -1,4 +1,4 @@
-package net.lomeli.equivalency.forestry;
+package net.lomeli.equivalency.mods;
 
 import cpw.mods.fml.common.Loader;
 

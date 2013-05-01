@@ -11,6 +11,7 @@ public class VanillaRecipes
 	
 	public static void loadRecipes(ItemStack stone)
 	{
+		// 8 Glass Panes -> 3 Glass Blocks
 		TransmutationHelper.addRecipe((new ItemStack(Block.glass, 3)), stone,
 			new Object[]{Block.thinGlass, Block.thinGlass, Block.thinGlass,
 			Block.thinGlass, Block.thinGlass, Block.thinGlass, Block.thinGlass,

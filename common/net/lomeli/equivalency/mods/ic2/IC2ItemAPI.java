@@ -1,4 +1,4 @@
-package net.lomeli.equivalency.ic2;
+package net.lomeli.equivalency.mods.ic2;
 
 import net.lomeli.equivalency.lib.Strings;
 import net.minecraft.item.Item;

@@ -1,4 +1,4 @@
-package net.lomeli.equivalency.magiks;
+package net.lomeli.equivalency.mods;
 
 import cpw.mods.fml.common.Loader;
 

@@ -2,7 +2,6 @@ package net.lomeli.equivalency.recipes;
 
 import forestry.api.core.ItemInterface;
 
-import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.minecraft.item.ItemStack;
 
 public class ForestryRecipes 
@@ -17,18 +16,8 @@ public class ForestryRecipes
 		UniversalRecipes.ingotTin.add(tinIngot);
 		UniversalRecipes.ingotBronze.add(bronzeIngot);
 		
-		// 3 Copper Ingot -> Tin Ingot
-		TransmutationHelper.addRecipe(tinIngot, transmutationStone, 
-			new Object[]{ copperIngot, copperIngot, copperIngot });
-		// 1 Tin Ingot -> 3 Copper Ingot
-		TransmutationHelper.addRecipe(new ItemStack(copperIngot.getItem(), 3), transmutationStone, 
-			new Object[]{ tinIngot });
+		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
 		
-		// 1 Bronze Ingot -> 2 Tin Ingot
-		TransmutationHelper.addRecipe(new ItemStack(tinIngot.getItem(), 2), transmutationStone, 
-			new Object[]{ bronzeIngot });
-		// 2 Tin Ingot -> 1 Bronze Ingot
-		TransmutationHelper.addRecipe(bronzeIngot, transmutationStone, 
-			new Object[]{tinIngot, tinIngot});
+		UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
 	}
 }

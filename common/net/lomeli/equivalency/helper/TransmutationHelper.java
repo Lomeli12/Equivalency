@@ -5,7 +5,7 @@ import java.util.List;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-import net.lomeli.equivalency.ee3.EE3ItemAPI;
+import net.lomeli.equivalency.mods.ee3.EE3ItemAPI;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
