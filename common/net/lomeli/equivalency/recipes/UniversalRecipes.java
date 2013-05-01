@@ -186,4 +186,14 @@ public class UniversalRecipes
 		TransmutationHelper.addRecipe(new ItemStack(uranium.getItem(), 4), transmutationStone,
 			new Object[]{ Item.diamond, Item.diamond });
 	}
+	
+	public static void leadSilver(ItemStack leadIngot, ItemStack silverIngot, ItemStack transmutationStone)
+	{
+		// 1 Silver Ingot -> 2 Lead Ingot
+		TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 2), 
+			transmutationStone, new Object[]{ silverIngot });
+		// 2 Lead -> 1 Silver Ingot
+		TransmutationHelper.addRecipe(silverIngot, transmutationStone, 
+			new Object[]{ leadIngot, leadIngot });
+	}
 }

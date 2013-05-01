@@ -2,6 +2,7 @@ package net.lomeli.equivalency;
 
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.lomeli.equivalency.lib.Strings;
+import net.lomeli.equivalency.mods.AddonAppliedEnergistics;
 import net.lomeli.equivalency.mods.AddonForestry;
 import net.lomeli.equivalency.mods.AddonMechroMagiks;
 import net.lomeli.equivalency.mods.AddonRailCraft;
@@ -9,6 +10,7 @@ import net.lomeli.equivalency.mods.AddonThaumCraft;
 import net.lomeli.equivalency.mods.AddonThermalExpansion;
 import net.lomeli.equivalency.mods.ee3.AddonEE3;
 import net.lomeli.equivalency.mods.ic2.AddonIC2;
+import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
 import net.lomeli.equivalency.recipes.MagiksRecipes;
@@ -69,6 +71,9 @@ public class Equivalency
 				
 				if(AddonRailCraft.checkRailcraft())
 					RailCraftRecipes.loadRecipes(transmutationStone);
+				
+				if(AddonAppliedEnergistics.checkAppliedEnergistics())
+					AppliedEnergisticsRecipes.loadRecipes(transmutationStone);
 				
 				if(AddonIC2.checkIC2() || AddonThermalExpansion.checkTE() 
 						|| AddonForestry.checkForestry() || AddonMechroMagiks.checkMM())

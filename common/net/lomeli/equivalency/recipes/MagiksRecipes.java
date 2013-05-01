@@ -1,6 +1,8 @@
 package net.lomeli.equivalency.recipes;
 
 import net.minecraft.item.ItemStack;
+import net.lomeli.equivalency.mods.AddonThermalExpansion;
+import net.lomeli.equivalency.mods.ic2.AddonIC2;
 import net.lomeli.magiks.api.ItemAPI;
 
 public class MagiksRecipes 
@@ -16,5 +18,11 @@ public class MagiksRecipes
 		UniversalRecipes.ingotSilver.add(silverIngot);
 		
 		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
+		
+		if(AddonThermalExpansion.checkTE())
+			UniversalRecipes.leadSilver(TERecipes.leadIngot, silverIngot, transmutationStone);
+			
+		if(AddonIC2.checkIC2())
+			UniversalRecipes.bronzeTin(IC2Recipes.bronzeIngot, tinIngot, transmutationStone);
 	}
 }
