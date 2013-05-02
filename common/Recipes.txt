@@ -25,7 +25,7 @@ IC2
 
 1 Sticky Resin = 1 Leather
 3 Copper Ingots = 1 Tin Ingot
-2 Tin Ingots = 4 Bronze Ingot
+2 Tin Ingots = 2 Bronze Ingot
 2 Uranium -> 1 Diamond
 2 Diamond -> 4 Uranium
 7 Bronze = 1 Uranium
@@ -40,7 +40,7 @@ Forestry
 --------
 
 3 Copper Ingots = 1 Tin Ingot
-2 Tin Ingots = 4 Bronze Ingots
+2 Tin Ingots = 2 Bronze Ingots
 
 Mechro Magiks
 -------------
@@ -50,7 +50,7 @@ Mechro Magiks
 RailCraft
 ---------
 
-3 Coal/CharCoal = 2 Coal Coke
+4 Coal/CharCoal = 1 Coal Coke
 
 If IC2 Installed: 2 Steel = 2 Reinforced Iron
 
