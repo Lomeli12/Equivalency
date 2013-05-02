@@ -12,6 +12,7 @@
         <delete dir="${dir.development}\mcp\src\minecraft\thaumcraft" />
         <delete dir="${dir.development}\mcp\src\minecraft\forestry" />
         <delete dir="${dir.development}\mcp\src\minecraft\thermalexpansion" />
+        <delete dir="${dir.development}\mcp\src\minecraft\appeng" />
 		<delete dir="${dir.development}\mcp\reobf\minecraft" />
 	</target>
 	

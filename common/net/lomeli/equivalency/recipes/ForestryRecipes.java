@@ -3,6 +3,7 @@ package net.lomeli.equivalency.recipes;
 import forestry.api.core.ItemInterface;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ForestryRecipes 
 {
@@ -15,6 +16,10 @@ public class ForestryRecipes
 		UniversalRecipes.ingotCopper.add(copperIngot);
 		UniversalRecipes.ingotTin.add(tinIngot);
 		UniversalRecipes.ingotBronze.add(bronzeIngot);
+		
+		OreDictionary.registerOre("ingotCopper", copperIngot);
+		OreDictionary.registerOre("ingotTin", tinIngot);
+		OreDictionary.registerOre("ingotBronze", bronzeIngot);
 		
 		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
 		

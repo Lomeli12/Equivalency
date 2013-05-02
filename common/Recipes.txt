@@ -60,3 +60,17 @@ ThaumCraft 3
 1 Wind Shard -> 1 Fire Shard -> 1 Water Shard -> 1 Earth Shard -> 1 Wind Shard
 3 Dull Shards = 1 Vis Shard
 
+Applied Energistics
+-------------------
+
+4 Quartz Dust = 4 Quartz Crystal
+2 Iron Ingot = 1 Quartz Crystal
+Cables:
+Blue -> Black -> White -> Brown -> Red -> Yellow -> Green -> Blue
+
+RailCraft
+---------
+
+4 Coal/CharCoal = 1 Coal Coke
+if IC2 installed:
+2 Refined Iron Ingots = 2 Steel Ingots

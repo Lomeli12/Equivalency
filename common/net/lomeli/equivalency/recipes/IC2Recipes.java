@@ -4,6 +4,7 @@ import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.lomeli.equivalency.mods.ic2.IC2ItemAPI;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class IC2Recipes 
 {
@@ -21,6 +22,10 @@ public class IC2Recipes
 		UniversalRecipes.ingotBronze.add(bronzeIngot);
 		UniversalRecipes.uranium.add(uraniumDrop);
 		
+		OreDictionary.registerOre("ingotCopper", copperIngot);
+		OreDictionary.registerOre("ingotTin", tinIngot);
+		OreDictionary.registerOre("ingotBronze", bronzeIngot);
+		
 		// 3 Resin -> Leather
 		TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[]
 			{ stickyResin, stickyResin, stickyResin });
@@ -33,14 +38,5 @@ public class IC2Recipes
 		UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
 		
 		UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
-		
-		// 7 Bronze -> 1 Uranium
-		TransmutationHelper.addRecipe(uraniumDrop, transmutationStone, 
-			new Object[]{bronzeIngot, bronzeIngot, bronzeIngot, bronzeIngot,
-			bronzeIngot, bronzeIngot, bronzeIngot});
-		// 1 Uranium -> 7 Bronze
-		TransmutationHelper.addRecipe(new ItemStack(bronzeIngot.getItem(), 7), 
-			transmutationStone, new Object[]{ uraniumDrop });
-		
 	}
 }

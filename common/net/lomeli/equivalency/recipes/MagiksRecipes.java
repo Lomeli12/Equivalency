@@ -1,6 +1,7 @@
 package net.lomeli.equivalency.recipes;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.lomeli.equivalency.mods.AddonThermalExpansion;
 import net.lomeli.equivalency.mods.ic2.AddonIC2;
 import net.lomeli.magiks.api.ItemAPI;
@@ -16,6 +17,10 @@ public class MagiksRecipes
 		UniversalRecipes.ingotCopper.add(copperIngot);
 		UniversalRecipes.ingotTin.add(tinIngot);
 		UniversalRecipes.ingotSilver.add(silverIngot);
+		
+		OreDictionary.registerOre("ingotCopper", copperIngot);
+		OreDictionary.registerOre("ingotTin", tinIngot);
+		OreDictionary.registerOre("ingotSilver", silverIngot);
 		
 		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
 		

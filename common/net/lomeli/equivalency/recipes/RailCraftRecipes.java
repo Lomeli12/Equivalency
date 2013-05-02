@@ -32,12 +32,12 @@ public class RailCraftRecipes
 		}
 		for(ItemStack coke : coalCoke)
 		{
-			// 2 Coal/CharCoal -> 1 Coal Coke
+			// 4 Coal/CharCoal -> 1 Coal Coke
 			TransmutationHelper.addRecipe(coke, transmutationStone,
-				new Object[]{ (new ItemStack(Item.coal, 1, WILDCARD)),
-				(new ItemStack(Item.coal, 1, WILDCARD)) });
-			// 1 Coal Coke -> 2 Coal/CharCoal
-			TransmutationHelper.addRecipe(new ItemStack(Item.coal, 2), transmutationStone,
+				new Object[]{ (new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)),
+				(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)) });
+			// 1 Coal Coke -> 4 Coal/CharCoal
+			TransmutationHelper.addRecipe(new ItemStack(Item.coal, 4), transmutationStone,
 				new Object[]{ coke });
 		}
 	}
