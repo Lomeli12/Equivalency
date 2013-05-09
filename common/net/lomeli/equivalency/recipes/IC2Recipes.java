@@ -1,5 +1,6 @@
 package net.lomeli.equivalency.recipes;
 
+import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.lomeli.equivalency.mods.ic2.IC2ItemAPI;
 import net.minecraft.item.Item;
@@ -33,10 +34,11 @@ public class IC2Recipes
 		TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 3), transmutationStone, new Object[]
 			{ Item.leather });
 		
-		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
-		
-		UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
-		
-		UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
+		if(!Equivalency.limitRecipes)
+		{
+			UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
+			UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
+			UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package net.lomeli.equivalency.mods;
 
+import net.lomeli.equivalency.Equivalency;
 import cpw.mods.fml.common.Loader;
 
 public class AddonThermalExpansion 
@@ -10,6 +11,7 @@ public class AddonThermalExpansion
 		{
 			try
 			{
+				Equivalency.numberInstalled++;
 				return true;
 			}
 			catch(Exception ex)

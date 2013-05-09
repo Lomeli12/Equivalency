@@ -67,10 +67,3 @@ Applied Energistics
 2 Iron Ingot = 1 Quartz Crystal
 Cables:
 Blue -> Black -> White -> Brown -> Red -> Yellow -> Green -> Blue
-
-RailCraft
----------
-
-4 Coal/CharCoal = 1 Coal Coke
-if IC2 installed:
-2 Refined Iron Ingots = 2 Steel Ingots

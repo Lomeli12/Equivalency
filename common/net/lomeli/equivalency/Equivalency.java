@@ -33,6 +33,9 @@ import cpw.mods.fml.common.network.NetworkMod;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency 
 {
+	public static boolean limitRecipes = false;
+	public static int numberInstalled = 0;
+	
 	@Init
 	public void main(FMLInitializationEvent event)
 	{
@@ -54,6 +57,17 @@ public class Equivalency
 			TransmutationHelper.addStones();
 			for(ItemStack transmutationStone : TransmutationHelper.transmutationStones)
 			{
+				AddonIC2.checkIC2();
+				AddonThermalExpansion.checkTE();
+				AddonForestry.checkForestry();
+				AddonMechroMagiks.checkMM();
+				
+				if(numberInstalled > 1)
+				{
+					UniversalRecipes.loadRecipes(transmutationStone);
+					limitRecipes = true;
+				}
+				
 				if(AddonIC2.checkIC2())
 					IC2Recipes.loadRecipes(transmutationStone);
 				
@@ -75,9 +89,7 @@ public class Equivalency
 				if(AddonAppliedEnergistics.checkAppliedEnergistics())
 					AppliedEnergisticsRecipes.loadRecipes(transmutationStone);
 				
-				if(AddonIC2.checkIC2() || AddonThermalExpansion.checkTE() 
-						|| AddonForestry.checkForestry() || AddonMechroMagiks.checkMM())
-					UniversalRecipes.loadRecipes(transmutationStone);
+				
 			}
 		}
 	}

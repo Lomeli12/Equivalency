@@ -1,5 +1,6 @@
 package net.lomeli.equivalency.mods;
 
+import net.lomeli.equivalency.Equivalency;
 import cpw.mods.fml.common.Loader;
 
 public class AddonForestry 
@@ -10,6 +11,7 @@ public class AddonForestry
 		{
 			try
 			{
+				Equivalency.numberInstalled++;
 				return true;
 			}
 			catch(Exception ex)

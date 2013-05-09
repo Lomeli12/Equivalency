@@ -1,5 +1,6 @@
 package net.lomeli.equivalency.recipes;
 
+import net.lomeli.equivalency.Equivalency;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -24,7 +25,10 @@ public class TERecipes
 		OreDictionary.registerOre("ingotSilver", silverIngot);
 		OreDictionary.registerOre("ingotLead", leadIngot);
 		
-		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
-		UniversalRecipes.leadSilver(leadIngot, silverIngot, transmutationStone);
+		if(!Equivalency.limitRecipes)
+		{
+			UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
+			UniversalRecipes.leadSilver(leadIngot, silverIngot, transmutationStone);
+		}
 	}
 }

@@ -2,6 +2,7 @@ package net.lomeli.equivalency.recipes;
 
 import forestry.api.core.ItemInterface;
 
+import net.lomeli.equivalency.Equivalency;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -21,8 +22,10 @@ public class ForestryRecipes
 		OreDictionary.registerOre("ingotTin", tinIngot);
 		OreDictionary.registerOre("ingotBronze", bronzeIngot);
 		
-		UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
-		
-		UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
+		if(!Equivalency.limitRecipes)
+		{
+			UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
+			UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
+		}
 	}
 }
