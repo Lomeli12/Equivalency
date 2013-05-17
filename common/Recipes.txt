@@ -19,6 +19,8 @@ Vanilla
 1 Coal/CharCoal = 2 Redstone
 7 Coal/CharCoal = 1 Lapis Lazuli
 8 Gold Ingots = 1 Emerald
+1 Redstone Block = 1 Glowstone dust
+1 Glowstone block -> 36 redstone dust
 
 IC2
 ---
@@ -30,8 +32,6 @@ IC2
 2 Diamond -> 4 Uranium
 7 Bronze = 1 Uranium
 2 Gold -> 1 Uranium
-1 Redstone Block = 1 Glowstone dust
-1 Glowstone block -> 36 redstone dust
 
 Thermal Expansion
 -----------------
