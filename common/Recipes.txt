@@ -25,17 +25,20 @@ IC2
 
 1 Sticky Resin = 1 Leather
 3 Copper Ingots = 1 Tin Ingot
-2 Tin Ingots = 2 Bronze Ingot
+2 Tin Ingots = 1 Bronze Ingot
 2 Uranium -> 1 Diamond
 2 Diamond -> 4 Uranium
 7 Bronze = 1 Uranium
 2 Gold -> 1 Uranium
+1 Redstone Block = 1 Glowstone dust
+1 Glowstone block -> 36 redstone dust
 
 Thermal Expansion
 -----------------
 
 3 Copper Ingots = 1 Tin Ingot
 1 Silver Ingot = 2 Lead Ingots
+3 Lead Ingots = 1 Electrum Ingot
 
 Forestry
 --------
