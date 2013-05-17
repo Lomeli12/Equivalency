@@ -14,6 +14,7 @@ public class TERecipes
 	public static ItemStack silverIngot = ItemRegistry.getItem("ingotSilver", 1);
 	public static ItemStack leadIngot = ItemRegistry.getItem("ingotLead", 1);
 	public static ItemStack electrumIngot = ItemRegistry.getItem("ingotElectrum", 1);
+	public static ItemStack invarIngot = ItemRegistry.getItem("ingotInvar", 1);
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{

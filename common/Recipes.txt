@@ -29,6 +29,7 @@ IC2
 2 Uranium -> 1 Diamond
 2 Diamond -> 4 Uranium
 7 Bronze = 1 Uranium
+2 Gold -> 1 Uranium
 
 Thermal Expansion
 -----------------
@@ -60,6 +61,10 @@ ThaumCraft 3
 
 1 Wind Shard -> 1 Fire Shard -> 1 Water Shard -> 1 Earth Shard -> 1 Wind Shard
 3 Dull Shards = 1 Vis Shard
+
+Markers/Candles
+White -> Orange -> Magenta -> Light Blue -> Yellow -> Lime Green -> Pink -> Gray 
+-> Light Gray -> Cyan -> Purple -> Blue -> Brown -> Green -> Red -> Black -> White
 
 Applied Energistics
 -------------------
