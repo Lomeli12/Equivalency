@@ -3,7 +3,9 @@ package net.lomeli.equivalency.recipes;
 import java.util.List;
 
 import net.lomeli.equivalency.helper.TransmutationHelper;
-import net.lomeli.equivalency.mods.ic2.AddonIC2;
+import net.lomeli.equivalency.lib.Strings;
+
+import net.lomeli.lomlib.util.ModLoaded;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,7 +22,7 @@ public class RailCraftRecipes
 	{
 		for(ItemStack steel : steelIngot)
 		{
-			if(AddonIC2.checkIC2())
+			if(ModLoaded.isModInstalled(Strings.IC2_ID))
 			{
 				// 2 Refined Iron -> 2 Steel
 				TransmutationHelper.addRecipe(new ItemStack(steel.getItem(), 2), 

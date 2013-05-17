@@ -2,14 +2,6 @@ package net.lomeli.equivalency;
 
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.lomeli.equivalency.lib.Strings;
-import net.lomeli.equivalency.mods.AddonAppliedEnergistics;
-import net.lomeli.equivalency.mods.AddonForestry;
-import net.lomeli.equivalency.mods.AddonMechroMagiks;
-import net.lomeli.equivalency.mods.AddonRailCraft;
-import net.lomeli.equivalency.mods.AddonThaumCraft;
-import net.lomeli.equivalency.mods.AddonThermalExpansion;
-import net.lomeli.equivalency.mods.ee3.AddonEE3;
-import net.lomeli.equivalency.mods.ic2.AddonIC2;
 import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
@@ -20,6 +12,8 @@ import net.lomeli.equivalency.recipes.ThaumCraftRecipes;
 import net.lomeli.equivalency.recipes.UniversalRecipes;
 import net.lomeli.equivalency.recipes.VanillaRecipes;
 
+import net.lomeli.lomlib.util.ModLoaded;
+
 import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.common.Mod;
@@ -29,7 +23,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid=Strings.MOD_ID, name=Strings.MOD_NAME, version=Strings.VERSION)
+@Mod(modid=Strings.MOD_ID, name=Strings.MOD_NAME, 
+	version=Strings.VERSION, dependencies="required-after:LomLib@[1.0.1,)")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency 
 {
@@ -39,7 +34,7 @@ public class Equivalency
 	@Init
 	public void main(FMLInitializationEvent event)
 	{
-		if(AddonEE3.checkEE3())
+		if(ModLoaded.isModInstalled(Strings.EE3_ID))
 		{
 			TransmutationHelper.addStones();
 			for(ItemStack transmutationStone : TransmutationHelper.transmutationStones)
@@ -52,43 +47,41 @@ public class Equivalency
 	@PostInit
     public void postLoad(FMLPostInitializationEvent event)
     {
-		if(AddonEE3.checkEE3())
+		if(ModLoaded.isModInstalled(Strings.EE3_ID))
 		{
-			TransmutationHelper.addStones();
 			for(ItemStack transmutationStone : TransmutationHelper.transmutationStones)
 			{
-				AddonIC2.checkIC2();
-				AddonThermalExpansion.checkTE();
-				AddonForestry.checkForestry();
-				AddonMechroMagiks.checkMM();
+				ModLoaded.isModInstalled(Strings.IC2_ID);
+				ModLoaded.isModInstalled(Strings.TE_ID);
+				ModLoaded.isModInstalled(Strings.FORESTRY_ID);
+				ModLoaded.isModInstalled(Strings.MM_ID);
 				
 				if(numberInstalled > 1)
-				{
-					UniversalRecipes.loadRecipes(transmutationStone);
 					limitRecipes = true;
-				}
 				
-				if(AddonIC2.checkIC2())
+				if(ModLoaded.isModInstalled(Strings.IC2_ID))
 					IC2Recipes.loadRecipes(transmutationStone);
 				
-				if(AddonThermalExpansion.checkTE())
+				if(ModLoaded.isModInstalled(Strings.TE_ID))
 					TERecipes.loadRecipes(transmutationStone);
 				
-				if(AddonForestry.checkForestry())
+				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID))
 					ForestryRecipes.loadRecipes(transmutationStone);
 				
-				if(AddonMechroMagiks.checkMM())
+				if(ModLoaded.isModInstalled(Strings.MM_ID, "MechroMagiks"))
 					MagiksRecipes.loadRecipes(transmutationStone);
 				
-				if(AddonThaumCraft.checkThaumCraft())
+				if(ModLoaded.isModInstalled(Strings.TC_ID))
 					ThaumCraftRecipes.loadRecipes(transmutationStone);
 				
-				if(AddonRailCraft.checkRailcraft())
+				if(ModLoaded.isModInstalled(Strings.RC_ID))
 					RailCraftRecipes.loadRecipes(transmutationStone);
 				
-				if(AddonAppliedEnergistics.checkAppliedEnergistics())
+				if(ModLoaded.isModInstalled(Strings.AE_ID))
 					AppliedEnergisticsRecipes.loadRecipes(transmutationStone);
 				
+				if(limitRecipes)
+					UniversalRecipes.loadRecipes(transmutationStone);
 				
 			}
 		}

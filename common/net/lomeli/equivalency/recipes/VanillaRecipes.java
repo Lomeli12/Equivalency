@@ -41,6 +41,18 @@ public class VanillaRecipes
 		// 1 Emerald -> 8 Gold Ingot
 		TransmutationHelper.addRecipe(new ItemStack(Item.ingotGold, 8), 
 			transmutationStone, new Object[]{Item.emerald});
+		
+		// 1 Redstone Block -> 1 Glowstone dust
+		TransmutationHelper.addRecipe(Item.lightStoneDust, transmutationStone, new Object[]
+			{ Block.redstoneWire });
+		
+		// 1 Glowstone dust -> 1 Redstone Block
+		TransmutationHelper.addRecipe(Block.redstoneWire, transmutationStone, new Object[]
+			{ Item.lightStoneDust });
+		
+		// 1 Glowstone block -> 36 redstone dust
+		TransmutationHelper.addRecipe(new ItemStack(Item.redstone, 36), transmutationStone, 
+			new Object[]{ Block.glowStone });
 			
 		// 5 Blaze rods -> 1 Diamond Disabled due to exploit
 		//TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[]{

@@ -2,19 +2,22 @@ package net.lomeli.equivalency.recipes;
 
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
-import net.lomeli.equivalency.mods.ic2.IC2ItemAPI;
+
+import net.lomeli.lomlib.item.ItemUtil;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class IC2Recipes 
 {
-	public static ItemStack copperIngot = IC2ItemAPI.getItem("copperIngot");
-	public static ItemStack tinIngot = IC2ItemAPI.getItem("tinIngot");
-	public static ItemStack bronzeIngot  = IC2ItemAPI.getItem("bronzeIngot");
-	public static ItemStack uraniumDrop = IC2ItemAPI.getItem("uraniumDrop");
-	public static ItemStack stickyResin = IC2ItemAPI.getItem("resin");
-	public static ItemStack refinedIronIngot = IC2ItemAPI.getItem("refinedIronIngot");
+	public static final String ITEM_LOC = "ic2.core.Ic2Items";;
+	public static ItemStack copperIngot = ItemUtil.getItem("copperIngot", ITEM_LOC);
+	public static ItemStack tinIngot = ItemUtil.getItem("tinIngot", ITEM_LOC);
+	public static ItemStack bronzeIngot  = ItemUtil.getItem("bronzeIngot", ITEM_LOC);
+	public static ItemStack uraniumDrop = ItemUtil.getItem("uraniumDrop", ITEM_LOC);
+	public static ItemStack stickyResin = ItemUtil.getItem("resin", ITEM_LOC);
+	public static ItemStack refinedIronIngot = ItemUtil.getItem("refinedIronIngot", ITEM_LOC);
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{

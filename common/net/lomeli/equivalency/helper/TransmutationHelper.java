@@ -5,21 +5,23 @@ import java.util.List;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-import net.lomeli.equivalency.mods.ee3.EE3ItemAPI;
+import net.lomeli.lomlib.item.ItemUtil;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class TransmutationHelper 
 {
+	public static final String ITEM_LOC = "com.pahimar.ee3.item.ModItems";
 	public static final int WILDCARD = Short.MAX_VALUE;
 	
 	public static List<ItemStack>transmutationStones = new ArrayList<ItemStack>();
 	
 	public static void addStones()
 	{
-		transmutationStones.add(EE3ItemAPI.getItem("miniumStone"));
-		transmutationStones.add(EE3ItemAPI.getItem("philStone"));
+		transmutationStones.add(ItemUtil.getItem("miniumStone", ITEM_LOC));
+		transmutationStones.add(ItemUtil.getItem("philStone", ITEM_LOC));
 	}
 	
     public static void addRecipe(ItemStack output, ItemStack transmutationStone, Object... input) 
