@@ -3,7 +3,6 @@ package net.lomeli.equivalency.recipes;
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 import thermalexpansion.api.item.ItemRegistry;
 
@@ -17,17 +16,7 @@ public class TERecipes
 	public static ItemStack invarIngot = ItemRegistry.getItem("ingotInvar", 1);
 	
 	public static void loadRecipes(ItemStack transmutationStone)
-	{
-		UniversalRecipes.ingotCopper.add(copperIngot);
-		UniversalRecipes.ingotTin.add(tinIngot);
-		UniversalRecipes.ingotSilver.add(silverIngot);
-		UniversalRecipes.ingotLead.add(leadIngot);
-		
-		OreDictionary.registerOre("ingotCopper", copperIngot);
-		OreDictionary.registerOre("ingotTin", tinIngot);
-		OreDictionary.registerOre("ingotSilver", silverIngot);
-		OreDictionary.registerOre("ingotLead", leadIngot);
-		
+	{	
 		// 3 Lead = 1 Electrum
 		TransmutationHelper.addRecipe(electrumIngot, transmutationStone,
 			new Object[]{ leadIngot, leadIngot, leadIngot});

@@ -7,6 +7,7 @@ import net.lomeli.equivalency.helper.TransmutationHelper;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class UniversalRecipes 
 {
@@ -21,6 +22,27 @@ public class UniversalRecipes
 	{
 		try
 		{
+			for(ItemStack copperIngot : OreDictionary.getOres("ingotCopper"))
+			{
+				ingotCopper.add(copperIngot);
+			}
+			for(ItemStack tinIngot : OreDictionary.getOres("ingotTin"))
+			{
+				ingotTin.add(tinIngot);
+			}
+			for(ItemStack bronzeIngot : OreDictionary.getOres("ingotBronze"))
+			{
+				ingotBronze.add(bronzeIngot);
+			}
+			for(ItemStack silverIngot : OreDictionary.getOres("ingotSilver"))
+			{
+				ingotSilver.add(silverIngot);
+			}
+			for(ItemStack leadIngot : OreDictionary.getOres("ingotLead"))
+			{
+				ingotLead.add(leadIngot);
+			}
+			
 			if(!ingotCopper.isEmpty() && !ingotTin.isEmpty())
 			{
 				for(ItemStack copper : ingotCopper)

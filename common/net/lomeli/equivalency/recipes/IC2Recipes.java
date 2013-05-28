@@ -7,11 +7,10 @@ import net.lomeli.lomlib.item.ItemUtil;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class IC2Recipes 
 {
-	public static final String ITEM_LOC = "ic2.core.Ic2Items";;
+	public static final String ITEM_LOC = "ic2.core.Ic2Items";
 	public static ItemStack copperIngot = ItemUtil.getItem("copperIngot", ITEM_LOC);
 	public static ItemStack tinIngot = ItemUtil.getItem("tinIngot", ITEM_LOC);
 	public static ItemStack bronzeIngot  = ItemUtil.getItem("bronzeIngot", ITEM_LOC);
@@ -21,15 +20,6 @@ public class IC2Recipes
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{
-		UniversalRecipes.ingotCopper.add(copperIngot);
-		UniversalRecipes.ingotTin.add(tinIngot);
-		UniversalRecipes.ingotBronze.add(bronzeIngot);
-		UniversalRecipes.uranium.add(uraniumDrop);
-		
-		OreDictionary.registerOre("ingotCopper", copperIngot);
-		OreDictionary.registerOre("ingotTin", tinIngot);
-		OreDictionary.registerOre("ingotBronze", bronzeIngot);
-		
 		// 3 Resin -> Leather
 		TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[]
 			{ stickyResin, stickyResin, stickyResin });
