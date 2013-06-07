@@ -15,10 +15,11 @@ import cpw.mods.fml.common.FMLLog;
  * 
  * so, when using this api, I would do:
  * 
- * ItemAPI.getItem("neoniteGem", 1);
+ * ItemAPI.getItem("neoniteGem");
  * 
  * You can check the item names in com.lomeli.magiks.items.ModItemsMagiks in the
- * mod's source: https://github.com/Lomeli12/MechroMagiks
+ * mod's source: https://github.com/Lomeli12/MechroMagiks as well as at the bottom
+ * of this file.
  * 
  * @author Anthony
  * 
@@ -72,4 +73,38 @@ public class ItemAPI
         }
         return item;
     }
+    
+    /* All the items added as of 5/8/2013
+     * 
+     * flyingRing
+     * neoniteGem
+     * neonitePick
+     * enchantedDiamond
+     * levelingSword
+     * ironBand
+     * ironStick
+     * emeraldAmulet
+     * darkMatter
+     * mistPanel
+     * deprivedDust
+     * burningUpgrade
+     * ironPlate
+     * weatherRockets
+     * chestLinker
+     * electroicCircuit
+     * copperWire
+     * wirelessReciever
+     * advReciever
+     * ingotStamatic
+     * ingotIgnious
+     * ingotCopper
+     * ingotTin;
+     * ingotSilver
+     * basicWand
+     * chemistWand
+     * alchemistWand
+     * pirasVarinha
+     * diggersWand
+     * wand
+     */
 }

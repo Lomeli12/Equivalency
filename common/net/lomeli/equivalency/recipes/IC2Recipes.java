@@ -20,6 +20,11 @@ public class IC2Recipes
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{
+		UniversalRecipes.ingotBronze.add(bronzeIngot);
+		UniversalRecipes.ingotCopper.add(copperIngot);
+		UniversalRecipes.ingotTin.add(tinIngot);
+		UniversalRecipes.uranium.add(uraniumDrop);
+		
 		// 3 Resin -> Leather
 		TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[]
 			{ stickyResin, stickyResin, stickyResin });

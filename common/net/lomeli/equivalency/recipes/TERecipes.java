@@ -3,6 +3,8 @@ package net.lomeli.equivalency.recipes;
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import thermalexpansion.api.item.ItemRegistry;
 
@@ -17,12 +19,19 @@ public class TERecipes
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{	
+		UniversalRecipes.ingotCopper.add(copperIngot);
+		UniversalRecipes.ingotTin.add(tinIngot);
+		UniversalRecipes.ingotSilver.add(silverIngot);
+		UniversalRecipes.ingotLead.add(leadIngot);
+		
+		OreDictionary.registerOre("ingotLead", leadIngot);
+		
 		// 3 Lead = 1 Electrum
-		TransmutationHelper.addRecipe(electrumIngot, transmutationStone,
-			new Object[]{ leadIngot, leadIngot, leadIngot});
+		TransmutationHelper.addRecipe(new ShapelessOreRecipe(electrumIngot,  
+			transmutationStone, "ingotLead", "ingotLead", "ingotLead"));
 		// 1 Electrum = 3 Lead
-		TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 3, 67), transmutationStone,
-				new Object[]{ electrumIngot});
+		TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 3, leadIngot.getItemDamage()), transmutationStone,
+				new Object[]{ electrumIngot });
 		
 		if(!Equivalency.limitRecipes)
 		{

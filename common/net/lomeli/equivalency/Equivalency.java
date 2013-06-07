@@ -24,66 +24,112 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid=Strings.MOD_ID, name=Strings.MOD_NAME, 
-	version=Strings.VERSION, dependencies="required-after:LomLib@[1.0.1,)")
+	version=Strings.VERSION, dependencies="required-after:LomLib@[1.0.2,);required-after:EE3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency 
 {
-	public static boolean limitRecipes = false;
-	public static int numberInstalled = 0;
+	public static boolean limitRecipes;
+	public int numberInstalled;
 	
 	@Init
 	public void main(FMLInitializationEvent event)
 	{
 		if(ModLoaded.isModInstalled(Strings.EE3_ID))
 		{
+			numberInstalled = 0;
+			limitRecipes = false;
 			TransmutationHelper.addStones();
 			for(ItemStack transmutationStone : TransmutationHelper.transmutationStones)
 			{
 				VanillaRecipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.IC2_ID, false))
+					numberInstalled++;
+				if(ModLoaded.isModInstalled(Strings.TE_ID, false))
+					numberInstalled++;
+				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID, false))
+					numberInstalled++;
+				if(ModLoaded.isModInstalled(Strings.MM_ID, false))
+					numberInstalled++;
+				
+				if(numberInstalled > 1)
+					limitRecipes = true;
+				
+				System.out.println(numberInstalled + "|" + limitRecipes );
+				
+				if(ModLoaded.isModInstalled(Strings.IC2_ID, false))
+					IC2Recipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.TE_ID, false))
+					TERecipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID, false))
+					ForestryRecipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.MM_ID, "MechroMagiks", false))
+					MagiksRecipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.TC_ID, false))
+					ThaumCraftRecipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.RC_ID, false))
+					RailCraftRecipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.AE_ID, false))
+					AppliedEnergisticsRecipes.loadRecipes(transmutationStone);
+				
+				if(limitRecipes)
+					UniversalRecipes.loadRecipes(transmutationStone);
 			}
 		}
     }
 	
 	@PostInit
-    public void postLoad(FMLPostInitializationEvent event)
-    {
+	public void postLoad(FMLPostInitializationEvent event)
+	{
 		if(ModLoaded.isModInstalled(Strings.EE3_ID))
 		{
 			for(ItemStack transmutationStone : TransmutationHelper.transmutationStones)
 			{
-				ModLoaded.isModInstalled(Strings.IC2_ID);
-				ModLoaded.isModInstalled(Strings.TE_ID);
-				ModLoaded.isModInstalled(Strings.FORESTRY_ID);
-				ModLoaded.isModInstalled(Strings.MM_ID);
+				if(ModLoaded.isModInstalled(Strings.IC2_ID, false))
+					numberInstalled++;
+				if(ModLoaded.isModInstalled(Strings.TE_ID, false))
+					numberInstalled++;
+				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID, false))
+					numberInstalled++;
+				if(ModLoaded.isModInstalled(Strings.MM_ID, false))
+					numberInstalled++;
 				
 				if(numberInstalled > 1)
 					limitRecipes = true;
 				
-				if(ModLoaded.isModInstalled(Strings.IC2_ID))
+				System.out.println(numberInstalled + "|" + limitRecipes );
+				
+				if(ModLoaded.isModInstalled(Strings.IC2_ID, false))
 					IC2Recipes.loadRecipes(transmutationStone);
 				
-				if(ModLoaded.isModInstalled(Strings.TE_ID))
+				if(ModLoaded.isModInstalled(Strings.TE_ID, false))
 					TERecipes.loadRecipes(transmutationStone);
 				
-				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID))
+				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID, false))
 					ForestryRecipes.loadRecipes(transmutationStone);
 				
-				if(ModLoaded.isModInstalled(Strings.MM_ID, "MechroMagiks"))
+				if(ModLoaded.isModInstalled(Strings.MM_ID, "MechroMagiks", false))
 					MagiksRecipes.loadRecipes(transmutationStone);
 				
-				if(ModLoaded.isModInstalled(Strings.TC_ID))
+				if(ModLoaded.isModInstalled(Strings.TC_ID, false))
 					ThaumCraftRecipes.loadRecipes(transmutationStone);
 				
-				if(ModLoaded.isModInstalled(Strings.RC_ID))
+				if(ModLoaded.isModInstalled(Strings.RC_ID, false))
 					RailCraftRecipes.loadRecipes(transmutationStone);
 				
-				if(ModLoaded.isModInstalled(Strings.AE_ID))
+				if(ModLoaded.isModInstalled(Strings.AE_ID, false))
 					AppliedEnergisticsRecipes.loadRecipes(transmutationStone);
 				
 				if(limitRecipes)
 					UniversalRecipes.loadRecipes(transmutationStone);
-				
 			}
 		}
 	}
+	
 }

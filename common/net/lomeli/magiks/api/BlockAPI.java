@@ -15,10 +15,10 @@ import cpw.mods.fml.common.FMLLog;
  * 
  * so, when using this api, I would do:
  * 
- * BlockAPI.getBlock("manceryGlass", 1);
+ * BlockAPI.getBlock("manceryGlass");
  * 
- * You can check the block names in com.lomeli.magiks.blocks.ModBlocksMagiks in
- * the mod's source: https://github.com/Lomeli12/MechroMagiks
+ * At the bottom of this class is the name for
+ * all the blocks added into the mod so far.
  * 
  * @author Anthony
  * 
@@ -72,4 +72,32 @@ public class BlockAPI
         }
         return item;
     }
+    
+    /* All the blocks added as of 5/8/2013
+     * 
+     * neoniteOre
+     * neoniteBlock
+     * kineticGenerator
+     * manceryBlock
+     * manceryGlass
+     * stamaticOre
+     * igniousOre
+     * solarMistCollector
+     * mistCrafter
+     * dupeFurnace
+     * burningStone
+     * manceryBrick
+     * obsidianStairs
+     * manceryBlockStairs
+     * manceryBrickStairs
+     * burningStoneStairs
+     * netherIgnious
+     * copperOre
+     * tinOre
+     * silverOre
+     * smallCoil
+     * mancerWorkTable
+     * hollowWood
+     * linkingChest
+     */
 }

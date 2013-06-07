@@ -25,11 +25,13 @@ public class RailCraftRecipes
 			if(ModLoaded.isModInstalled(Strings.IC2_ID))
 			{
 				// 2 Refined Iron -> 2 Steel
-				TransmutationHelper.addRecipe(new ItemStack(steel.getItem(), 2), 
+				TransmutationHelper.addRecipe(new ItemStack(steel.getItem(), 2, steel.getItemDamage()), 
 					transmutationStone, new Object[]{ IC2Recipes.refinedIronIngot, IC2Recipes.refinedIronIngot });
 				// 2 Steel -> 2 Refined Iron
-				TransmutationHelper.addRecipe(new ItemStack(IC2Recipes.refinedIronIngot.getItem(), 2), 
-					transmutationStone, new Object[]{ steel, steel });
+				TransmutationHelper.addRecipe(
+					new ItemStack(IC2Recipes.refinedIronIngot.getItem(), 2, 
+					IC2Recipes.refinedIronIngot.getItemDamage()), transmutationStone, new Object[]{ 
+					steel, steel});
 			}
 		}
 		for(ItemStack coke : coalCoke)

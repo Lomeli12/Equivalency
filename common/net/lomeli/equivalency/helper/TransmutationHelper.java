@@ -10,6 +10,7 @@ import net.lomeli.lomlib.item.ItemUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 
 public class TransmutationHelper 
 {
@@ -32,6 +33,11 @@ public class TransmutationHelper
 
         GameRegistry.addShapelessRecipe(output, inputs);
     }
+    
+    public static void addRecipe(IRecipe recipe)
+	{
+    	GameRegistry.addRecipe(recipe);
+	}
     
     public static void addRecipe(Item output, ItemStack transmutationStone, Object... input)
     {
