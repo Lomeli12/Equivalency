@@ -5,11 +5,13 @@ import net.minecraft.item.ItemStack;
 /**
  * Access to stack-able simple items, these include resources... 
  * Craftable ingredients, and a few simple items that don't have log of their own...
+ * DO NOT USE THESE WITHOUT COPYING THEM : ItemStack.copy() - is your friend.
  */
 public class Materials
 {
 	// Tech 1
     public static ItemStack matWoodenGear;
+	public static ItemStack matIronNugget;
     public static ItemStack matCrank;
 
     // Grinder...
@@ -45,7 +47,8 @@ public class Materials
     
     // Other items, such as upgrades.
     public static ItemStack matWirelessBooster;
-    
+	public static ItemStack matMatterBall;
+	public static ItemStack matSingularity;
     
     // TEST ITEMS!
 	public static ItemStack testItem;

@@ -24,13 +24,13 @@ public class VanillaRecipes
 		TransmutationHelper.addRecipe(new ItemStack(Item.redstone, 2), transmutationStone,
 			new Object[]{(new ItemStack(Item.coal, 1, WILDCARD))});
 		
-		// 7 Coal -> 1 Lapis
+		// 8 Coal -> 1 Lapis
 		TransmutationHelper.addRecipe((new ItemStack(Item.dyePowder, 1, 4)), transmutationStone,
 			new Object[] { (new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)), 
 			(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)), 
 			(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)),
 			(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD))});
-		// 1 Lapis -> 7 Coal
+		// 1 Lapis -> 8 Coal
 		TransmutationHelper.addRecipe(new ItemStack(Item.coal, 8), transmutationStone, 
 			new Object[]{(new ItemStack(Item.dyePowder, 1, 4))});
 		

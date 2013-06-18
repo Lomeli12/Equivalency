@@ -1,14 +1,13 @@
 package net.lomeli.equivalency.recipes;
 
 import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.helper.TransmutationHelper;
-import net.lomeli.equivalency.lib.Strings;
+//import net.lomeli.equivalency.helper.TransmutationHelper;
+//import net.lomeli.equivalency.lib.Strings;
 
-import net.lomeli.lomlib.util.ModLoaded;
 import net.lomeli.magiks.api.ItemAPI;
 
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+//import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class MagiksRecipes 
 {

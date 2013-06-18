@@ -3,6 +3,7 @@ package net.lomeli.equivalency.recipes;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
 import appeng.api.Blocks;
 import appeng.api.Materials;
 
