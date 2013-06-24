@@ -19,11 +19,6 @@ public class TERecipes
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{	
-		UniversalRecipes.ingotCopper.add(copperIngot);
-		UniversalRecipes.ingotTin.add(tinIngot);
-		UniversalRecipes.ingotSilver.add(silverIngot);
-		UniversalRecipes.ingotLead.add(leadIngot);
-		
 		OreDictionary.registerOre("ingotLead", leadIngot);
 		
 		// 3 Lead = 1 Electrum

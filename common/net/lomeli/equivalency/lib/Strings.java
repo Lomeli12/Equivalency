@@ -14,4 +14,10 @@ public class Strings
 	public static final String RC_ID = "Railcraft";
 	public static final String TC_ID = "Thaumcraft";
 	public static final String TE_ID = "ThermalExpansion";
+	
+	public static final String emeraldDesc = "Modifying this will change the emerald recipe. "
+		+ "True = 8 Gold Ingot <-> 1 Emerald False = 1 Diamond + 3 Cactus Green -> 1 Emerald";
+	public static final String blazeDesc = "Enabling this will allow you to craft Diamonds from Blaze rods";
+	public static final String cQDesc = "Modifying this will change the Iron to Certus Quartz recipe" +
+		"True = 1 Certus Quartz <-> 2 Iron || False = 1 Certus Quartz <-> 2 Iron Blocks";
 }

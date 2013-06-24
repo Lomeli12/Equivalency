@@ -12,9 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RailCraftRecipes 
-{
-	public static final int WILDCARD = Short.MAX_VALUE;
-	
+{	
 	public static List<ItemStack> steelIngot = OreDictionary.getOres("ingotSteel");
 	public static List<ItemStack> coalCoke = OreDictionary.getOres("fuelCoke");
 	
@@ -38,10 +36,10 @@ public class RailCraftRecipes
 		{
 			// 4 Coal/CharCoal -> 1 Coal Coke
 			TransmutationHelper.addRecipe(coke, transmutationStone,
-				new Object[]{ (new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)),
-				(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)) });
+				new Object[]{ (new ItemStack(Item.coal, 1, 1)), (new ItemStack(Item.coal, 1, 1)),
+				(new ItemStack(Item.coal, 1, 1)), (new ItemStack(Item.coal, 1, 1)) });
 			// 1 Coal Coke -> 4 Coal/CharCoal
-			TransmutationHelper.addRecipe(new ItemStack(Item.coal, 4), transmutationStone,
+			TransmutationHelper.addRecipe(new ItemStack(Item.coal, 4, 1), transmutationStone,
 				new Object[]{ coke });
 		}
 	}

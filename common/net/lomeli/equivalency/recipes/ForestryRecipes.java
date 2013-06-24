@@ -13,10 +13,6 @@ public class ForestryRecipes
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{
-		UniversalRecipes.ingotCopper.add(copperIngot);
-		UniversalRecipes.ingotTin.add(tinIngot);
-		UniversalRecipes.ingotBronze.add(bronzeIngot);
-		
 		if(!Equivalency.limitRecipes)
 		{
 			UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);

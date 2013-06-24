@@ -24,10 +24,6 @@ public class MagiksRecipes
 		
 		TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(igniousIngot.getItem(), 4),
 			transmutationStone, stamaticIngot));*/
-		
-		UniversalRecipes.ingotCopper.add(copperIngot);
-		UniversalRecipes.ingotTin.add(tinIngot);
-		UniversalRecipes.ingotSilver.add(silverIngot);
 
 		if(!Equivalency.limitRecipes)
 		{

@@ -1,5 +1,6 @@
 package net.lomeli.equivalency.recipes;
 
+import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -34,13 +35,23 @@ public class VanillaRecipes
 		TransmutationHelper.addRecipe(new ItemStack(Item.coal, 8), transmutationStone, 
 			new Object[]{(new ItemStack(Item.dyePowder, 1, 4))});
 		
-		// 8 Gold Ingot -> 1 Emerald
-		TransmutationHelper.addRecipe(Item.emerald, transmutationStone, new Object[]
-			{ Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold,
-			Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold });
-		// 1 Emerald -> 8 Gold Ingot
-		TransmutationHelper.addRecipe(new ItemStack(Item.ingotGold, 8), 
-			transmutationStone, new Object[]{Item.emerald});
+		if(Equivalency.emeraldTransmute)
+		{
+			// 8 Gold Ingot -> 1 Emerald
+			TransmutationHelper.addRecipe(Item.emerald, transmutationStone, new Object[]
+				{ Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold,
+				Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold });
+		
+			// 1 Emerald -> 8 Gold Ingot
+			TransmutationHelper.addRecipe(new ItemStack(Item.ingotGold, 8), 
+				transmutationStone, new Object[]{Item.emerald});
+		}
+		else
+		{
+			ItemStack cactusGreen = new ItemStack(Item.dyePowder, 1, 2);
+			TransmutationHelper.addRecipe(Item.emerald, transmutationStone, new Object[]
+				{ Item.diamond, cactusGreen, cactusGreen, cactusGreen });
+		}
 		
 		// 1 Redstone Block -> 1 Glowstone dust
 		TransmutationHelper.addRecipe(Item.lightStoneDust, transmutationStone, new Object[]
@@ -50,12 +61,20 @@ public class VanillaRecipes
 		TransmutationHelper.addRecipe(Block.blockRedstone, transmutationStone, new Object[]
 			{ Item.lightStoneDust });
 		
-		// 1 Glowstone block -> 36 redstone dust
-		TransmutationHelper.addRecipe(new ItemStack(Item.redstone, 36), transmutationStone, 
-			new Object[]{ Block.glowStone });
+		// 2 Glowstone block -> 36 redstone dust
+		TransmutationHelper.addRecipe(new ItemStack(Item.redstone, 64), transmutationStone, 
+			new Object[]{ Block.glowStone, Block.glowStone });
+		
+		TransmutationHelper.addRecipe(Item.ingotIron, transmutationStone, new Object[]
+			{ Item.netherQuartz, Item.netherQuartz, Item.netherQuartz, 
+			Item.netherQuartz, Item.netherQuartz});
+		
+		TransmutationHelper.addRecipe(new ItemStack(Item.netherQuartz, 15), transmutationStone,
+			new Object[]{ Item.ingotIron, Item.ingotIron, Item.ingotIron });
 			
 		// 5 Blaze rods -> 1 Diamond Disabled due to exploit
-		//TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[]{
-		//	Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod});
+		if(Equivalency.blazeTransmute)
+			TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[]{
+				Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod});
 	}
 }
