@@ -23,6 +23,7 @@ public class UniversalRecipes
 				OreDictionary.registerOre("uranium", uraniumDrop.getItem());
 			}
 		}
+		
 		if(!OreDictionary.getOres("ingotLead").isEmpty() && !OreDictionary.getOres("ingotSilver").isEmpty())
 		{
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(
@@ -34,6 +35,7 @@ public class UniversalRecipes
 				OreDictionary.getOres("ingotLead").get(0).getItemDamage()), 
 				transmutationStone, "ingotSilver", "ingotSilver"));
 		}
+		
 		if(!OreDictionary.getOres("ingotCopper").isEmpty() && !OreDictionary.getOres("ingotTin").isEmpty())
 		{
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotTin").get(0), 
@@ -43,15 +45,19 @@ public class UniversalRecipes
 				OreDictionary.getOres("ingotCopper").get(0).getItemDamage()), 
 				transmutationStone, "ingotTin"));
 		}
+		
 		if(!OreDictionary.getOres("ingotBronze").isEmpty() && !OreDictionary.getOres("ingotTin").isEmpty())
 		{
-			TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotBronze").get(0),
+			TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(
+				OreDictionary.getOres("ingotBronze").get(0).getItem(), 4, 
+				OreDictionary.getOres("ingotBronze").get(0).getItemDamage()),
 				transmutationStone, "ingotTin", "ingotTin"));
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(
 				new ItemStack(OreDictionary.getOres("ingotTin").get(0).getItem(), 2,
 				OreDictionary.getOres("ingotTin").get(0).getItemDamage()),
-				transmutationStone, "ingotBronze"));
+				transmutationStone, "ingotBronze", "ingotBronze", "ingotBronze", "ingotBronze"));
 		}
+		
 		if(!OreDictionary.getOres("ingotBronze").isEmpty() && !OreDictionary.getOres("uranium").isEmpty())
 		{
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("uranium").get(0),

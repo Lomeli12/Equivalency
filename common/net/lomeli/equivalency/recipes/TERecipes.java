@@ -16,6 +16,7 @@ public class TERecipes
 	public static ItemStack leadIngot = ItemRegistry.getItem("ingotLead", 1);
 	public static ItemStack electrumIngot = ItemRegistry.getItem("ingotElectrum", 1);
 	public static ItemStack invarIngot = ItemRegistry.getItem("ingotInvar", 1);
+	public static ItemStack ingotNickel = ItemRegistry.getItem("ingotNickel", 1);
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{	
@@ -25,8 +26,20 @@ public class TERecipes
 		TransmutationHelper.addRecipe(new ShapelessOreRecipe(electrumIngot,  
 			transmutationStone, "ingotLead", "ingotLead", "ingotLead"));
 		// 1 Electrum = 3 Lead
-		TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 3, leadIngot.getItemDamage()), transmutationStone,
-				new Object[]{ electrumIngot });
+		TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 3, 
+			leadIngot.getItemDamage()), transmutationStone, "ingotElectrum"));
+		
+		TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(invarIngot.getItem(), 3, 
+			invarIngot.getItemDamage()), transmutationStone, "ingotNickel", "ingotNickel"));
+		
+		TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ingotNickel.getItem(), 2, 
+			ingotNickel.getItemDamage()), transmutationStone, "ingotInvar", "ingotInvar", "ingotInvar"));
+		
+		TransmutationHelper.addRecipe(new ShapelessOreRecipe(ingotNickel, transmutationStone, 
+			"ingotLead", "ingotLead"));
+		
+		TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 2, 
+			leadIngot.getItemDamage()), transmutationStone, "ingotNickel"));
 		
 		if(!Equivalency.limitRecipes)
 		{
