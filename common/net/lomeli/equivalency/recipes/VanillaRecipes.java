@@ -54,12 +54,12 @@ public class VanillaRecipes
 		}
 		
 		// 1 Redstone Block -> 1 Glowstone dust
-		TransmutationHelper.addRecipe(Item.lightStoneDust, transmutationStone, new Object[]
+		TransmutationHelper.addRecipe(Item.glowstone, transmutationStone, new Object[]
 			{ Block.blockRedstone });
 		
 		// 1 Glowstone dust -> 1 Redstone Block
 		TransmutationHelper.addRecipe(Block.blockRedstone, transmutationStone, new Object[]
-			{ Item.lightStoneDust });
+			{ Item.glowstone });
 		
 		// 2 Glowstone block -> 36 redstone dust
 		TransmutationHelper.addRecipe(new ItemStack(Item.redstone, 64), transmutationStone, 

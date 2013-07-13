@@ -95,7 +95,7 @@ public class UniversalRecipes
 		TransmutationHelper.addRecipe(new ItemStack(tin.getItem(), 2), transmutationStone,
 			new Object[]{ bronze });
 		// 2 Tin -> 1 Bronze
-		TransmutationHelper.addRecipe(new ItemStack(bronze.getItem(), 1), transmutationStone,
+		TransmutationHelper.addRecipe(new ItemStack(bronze.getItem(), 4), transmutationStone,
 			new Object[]{ tin, tin});
 	}
 	

@@ -21,8 +21,8 @@ public class TransmutationHelper
 	
 	public static void addStones()
 	{
-		transmutationStones.add(ItemUtil.getItem("miniumStone", ITEM_LOC));
-		transmutationStones.add(ItemUtil.getItem("philStone", ITEM_LOC));
+		transmutationStones.add(new ItemStack(ItemUtil.getItem("miniumStone", ITEM_LOC).getItem(), 1, WILDCARD));
+		transmutationStones.add(new ItemStack(ItemUtil.getItem("philStone", ITEM_LOC).getItem(), 1, WILDCARD));
 	}
 	
     public static void addRecipe(ItemStack output, ItemStack transmutationStone, Object... input) 
@@ -35,9 +35,9 @@ public class TransmutationHelper
     }
     
     public static void addRecipe(IRecipe recipe)
-	{
+    {
     	GameRegistry.addRecipe(recipe);
-	}
+    }
     
     public static void addRecipe(Item output, ItemStack transmutationStone, Object... input)
     {

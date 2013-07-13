@@ -21,9 +21,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -44,7 +41,7 @@ public class Equivalency
 	public static boolean cQTransmute;
 	
 	@SuppressWarnings("static-access")
-    @PreInit
+	@Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
 		logger = new LogHelper(Strings.MOD_NAME);
@@ -60,7 +57,7 @@ public class Equivalency
 		config.save();
     }
 	
-	@Init
+	@Mod.EventHandler
 	public void main(FMLInitializationEvent event)
 	{
 		if(ModLoaded.isModInstalled(Strings.EE3_ID))
@@ -76,7 +73,7 @@ public class Equivalency
 		}
     }
 	
-	@PostInit
+	@Mod.EventHandler
 	public void postLoad(FMLPostInitializationEvent event)
 	{
 		if(ModLoaded.isModInstalled(Strings.EE3_ID))
