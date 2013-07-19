@@ -1,10 +1,17 @@
 package net.lomeli.equivalency.recipes;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class VanillaRecipes 
 {
@@ -31,9 +38,9 @@ public class VanillaRecipes
 			(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)), 
 			(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD)),
 			(new ItemStack(Item.coal, 1, WILDCARD)), (new ItemStack(Item.coal, 1, WILDCARD))});
-		// 1 Lapis -> 8 Coal
-		TransmutationHelper.addRecipe(new ItemStack(Item.coal, 8), transmutationStone, 
-			new Object[]{(new ItemStack(Item.dyePowder, 1, 4))});
+		// 2 Lapis -> 16 Coal
+		TransmutationHelper.addRecipe(new ItemStack(Item.coal, 16), transmutationStone, 
+			new Object[]{(new ItemStack(Item.dyePowder, 1, 4)), (new ItemStack(Item.dyePowder, 1, 4))});
 		
 		if(Equivalency.emeraldTransmute)
 		{
@@ -76,5 +83,125 @@ public class VanillaRecipes
 		if(Equivalency.blazeTransmute)
 			TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[]{
 				Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod});
+		
+		oldRecipes(transmutationStone);
+	}
+	
+	private static ItemStack anyCoal = new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE);
+    private static ItemStack anyWood = new ItemStack(Block.wood, 1, OreDictionary.WILDCARD_VALUE);
+    private static ItemStack anyPlank = new ItemStack(Block.planks, 1, OreDictionary.WILDCARD_VALUE);
+    private static ItemStack anySandStone = new ItemStack(Block.sandStone, 1, OreDictionary.WILDCARD_VALUE);
+    private static ItemStack dyeBoneMeal = new ItemStack(Item.dyePowder, 1, 15);
+	
+	@SuppressWarnings("rawtypes")
+    public static void oldRecipes(ItemStack transmutationStone)
+	{
+		TransmutationHelper.addRecipe(Item.flint, transmutationStone, new Object[] { 
+			Block.cobblestone, Block.cobblestone, Block.cobblestone, Block.cobblestone});
+		TransmutationHelper.addRecipe(new ItemStack(Block.cobblestone, 4), transmutationStone, Item.flint);
+		
+		TransmutationHelper.addRecipe(Block.gravel, transmutationStone, new Object[] {
+			Block.dirt, Block.dirt, Block.dirt, Block.dirt});
+		TransmutationHelper.addRecipe(new ItemStack(Block.dirt, 4), transmutationStone, Block.gravel);
+
+        /* 4 Sand <-> 1 Sandstone */
+        // Vanilla Recipes exist to make SandStone from 4 Sand
+		TransmutationHelper.addRecipe(new ItemStack(Block.sand, 4), transmutationStone, anySandStone);
+
+        /* 2 Sticks -> Wood Plank */
+		TransmutationHelper.addRecipe(Block.planks, transmutationStone, new Object[] {
+			Item.stick, Item.stick });
+        // Vanilla recipe exists to make sticks from planks
+
+        /* 4 Wood Planks -> Wood Block */
+		TransmutationHelper.addRecipe(Block.wood, transmutationStone, new Object[] {
+			anyPlank, anyPlank, anyPlank, anyPlank});
+        // Vanilla recipes exist to make planks from any wood log
+
+        /* 4 Gravel/Sandstone/Flint -> 1 Clay Ball, 1 Clay Ball -> 4 Gravel */
+		TransmutationHelper.addRecipe(Item.clay, transmutationStone, new Object[] {
+			Block.gravel, Block.gravel, Block.gravel, Block.gravel});
+		TransmutationHelper.addRecipe(Item.clay, transmutationStone, new Object[] {
+			anySandStone, anySandStone, anySandStone, anySandStone});
+		TransmutationHelper.addRecipe(Item.clay, transmutationStone, new Object[] {
+			Item.flint, Item.flint, Item.flint, Item.flint});
+		TransmutationHelper.addRecipe(new ItemStack(Block.gravel, 4), transmutationStone, Item.clay);
+
+        /* 2 Wood Log <-> 1 Obsidian */
+		TransmutationHelper.addRecipe(Block.obsidian, transmutationStone, new Object[] { 
+			anyWood, anyWood});
+        TransmutationHelper.addRecipe(new ItemStack(Block.wood, 2), transmutationStone, Block.obsidian);
+
+        /* 4 Clay Ball <-> 1 Clay Block */
+        // Vanilla recipe exists to make clay blocks from clay balls
+        TransmutationHelper.addRecipe(new ItemStack(Item.clay, 4), transmutationStone, Block.blockClay);
+
+        /* 4 Obsidian/Clay Block -> 1 Iron Ingot, Iron Ingot -> Clay Block */
+        TransmutationHelper.addRecipe(Item.ingotIron, transmutationStone, new Object[] { 
+        	Block.obsidian, Block.obsidian, Block.obsidian, Block.obsidian });
+        TransmutationHelper.addRecipe(Item.ingotIron, transmutationStone, new Object[] { 
+        	Block.blockClay, Block.blockClay, Block.blockClay, Block.blockClay});
+        TransmutationHelper.addRecipe(new ItemStack(Block.blockClay, 4), transmutationStone, Item.ingotIron);
+
+        /* 8 Iron Ingot <-> 1 Gold Ingot */
+        TransmutationHelper.addRecipe(Item.ingotGold, transmutationStone, new Object[] { 
+        	Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron});
+        TransmutationHelper.addRecipe(new ItemStack(Item.ingotIron, 8), transmutationStone, Item.ingotGold);
+
+        /* 4 Gold Ingot <-> 1 Diamond */
+        TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[] {
+        	Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold});
+        TransmutationHelper.addRecipe(new ItemStack(Item.ingotGold, 4), transmutationStone, Item.diamond);
+
+        /* 8 Iron Block <-> 1 Gold Block */
+        TransmutationHelper.addRecipe(Block.blockGold, transmutationStone, new Object[] { 
+        	Block.blockIron, Block.blockIron, Block.blockIron, Block.blockIron, Block.blockIron, Block.blockIron, Block.blockIron, Block.blockIron});
+        TransmutationHelper.addRecipe(new ItemStack(Block.blockIron, 8), transmutationStone, Block.blockGold);
+
+        /* 4 Gold Block <-> 1 Diamond Block */
+        TransmutationHelper.addRecipe(Block.blockDiamond, transmutationStone, new Object[] { 
+        	Block.blockGold, Block.blockGold, Block.blockGold, Block.blockGold });
+        TransmutationHelper.addRecipe(new ItemStack(Block.blockGold, 4), transmutationStone, Block.blockDiamond);
+
+        /* 1 Ender Pearl <-> 4 Iron Ingot */
+        TransmutationHelper.addRecipe(Item.enderPearl, transmutationStone, new Object[] {
+        	Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron});
+        TransmutationHelper.addRecipe(new ItemStack(Item.ingotIron, 4), transmutationStone, Item.enderPearl);
+
+        for(int i = 0; i < 16; i++)
+        {
+        	if(i == 15)
+        		TransmutationHelper.addRecipe(new ItemStack(Item.dyePowder, 1, 0), 
+        			transmutationStone, dyeBoneMeal);
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Item.dyePowder, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Item.dyePowder, 1, i));
+        }
+        
+        /* smelting stuff */
+        Map furnaceMap = FurnaceRecipes.smelting().getSmeltingList();
+        Map furnaceMetaMap = ObfuscationReflectionHelper.getPrivateValue(FurnaceRecipes.class, FurnaceRecipes.smelting(), "metaSmeltingList");
+
+        Iterator iterFurnaceKeyMap = furnaceMap.keySet().iterator();
+        Iterator iterFurnaceMetaKeyMap = furnaceMetaMap.keySet().iterator();
+
+        Integer furnaceMapKey;
+        List furnaceMetaMapKey;
+
+        ItemStack unSmeltedStack;
+
+        while (iterFurnaceKeyMap.hasNext()) {
+            furnaceMapKey = (Integer) iterFurnaceKeyMap.next();
+            unSmeltedStack = new ItemStack(furnaceMapKey, 1, 0);
+
+            TransmutationHelper.addSmeltingRecipe(unSmeltedStack, transmutationStone, anyCoal);
+        }
+
+        while (iterFurnaceMetaKeyMap.hasNext()) {
+            furnaceMetaMapKey = (List) iterFurnaceMetaKeyMap.next();
+            unSmeltedStack = new ItemStack((Integer) furnaceMetaMapKey.get(0), 1, (Integer) furnaceMetaMapKey.get(1));
+
+            TransmutationHelper.addSmeltingRecipe(unSmeltedStack, transmutationStone, anyCoal);
+        }
 	}
 }

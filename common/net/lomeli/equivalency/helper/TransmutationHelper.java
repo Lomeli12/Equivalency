@@ -10,6 +10,7 @@ import net.lomeli.lomlib.item.ItemUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 
 public class TransmutationHelper 
@@ -47,6 +48,30 @@ public class TransmutationHelper
     public static void addRecipe(Block output, ItemStack transmutationStone, Object... input)
     {
     	addRecipe(new ItemStack(output), transmutationStone, input);
+    }
+    
+    //Copied from EE3 for easier recipe registering.
+    public static void addSmeltingRecipe(ItemStack input, ItemStack stone, ItemStack fuel) 
+    {
+        ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(input);
+
+        if (input == null || input.getItem() == null || result == null)
+            return;
+
+        Object[] list = new Object[9];
+        list[0] = stone;
+        list[1] = fuel;
+
+        for (int i = 2; i < 9; i++) {
+            list[i] = new ItemStack(input.getItem(), 1, input.getItemDamage());
+        }
+
+        if (result.stackSize * 7 <= result.getItem().getItemStackLimit()) {
+            GameRegistry.addShapelessRecipe(new ItemStack(result.getItem(), result.stackSize * 7, result.getItemDamage()), list);
+        }
+        else {
+            GameRegistry.addShapelessRecipe(new ItemStack(result.getItem(), result.getItem().getItemStackLimit(), result.getItemDamage()), list);
+        }
     }
 
 }
