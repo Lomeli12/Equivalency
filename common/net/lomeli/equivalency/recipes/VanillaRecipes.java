@@ -84,6 +84,26 @@ public class VanillaRecipes
 			TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[]{
 				Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod});
 		
+		for(int i = 0; i < 16; i++)
+        {
+        	if(i == 15)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111039_cA, 1, 0), 
+        			transmutationStone, new ItemStack(Block.field_111039_cA, 1, 15));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111039_cA, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.field_111039_cA, 1, i));
+        }
+		
+		for(int i = 0; i < 16; i++)
+        {
+        	if(i == 15)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111031_cC, 1, 0), 
+        			transmutationStone, new ItemStack(Block.field_111031_cC, 1, 15));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111031_cC, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.field_111031_cC, 1, i));
+        }
+		
 		oldRecipes(transmutationStone);
 	}
 	
@@ -176,6 +196,76 @@ public class VanillaRecipes
         	else
         		TransmutationHelper.addRecipe(new ItemStack(Item.dyePowder, 1, (i + 1)), 
             		transmutationStone, new ItemStack(Item.dyePowder, 1, i));
+        }
+        
+        for(int i = 0; i < 16; i++)
+        {
+        	if(i == 15)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.cloth, 1, 0), 
+        			transmutationStone, new ItemStack(Block.cloth, 1, 15));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.cloth, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.cloth, 1, i));
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+        	if(i == 3)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.wood, 1, 0), 
+        			transmutationStone, new ItemStack(Block.wood, 1, 3));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.wood, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.wood, 1, i));
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+        	if(i == 3)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.sapling, 1, 0), 
+        			transmutationStone, new ItemStack(Block.sapling, 1, 3));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.sapling, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.sapling, 1, i));
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+        	if(i == 3)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.leaves, 1, 0), 
+        			transmutationStone, new ItemStack(Block.leaves, 1, 3));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.leaves, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.leaves, 1, i));
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+        	if(i == 3)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.woodSingleSlab, 1, 0), 
+        			transmutationStone, new ItemStack(Block.woodSingleSlab, 1, 3));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.woodSingleSlab, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.woodSingleSlab, 1, i));
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+        	if(i == 3)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.stoneBrick, 1, 0), 
+        			transmutationStone, new ItemStack(Block.stoneBrick, 1, 3));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.stoneBrick, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.stoneBrick, 1, i));
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+        	if(i == 3)
+        		TransmutationHelper.addRecipe(new ItemStack(Block.planks, 1, 0), 
+        			transmutationStone, new ItemStack(Block.planks, 1, 3));
+        	else
+        		TransmutationHelper.addRecipe(new ItemStack(Block.planks, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.planks, 1, i));
         }
         
         /* smelting stuff */
