@@ -41,6 +41,17 @@ public class BlockAPI
             {
                 item = (ItemStack) obj;
             }
+            
+            String itemClass2 = "net.lomeli.magiks.world.block.ModBlocks";
+            Object obj2 = Class.forName(itemClass2).getField(itemString)
+                    .get(null);
+            if (obj2 instanceof Block)
+            {
+                item = new ItemStack((Block) obj2, 1, meta);
+            } else if (obj2 instanceof ItemStack)
+            {
+                item = (ItemStack) obj2;
+            }
         } catch (Exception ex)
         {
             FMLLog.warning("[MechroMagik] Could not retrieve block identified by: "
@@ -64,6 +75,17 @@ public class BlockAPI
             } else if (obj instanceof ItemStack)
             {
                 item = (ItemStack) obj;
+            }
+            
+            String itemClass2 = "net.lomeli.magiks.world.block.ModBlocks";
+            Object obj2 = Class.forName(itemClass2).getField(itemString)
+                    .get(null);
+            if (obj2 instanceof Block)
+            {
+                item = new ItemStack((Block) obj2);
+            } else if (obj2 instanceof ItemStack)
+            {
+                item = (ItemStack) obj2;
             }
         } catch (Exception ex)
         {

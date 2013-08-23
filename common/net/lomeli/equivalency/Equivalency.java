@@ -7,7 +7,7 @@ import net.lomeli.equivalency.lib.Strings;
 import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
-import net.lomeli.equivalency.recipes.MagiksRecipes;
+//import net.lomeli.equivalency.recipes.MagiksRecipes;
 import net.lomeli.equivalency.recipes.RailCraftRecipes;
 import net.lomeli.equivalency.recipes.TERecipes;
 import net.lomeli.equivalency.recipes.ThaumCraftRecipes;
@@ -27,7 +27,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid=Strings.MOD_ID, name=Strings.MOD_NAME, 
-	version=Strings.VERSION, dependencies="required-after:LomLib@[1.0.2,);required-after:EE3")
+	version=Strings.VERSION, dependencies="required-after:LomLib@[1.0.5,);required-after:EE3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency 
 {
@@ -41,7 +41,7 @@ public class Equivalency
 	public static boolean cQTransmute;
 	
 	@SuppressWarnings("static-access")
-	@Mod.EventHandler
+    @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
 		logger = new LogHelper(Strings.MOD_NAME);
@@ -102,9 +102,9 @@ public class Equivalency
 				
 				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID, false))
 					ForestryRecipes.loadRecipes(transmutationStone);
-				
+				/*
 				if(ModLoaded.isModInstalled(Strings.MM_ID, "MechroMagiks", false))
-					MagiksRecipes.loadRecipes(transmutationStone);
+					MagiksRecipes.loadRecipes(transmutationStone);*/
 				
 				if(ModLoaded.isModInstalled(Strings.TC_ID, false))
 					ThaumCraftRecipes.loadRecipes(transmutationStone);
@@ -119,5 +119,4 @@ public class Equivalency
 			}
 		}
 	}
-	
 }

@@ -14,20 +14,20 @@ public class IC2Recipes
 	public static ItemStack copperIngot = ItemUtil.getItem("copperIngot", ITEM_LOC);
 	public static ItemStack tinIngot = ItemUtil.getItem("tinIngot", ITEM_LOC);
 	public static ItemStack bronzeIngot  = ItemUtil.getItem("bronzeIngot", ITEM_LOC);
-	public static ItemStack uraniumDrop = ItemUtil.getItem("uraniumDrop", ITEM_LOC);
+	public static ItemStack uraniumDrop = ItemUtil.getItem("Uran248", ITEM_LOC);
 	public static ItemStack stickyResin = ItemUtil.getItem("resin", ITEM_LOC);
 	public static ItemStack refinedIronIngot = ItemUtil.getItem("refinedIronIngot", ITEM_LOC);
 	
 	public static void loadRecipes(ItemStack transmutationStone)
 	{
-		UniversalRecipes.uranium.add(uraniumDrop);
-		
 		// 3 Resin -> Leather
 		TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[]
 			{ stickyResin, stickyResin, stickyResin });
 		// Leather -> 3 Resin
 		TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 3), transmutationStone, new Object[]
 			{ Item.leather });
+            
+        UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
 		
 		if(!Equivalency.limitRecipes)
 		{

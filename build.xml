@@ -84,6 +84,7 @@
                 <exclude name="thaumcraft/**" />
                 <exclude name="ic2/**"/>
                 <exclude name="net/lomeli/magiks/**" />
+                <exclude name="**/minecraft/**" />
             </fileset>
 		</jar>
 		
