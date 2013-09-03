@@ -2,6 +2,7 @@ package net.lomeli.equivalency.recipes;
 
 import java.util.List;
 
+import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.lomeli.equivalency.lib.Strings;
 
@@ -20,16 +21,14 @@ public class RailCraftRecipes
 	{
 		for(ItemStack steel : steelIngot)
 		{
-			if(ModLoaded.isModInstalled(Strings.IC2_ID))
+			if(ModLoaded.isModInstalled(Strings.IC2_ID) && Equivalency.steelTransmute)
 			{
-				// 2 Refined Iron -> 2 Steel
 				TransmutationHelper.addRecipe(new ItemStack(steel.getItem(), 2, steel.getItemDamage()), 
-					transmutationStone, new Object[]{ IC2Recipes.refinedIronIngot, IC2Recipes.refinedIronIngot });
-				// 2 Steel -> 2 Refined Iron
-				TransmutationHelper.addRecipe(
-					new ItemStack(IC2Recipes.refinedIronIngot.getItem(), 2, 
-					IC2Recipes.refinedIronIngot.getItemDamage()), transmutationStone, new Object[]{ 
-					steel, steel});
+					transmutationStone, new Object[]{ IC2Recipes.machineBlock, IC2Recipes.machineBlock, 
+					IC2Recipes.machineBlock});
+				
+				TransmutationHelper.addRecipe(new ItemStack(IC2Recipes.machineBlock.getItem(), 3, 
+					IC2Recipes.machineBlock.getItemDamage()), transmutationStone, new Object[]{ steel, steel});
 			}
 		}
 		for(ItemStack coke : coalCoke)

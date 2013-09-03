@@ -7,6 +7,7 @@ import net.lomeli.equivalency.lib.Strings;
 import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
+import net.lomeli.equivalency.recipes.DartCraftRecipes;
 //import net.lomeli.equivalency.recipes.MagiksRecipes;
 import net.lomeli.equivalency.recipes.RailCraftRecipes;
 import net.lomeli.equivalency.recipes.TERecipes;
@@ -39,6 +40,7 @@ public class Equivalency
 	public static boolean emeraldTransmute;
 	public static boolean blazeTransmute;
 	public static boolean cQTransmute;
+	public static boolean steelTransmute;
 	
 	@SuppressWarnings("static-access")
     @Mod.EventHandler
@@ -53,7 +55,7 @@ public class Equivalency
 		emeraldTransmute = config.get(config.CATEGORY_GENERAL, "defaultEmeraldTransmute", true, Strings.emeraldDesc).getBoolean(true);
 		blazeTransmute = config.get(config.CATEGORY_GENERAL, "blazeTransmute", false, Strings.blazeDesc).getBoolean(false);
 		cQTransmute = config.get(config.CATEGORY_GENERAL, "cqTransmute", true, Strings.cQDesc).getBoolean(true);
-		
+		steelTransmute = config.get(config.CATEGORY_GENERAL, "steelTransmute", true, "Disables steel transmutation").getBoolean(true);
 		config.save();
     }
 	
@@ -102,6 +104,9 @@ public class Equivalency
 				
 				if(ModLoaded.isModInstalled(Strings.FORESTRY_ID, false))
 					ForestryRecipes.loadRecipes(transmutationStone);
+				
+				if(ModLoaded.isModInstalled(Strings.DART_ID, false))
+					DartCraftRecipes.loadRecipes(transmutationStone);
 				/*
 				if(ModLoaded.isModInstalled(Strings.MM_ID, "MechroMagiks", false))
 					MagiksRecipes.loadRecipes(transmutationStone);*/
