@@ -9,10 +9,9 @@ import net.minecraft.item.ItemStack;
 import appeng.api.Blocks;
 import appeng.api.Materials;
 
-public class AppliedEnergisticsRecipes 
-{
-	public static void loadRecipes(ItemStack transmutationStone)
-	{
+public class AppliedEnergisticsRecipes {
+	public static void loadRecipes(ItemStack transmutationStone, String modName){
+		Equivalency.loadModRecipes(modName);
 		ItemStack iron;
 		
 		if(Equivalency.cQTransmute)
@@ -39,8 +38,7 @@ public class AppliedEnergisticsRecipes
 		
 		int k = Blocks.blkCable_Colored.length;
 		
-		for(int j = 0; j < k; j++)
-		{
+		for(int j = 0; j < k; j++){
 			if(j == (k-1))
 				TransmutationHelper.addRecipe(Blocks.blkCable_Colored[0], transmutationStone,
 					new Object[]{ Blocks.blkCable_Colored[j] });

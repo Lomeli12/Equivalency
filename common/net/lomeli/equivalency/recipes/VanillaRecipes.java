@@ -13,12 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class VanillaRecipes 
-{
+public class VanillaRecipes {
 	public static final int WILDCARD = Short.MAX_VALUE;
 	
-	public static void loadRecipes(ItemStack transmutationStone)
-	{
+	public static void loadRecipes(ItemStack transmutationStone){
 		// 8 Glass Panes -> 3 Glass Blocks
 		TransmutationHelper.addRecipe((new ItemStack(Block.glass, 3)), transmutationStone,
 			new Object[]{Block.thinGlass, Block.thinGlass, Block.thinGlass,
@@ -42,8 +40,7 @@ public class VanillaRecipes
 		TransmutationHelper.addRecipe(new ItemStack(Item.coal, 16), transmutationStone, 
 			new Object[]{(new ItemStack(Item.dyePowder, 1, 4)), (new ItemStack(Item.dyePowder, 1, 4))});
 		
-		if(Equivalency.emeraldTransmute)
-		{
+		if(Equivalency.emeraldTransmute){
 			// 8 Gold Ingot -> 1 Emerald
 			TransmutationHelper.addRecipe(Item.emerald, transmutationStone, new Object[]
 				{ Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold,
@@ -52,9 +49,7 @@ public class VanillaRecipes
 			// 1 Emerald -> 8 Gold Ingot
 			TransmutationHelper.addRecipe(new ItemStack(Item.ingotGold, 8), 
 				transmutationStone, new Object[]{Item.emerald});
-		}
-		else
-		{
+		}else{
 			ItemStack cactusGreen = new ItemStack(Item.dyePowder, 1, 2);
 			TransmutationHelper.addRecipe(Item.emerald, transmutationStone, new Object[]
 				{ Item.diamond, cactusGreen, cactusGreen, cactusGreen });
@@ -84,24 +79,22 @@ public class VanillaRecipes
 			TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[]{
 				Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod, Item.blazeRod});
 		
-		for(int i = 0; i < 16; i++)
-        {
+		for(int i = 0; i < 16; i++){
         	if(i == 15)
-        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111039_cA, 1, 0), 
-        			transmutationStone, new ItemStack(Block.field_111039_cA, 1, 15));
+        		TransmutationHelper.addRecipe(new ItemStack(Block.carpet, 1, 0), 
+        			transmutationStone, new ItemStack(Block.carpet, 1, 15));
         	else
-        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111039_cA, 1, (i + 1)), 
-            		transmutationStone, new ItemStack(Block.field_111039_cA, 1, i));
+        		TransmutationHelper.addRecipe(new ItemStack(Block.carpet, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.carpet, 1, i));
         }
 		
-		for(int i = 0; i < 16; i++)
-        {
+		for(int i = 0; i < 16; i++){
         	if(i == 15)
-        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111031_cC, 1, 0), 
-        			transmutationStone, new ItemStack(Block.field_111031_cC, 1, 15));
+        		TransmutationHelper.addRecipe(new ItemStack(Block.hardenedClay, 1, 0), 
+        			transmutationStone, new ItemStack(Block.hardenedClay, 1, 15));
         	else
-        		TransmutationHelper.addRecipe(new ItemStack(Block.field_111031_cC, 1, (i + 1)), 
-            		transmutationStone, new ItemStack(Block.field_111031_cC, 1, i));
+        		TransmutationHelper.addRecipe(new ItemStack(Block.hardenedClay, 1, (i + 1)), 
+            		transmutationStone, new ItemStack(Block.hardenedClay, 1, i));
         }
 		
 		oldRecipes(transmutationStone);
@@ -114,8 +107,7 @@ public class VanillaRecipes
     private static ItemStack dyeBoneMeal = new ItemStack(Item.dyePowder, 1, 15);
 	
 	@SuppressWarnings("rawtypes")
-    public static void oldRecipes(ItemStack transmutationStone)
-	{
+    public static void oldRecipes(ItemStack transmutationStone){
 		TransmutationHelper.addRecipe(Item.flint, transmutationStone, new Object[] { 
 			Block.cobblestone, Block.cobblestone, Block.cobblestone, Block.cobblestone});
 		TransmutationHelper.addRecipe(new ItemStack(Block.cobblestone, 4), transmutationStone, Item.flint);
@@ -188,8 +180,7 @@ public class VanillaRecipes
         	Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron});
         TransmutationHelper.addRecipe(new ItemStack(Item.ingotIron, 4), transmutationStone, Item.enderPearl);
 
-        for(int i = 0; i < 16; i++)
-        {
+        for(int i = 0; i < 16; i++){
         	if(i == 15)
         		TransmutationHelper.addRecipe(new ItemStack(Item.dyePowder, 1, 0), 
         			transmutationStone, dyeBoneMeal);
@@ -198,8 +189,7 @@ public class VanillaRecipes
             		transmutationStone, new ItemStack(Item.dyePowder, 1, i));
         }
         
-        for(int i = 0; i < 16; i++)
-        {
+        for(int i = 0; i < 16; i++){
         	if(i == 15)
         		TransmutationHelper.addRecipe(new ItemStack(Block.cloth, 1, 0), 
         			transmutationStone, new ItemStack(Block.cloth, 1, 15));
@@ -208,8 +198,7 @@ public class VanillaRecipes
             		transmutationStone, new ItemStack(Block.cloth, 1, i));
         }
         
-        for(int i = 0; i < 4; i++)
-        {
+        for(int i = 0; i < 4; i++){
         	if(i == 3)
         		TransmutationHelper.addRecipe(new ItemStack(Block.wood, 1, 0), 
         			transmutationStone, new ItemStack(Block.wood, 1, 3));
@@ -218,8 +207,7 @@ public class VanillaRecipes
             		transmutationStone, new ItemStack(Block.wood, 1, i));
         }
         
-        for(int i = 0; i < 4; i++)
-        {
+        for(int i = 0; i < 4; i++){
         	if(i == 3)
         		TransmutationHelper.addRecipe(new ItemStack(Block.sapling, 1, 0), 
         			transmutationStone, new ItemStack(Block.sapling, 1, 3));
@@ -228,8 +216,7 @@ public class VanillaRecipes
             		transmutationStone, new ItemStack(Block.sapling, 1, i));
         }
         
-        for(int i = 0; i < 4; i++)
-        {
+        for(int i = 0; i < 4; i++){
         	if(i == 3)
         		TransmutationHelper.addRecipe(new ItemStack(Block.leaves, 1, 0), 
         			transmutationStone, new ItemStack(Block.leaves, 1, 3));
@@ -238,8 +225,7 @@ public class VanillaRecipes
             		transmutationStone, new ItemStack(Block.leaves, 1, i));
         }
         
-        for(int i = 0; i < 4; i++)
-        {
+        for(int i = 0; i < 4; i++){
         	if(i == 3)
         		TransmutationHelper.addRecipe(new ItemStack(Block.woodSingleSlab, 1, 0), 
         			transmutationStone, new ItemStack(Block.woodSingleSlab, 1, 3));
@@ -248,8 +234,7 @@ public class VanillaRecipes
             		transmutationStone, new ItemStack(Block.woodSingleSlab, 1, i));
         }
         
-        for(int i = 0; i < 4; i++)
-        {
+        for(int i = 0; i < 4; i++){
         	if(i == 3)
         		TransmutationHelper.addRecipe(new ItemStack(Block.stoneBrick, 1, 0), 
         			transmutationStone, new ItemStack(Block.stoneBrick, 1, 3));
@@ -258,8 +243,7 @@ public class VanillaRecipes
             		transmutationStone, new ItemStack(Block.stoneBrick, 1, i));
         }
         
-        for(int i = 0; i < 4; i++)
-        {
+        for(int i = 0; i < 4; i++){
         	if(i == 3)
         		TransmutationHelper.addRecipe(new ItemStack(Block.planks, 1, 0), 
         			transmutationStone, new ItemStack(Block.planks, 1, 3));

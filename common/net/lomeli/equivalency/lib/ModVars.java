@@ -1,11 +1,20 @@
 package net.lomeli.equivalency.lib;
 
-public class Strings 
-{
+public class ModVars {
 	public static final String MOD_ID = "Equivalency";
 	public static final String MOD_NAME = MOD_ID;
-	public static final String VERSION = "1.4.3";
-
+	
+	public static final int MAJOR = 1, MINOR = 4, REVISION = 3;
+	
+	public static final String VERSION = MAJOR + "." + MINOR + "." + REVISION;
+	
+	public static final String UPDATE_XML = "https://dl.dropboxusercontent.com/u/17430088/Minecraft%20Mods/Equivalency/updateXML.xml";
+	
+	public static final String CORE = "net.lomeli.equivalency.core.";
+	
+	public static final String CLIENT = CORE + "ClientProxy";
+	public static final String COMMON = CORE + "CommonProxy";
+	
 	public static final String EE3_ID = "EE3";
 	public static final String AE_ID = "AppliedEnergistics";
 	public static final String FORESTRY_ID = "Forestry";

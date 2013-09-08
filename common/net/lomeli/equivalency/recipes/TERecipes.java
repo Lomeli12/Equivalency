@@ -8,8 +8,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import thermalexpansion.api.item.ItemRegistry;
 
-public class TERecipes 
-{
+public class TERecipes {
 	public static ItemStack copperIngot = ItemRegistry.getItem("ingotCopper", 1);
 	public static ItemStack tinIngot = ItemRegistry.getItem("ingotTin", 1);
 	public static ItemStack silverIngot = ItemRegistry.getItem("ingotSilver", 1);
@@ -18,8 +17,8 @@ public class TERecipes
 	public static ItemStack invarIngot = ItemRegistry.getItem("ingotInvar", 1);
 	public static ItemStack ingotNickel = ItemRegistry.getItem("ingotNickel", 1);
 	
-	public static void loadRecipes(ItemStack transmutationStone)
-	{	
+	public static void loadRecipes(ItemStack transmutationStone, String modName){
+		Equivalency.loadModRecipes(modName);
 		OreDictionary.registerOre("ingotLead", leadIngot);
 		
 		// 3 Lead = 1 Electrum
@@ -41,8 +40,7 @@ public class TERecipes
 		TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 2, 
 			leadIngot.getItemDamage()), transmutationStone, "ingotNickel"));
 		
-		if(!Equivalency.limitRecipes)
-		{
+		if(!Equivalency.limitRecipes){
 			UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
 			UniversalRecipes.leadSilver(leadIngot, silverIngot, transmutationStone);
 		}

@@ -1,22 +1,21 @@
 package net.lomeli.equivalency.recipes;
 
+import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ItemApi;
 
-public class ThaumCraftRecipes 
-{
+public class ThaumCraftRecipes {
 	public static Item shard = ItemApi.getItem("itemShard", 1).getItem();
 	public static ItemStack visShard = ItemApi.getItem("itemShard", 4);
 	public static ItemStack dullShard = ItemApi.getItem("itemShard", 5);
 	public static ItemStack marker = ItemApi.getItem("blockMarker", 0);
 	public static ItemStack candle = ItemApi.getItem("blockCandle", 0);
 	
-	public static void loadRecipes(ItemStack transmutationStone)
-	{
-		for(int i = 0; i < 4; i++)
-		{
+	public static void loadRecipes(ItemStack transmutationStone, String modName){
+		Equivalency.loadModRecipes(modName);
+		for(int i = 0; i < 4; i++){
 			if(i == 3)
 				TransmutationHelper.addRecipe(new ItemStack(shard, 1, 0), transmutationStone,
 					new Object[]{ new ItemStack(shard, 1, i) });
@@ -25,17 +24,14 @@ public class ThaumCraftRecipes
 					new Object[]{ new ItemStack(shard, 1, i) });
 		}
 		
-		for(int i = 0; i < 16; i++)
-		{
-			if(i == 15)
-			{
+		for(int i = 0; i < 16; i++){
+			if(i == 15){
 				TransmutationHelper.addRecipe(marker, transmutationStone, new Object[]
 					{ new ItemStack(marker.getItem(), 1, i) });
 				TransmutationHelper.addRecipe(candle, transmutationStone, new Object[]
 					{ new ItemStack(candle.getItem(), 1, i) });
 			}
-			else
-			{
+			else{
 				TransmutationHelper.addRecipe(new ItemStack(marker.getItem(), 1, (i+1)), transmutationStone, new Object[]
 					{ new ItemStack(marker.getItem(), 1, i) });
 				TransmutationHelper.addRecipe(new ItemStack(candle.getItem(), 1, (i+1)), transmutationStone, new Object[]

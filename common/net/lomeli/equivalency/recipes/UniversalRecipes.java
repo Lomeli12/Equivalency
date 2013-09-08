@@ -10,22 +10,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-public class UniversalRecipes 
-{
+public class UniversalRecipes {
 	public static List<ItemStack> uranium = new ArrayList<ItemStack>();
 
-	public static void loadRecipes(ItemStack transmutationStone)
-	{
-		if(!uranium.isEmpty() && OreDictionary.getOres("uranium").isEmpty())
-		{
-			for(ItemStack uraniumDrop : uranium)
-			{
+	public static void loadRecipes(ItemStack transmutationStone){
+		if(!uranium.isEmpty() && OreDictionary.getOres("uranium").isEmpty()){
+			for(ItemStack uraniumDrop : uranium){
 				OreDictionary.registerOre("uranium", uraniumDrop.getItem());
 			}
 		}
 		
-		if(!OreDictionary.getOres("ingotLead").isEmpty() && !OreDictionary.getOres("ingotSilver").isEmpty())
-		{
+		if(!OreDictionary.getOres("ingotLead").isEmpty() && !OreDictionary.getOres("ingotSilver").isEmpty()){
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(
 				new ItemStack(OreDictionary.getOres("ingotSilver").get(0).getItem(), 2, 
 				OreDictionary.getOres("ingotSilver").get(0).getItemDamage()), 
@@ -36,8 +31,7 @@ public class UniversalRecipes
 				transmutationStone, "ingotSilver", "ingotSilver"));
 		}
 		
-		if(!OreDictionary.getOres("ingotCopper").isEmpty() && !OreDictionary.getOres("ingotTin").isEmpty())
-		{
+		if(!OreDictionary.getOres("ingotCopper").isEmpty() && !OreDictionary.getOres("ingotTin").isEmpty()){
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotTin").get(0), 
 				transmutationStone, "ingotCopper", "ingotCopper", "ingotCopper"));
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(
@@ -46,8 +40,7 @@ public class UniversalRecipes
 				transmutationStone, "ingotTin"));
 		}
 		
-		if(!OreDictionary.getOres("ingotBronze").isEmpty() && !OreDictionary.getOres("ingotTin").isEmpty())
-		{
+		if(!OreDictionary.getOres("ingotBronze").isEmpty() && !OreDictionary.getOres("ingotTin").isEmpty()){
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(
 				OreDictionary.getOres("ingotBronze").get(0).getItem(), 4, 
 				OreDictionary.getOres("ingotBronze").get(0).getItemDamage()),
@@ -58,8 +51,7 @@ public class UniversalRecipes
 				transmutationStone, "ingotBronze", "ingotBronze", "ingotBronze", "ingotBronze"));
 		}
 		
-		if(!OreDictionary.getOres("ingotBronze").isEmpty() && !OreDictionary.getOres("uranium").isEmpty())
-		{
+		if(!OreDictionary.getOres("ingotBronze").isEmpty() && !OreDictionary.getOres("uranium").isEmpty()){
 			TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("uranium").get(0),
 				transmutationStone, "ingotBronze", "ingotBronze", "ingotBronze", "ingotBronze",
 				"ingotBronze", "ingotBronze", "ingotBronze"));
@@ -79,8 +71,7 @@ public class UniversalRecipes
 		}
 	}
 	
-	public static void copperTin(ItemStack copper, ItemStack tin, ItemStack transmutationStone)
-	{
+	public static void copperTin(ItemStack copper, ItemStack tin, ItemStack transmutationStone){
 		// 3 Copper Ingot -> Tin Ingot
 		TransmutationHelper.addRecipe(tin, transmutationStone, 
 				 copper, copper, copper);
@@ -89,8 +80,7 @@ public class UniversalRecipes
 					new Object[]{ tin });
 	}
 	
-	public static void bronzeTin(ItemStack bronze, ItemStack tin, ItemStack transmutationStone)
-	{
+	public static void bronzeTin(ItemStack bronze, ItemStack tin, ItemStack transmutationStone){
 		// 1 Bronze -> 2 Tin
 		TransmutationHelper.addRecipe(new ItemStack(tin.getItem(), 2), transmutationStone,
 			new Object[]{ bronze });
@@ -99,8 +89,7 @@ public class UniversalRecipes
 			new Object[]{ tin, tin});
 	}
 	
-	public static void uraniumDiamond(ItemStack uranium, ItemStack transmutationStone)
-	{
+	public static void uraniumDiamond(ItemStack uranium, ItemStack transmutationStone){
 		// 4 Uranium -> 2 Diamond
 		TransmutationHelper.addRecipe(new ItemStack(Item.diamond, 2), transmutationStone, 
 			new Object[]{uranium, uranium, uranium, uranium});
@@ -115,8 +104,7 @@ public class UniversalRecipes
 			new Object[]{ uranium, uranium });
 	}
 	
-	public static void leadSilver(ItemStack leadIngot, ItemStack silverIngot, ItemStack transmutationStone)
-	{
+	public static void leadSilver(ItemStack leadIngot, ItemStack silverIngot, ItemStack transmutationStone){
 		// 2 Silver Ingot -> 4 Lead Ingot
 		TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 4, leadIngot.getItemDamage()), 
 			transmutationStone, new Object[]{ silverIngot, silverIngot });

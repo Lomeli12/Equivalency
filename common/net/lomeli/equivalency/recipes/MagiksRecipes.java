@@ -10,8 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class MagiksRecipes 
-{
+public class MagiksRecipes {
 	public static ItemStack copperIngot = ItemAPI.getItem("ingotCopper");
 	public static ItemStack tinIngot = ItemAPI.getItem("ingotTin");
 	public static ItemStack silverIngot = ItemAPI.getItem("ingotSilver");
@@ -25,8 +24,8 @@ public class MagiksRecipes
 	public static ItemStack stamaticBlock = BlockAPI.getBlock("stamaticBlock");
 	public static ItemStack igniousBlock = BlockAPI.getBlock("igniousBlock");
 	
-	public static void loadRecipes(ItemStack transmutationStone)
-	{
+	public static void loadRecipes(ItemStack transmutationStone){
+		Equivalency.loadModRecipes("MechroMagiks");
 		TransmutationHelper.addRecipe(igniousIngot, transmutationStone, new Object[]
 			{ stamaticIngot, stamaticIngot, stamaticIngot, stamaticIngot });
 		
@@ -34,10 +33,10 @@ public class MagiksRecipes
 			transmutationStone, new Object[]{ igniousIngot });
 		
 		TransmutationHelper.addRecipe(igniousBlock, transmutationStone, new Object[]
-				{ stamaticBlock, stamaticBlock, stamaticBlock, stamaticBlock });
+			{ stamaticBlock, stamaticBlock, stamaticBlock, stamaticBlock });
 			
-			TransmutationHelper.addRecipe(new ItemStack(stamaticBlock.getItem(), 4),
-				transmutationStone, new Object[]{ igniousBlock });
+		TransmutationHelper.addRecipe(new ItemStack(stamaticBlock.getItem(), 4),
+			transmutationStone, new Object[]{ igniousBlock });
 		
 		TransmutationHelper.addRecipe(manceryBlock, transmutationStone, new Object[]{manceryBrick});
 		TransmutationHelper.addRecipe(manceryBrick, transmutationStone, new Object[]{manceryBlock});
@@ -52,8 +51,6 @@ public class MagiksRecipes
 			{ neoniteBlock });
 
 		if(!Equivalency.limitRecipes)
-		{
 			UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
-		}
 	}
 }
