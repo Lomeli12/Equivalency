@@ -14,7 +14,6 @@ public class IC2Recipes
 	public static ItemStack copperIngot = Items.getItem("copperIngot");
 	public static ItemStack tinIngot = Items.getItem("tinIngot");
 	public static ItemStack bronzeIngot  = Items.getItem("bronzeIngot");
-	public static ItemStack uraniumDrop = Items.getItem("Uran238");
 	public static ItemStack stickyResin = Items.getItem("resin");
 	public static ItemStack refinedIronIngot = Items.getItem("refinedIronIngot");
 	public static ItemStack machineBlock = Items.getItem("machine");
@@ -28,13 +27,11 @@ public class IC2Recipes
 		TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 3), transmutationStone, new Object[]
 			{ Item.leather });
             
-        UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
 		
 		if(!Equivalency.limitRecipes)
 		{
 			UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
 			UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
-			UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
 		}
 	}
 }
