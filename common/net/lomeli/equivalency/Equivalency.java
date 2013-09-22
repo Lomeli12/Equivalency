@@ -8,7 +8,7 @@ import net.lomeli.equivalency.lib.ModVars;
 import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
-//import net.lomeli.equivalency.recipes.DartCraftRecipes;
+import net.lomeli.equivalency.recipes.DartCraftRecipes;
 //import net.lomeli.equivalency.recipes.MagiksRecipes;
 import net.lomeli.equivalency.recipes.RailCraftRecipes;
 import net.lomeli.equivalency.recipes.TERecipes;
@@ -116,13 +116,8 @@ public class Equivalency {
                     ForestryRecipes.loadRecipes(transmutationStone,
                             ModVars.FORESTRY_ID);
 
-                /*
-                 * Disabled for now, will enable once bluedart gives me the Ok
-                 * and the API Which should be soonish
-                 * 
-                 * if(ModLoaded.isModInstalled(Strings.DART_ID, false))
-                 * DartCraftRecipes.loadRecipes(transmutationStone);
-                 */
+                if(ModLoaded.isModInstalled(ModVars.DART_ID, false))
+                    DartCraftRecipes.loadRecipes(transmutationStone, ModVars.DART_ID);
 
                 if (ModLoaded.isModInstalled(ModVars.TC_ID))
                     ThaumCraftRecipes.loadRecipes(transmutationStone,
