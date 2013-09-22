@@ -17,109 +17,76 @@ import cpw.mods.fml.common.FMLLog;
  * 
  * BlockAPI.getBlock("manceryGlass");
  * 
- * At the bottom of this class is the name for
- * all the blocks added into the mod so far.
+ * At the bottom of this class is the name for all the blocks added into the mod
+ * so far.
  * 
  * @author Anthony
  * 
  */
-public class BlockAPI
-{
-    public static ItemStack getBlock(String itemString, int meta)
-    {
+public class BlockAPI {
+    public static ItemStack getBlock(String itemString, int meta) {
         ItemStack item = null;
 
-        try
-        {
+        try {
             String itemClass = "net.lomeli.magiks.blocks.ModBlocksMagiks";
             Object obj = Class.forName(itemClass).getField(itemString)
                     .get(null);
-            if (obj instanceof Block)
-            {
+            if (obj instanceof Block) {
                 item = new ItemStack((Block) obj, 1, meta);
-            } else if (obj instanceof ItemStack)
-            {
+            } else if (obj instanceof ItemStack) {
                 item = (ItemStack) obj;
             }
-            
+
             String itemClass2 = "net.lomeli.magiks.world.block.ModBlocks";
             Object obj2 = Class.forName(itemClass2).getField(itemString)
                     .get(null);
-            if (obj2 instanceof Block)
-            {
+            if (obj2 instanceof Block) {
                 item = new ItemStack((Block) obj2, 1, meta);
-            } else if (obj2 instanceof ItemStack)
-            {
+            } else if (obj2 instanceof ItemStack) {
                 item = (ItemStack) obj2;
             }
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
             FMLLog.warning("[MechroMagik] Could not retrieve block identified by: "
                     + itemString);
         }
         return item;
     }
 
-    public static ItemStack getBlock(String itemString)
-    {
+    public static ItemStack getBlock(String itemString) {
         ItemStack item = null;
 
-        try
-        {
+        try {
             String itemClass = "net.lomeli.magiks.blocks.ModBlocksMagiks";
             Object obj = Class.forName(itemClass).getField(itemString)
                     .get(null);
-            if (obj instanceof Block)
-            {
+            if (obj instanceof Block) {
                 item = new ItemStack((Block) obj);
-            } else if (obj instanceof ItemStack)
-            {
+            } else if (obj instanceof ItemStack) {
                 item = (ItemStack) obj;
             }
-            
+
             String itemClass2 = "net.lomeli.magiks.world.block.ModBlocks";
             Object obj2 = Class.forName(itemClass2).getField(itemString)
                     .get(null);
-            if (obj2 instanceof Block)
-            {
+            if (obj2 instanceof Block) {
                 item = new ItemStack((Block) obj2);
-            } else if (obj2 instanceof ItemStack)
-            {
+            } else if (obj2 instanceof ItemStack) {
                 item = (ItemStack) obj2;
             }
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
             FMLLog.warning("[MechroMagik] Could not retrieve block identified by: "
                     + itemString);
         }
         return item;
     }
-    
-    /* All the blocks added as of 5/8/2013
+
+    /*
+     * All the blocks added as of 5/8/2013
      * 
-     * neoniteOre
-     * neoniteBlock
-     * kineticGenerator
-     * manceryBlock
-     * manceryGlass
-     * stamaticOre
-     * igniousOre
-     * solarMistCollector
-     * mistCrafter
-     * dupeFurnace
-     * burningStone
-     * manceryBrick
-     * obsidianStairs
-     * manceryBlockStairs
-     * manceryBrickStairs
-     * burningStoneStairs
-     * netherIgnious
-     * copperOre
-     * tinOre
-     * silverOre
-     * smallCoil
-     * mancerWorkTable
-     * hollowWood
-     * linkingChest
+     * neoniteOre neoniteBlock kineticGenerator manceryBlock manceryGlass
+     * stamaticOre igniousOre solarMistCollector mistCrafter dupeFurnace
+     * burningStone manceryBrick obsidianStairs manceryBlockStairs
+     * manceryBrickStairs burningStoneStairs netherIgnious copperOre tinOre
+     * silverOre smallCoil mancerWorkTable hollowWood linkingChest
      */
 }

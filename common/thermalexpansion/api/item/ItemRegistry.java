@@ -1,4 +1,3 @@
-
 package thermalexpansion.api.item;
 
 import java.util.Map;
@@ -11,7 +10,8 @@ public final class ItemRegistry {
     private static final Map<String, ItemStack> registry = new TreeMap<String, ItemStack>();
 
     /**
-     * Returns an ItemStack containing the item that corresponds to the provided name.
+     * Returns an ItemStack containing the item that corresponds to the provided
+     * name.
      * 
      * @param name
      *            Name of the item.
@@ -62,7 +62,8 @@ public final class ItemRegistry {
     // dustSilver - Dust obtained by pulverizing Silver Ore.
     // dustLead - Dust obtained by pulverizing Lead Ore.
     // dustNickel - Dust obtained by pulverizing Ferrous Ore.
-    // dustPlatinum - Dust obtained as a secondary output from pulverizing Ferrous Ore.
+    // dustPlatinum - Dust obtained as a secondary output from pulverizing
+    // Ferrous Ore.
     // dustElectrum - Dust obtained by crafting Gold and Silver Dusts together.
     // dustInvar - Dust obtained by crafting 2 Iron Dusts and Ferrous Dust.
     // dustBronze - Uncraftable
@@ -94,12 +95,17 @@ public final class ItemRegistry {
     // through the Sawmill.
     // sawdustCompressed - Sawdust compressed into one item.
     // slag - Slag obtained in Smelter which can be used to create rockwool.
-    // slagRich - Rich Slag obtained in Smelter which can be used to boost ore output.
+    // slagRich - Rich Slag obtained in Smelter which can be used to boost ore
+    // output.
 
-    // pneumaticServo - Used in Thermal Expansion recipes for machines that do not use power.
-    // powerCoilGold - Used in Thermal Expansion recipes for machines that receive power.
-    // powerCoilSilver - Used in Thermal Expansion recipes for machines that send power.
-    // powerCoilElectrum - Used in Thermal Expansion recipes for machines that both send/receive
+    // pneumaticServo - Used in Thermal Expansion recipes for machines that do
+    // not use power.
+    // powerCoilGold - Used in Thermal Expansion recipes for machines that
+    // receive power.
+    // powerCoilSilver - Used in Thermal Expansion recipes for machines that
+    // send power.
+    // powerCoilElectrum - Used in Thermal Expansion recipes for machines that
+    // both send/receive
     // power.
 
     // gearCopper - Copper Gear.
@@ -107,18 +113,26 @@ public final class ItemRegistry {
     // gearInvar - Invar Gear.
 
     // wrench - Cresent Hammer, rotates and dismantles things.
-    // multimeter - Multimeter, used to read Conduits, Liquiducts, and Tesseracts.
+    // multimeter - Multimeter, used to read Conduits, Liquiducts, and
+    // Tesseracts.
 
     // schematic - Schematic, used in the Assembler.
 
-    // machineFrame - Used as a crafting recipe in many Thermal Expansion machines.
-    // energyCellFrameEmpty - Redstone Energy Cell before it has been filled with Liquid Redstone.
-    // energyCellFrameFull - Redstone Energy Cell after it has been filled with Liquid Redstone, but
+    // machineFrame - Used as a crafting recipe in many Thermal Expansion
+    // machines.
+    // energyCellFrameEmpty - Redstone Energy Cell before it has been filled
+    // with Liquid Redstone.
+    // energyCellFrameFull - Redstone Energy Cell after it has been filled with
+    // Liquid Redstone, but
     // before it can be placed in the world.
-    // energyConduitEmpty - Redstone Energy Conduit before it is filled with Liquid Redstone.
-    // tesseractFrameEmpty - Tesseract before it has been filled with Liquid Ender.
-    // tesseractFrameFull - Tesseract after it has been filled with Liquid Ender, but before it can
+    // energyConduitEmpty - Redstone Energy Conduit before it is filled with
+    // Liquid Redstone.
+    // tesseractFrameEmpty - Tesseract before it has been filled with Liquid
+    // Ender.
+    // tesseractFrameFull - Tesseract after it has been filled with Liquid
+    // Ender, but before it can
     // be placed in the world.
-    // lampFrame - Glowstone Illuminator before it has been filled with Liquid Glowstone.
+    // lampFrame - Glowstone Illuminator before it has been filled with Liquid
+    // Glowstone.
 
 }
