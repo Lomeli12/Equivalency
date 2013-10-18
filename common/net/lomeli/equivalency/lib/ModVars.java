@@ -4,7 +4,7 @@ public class ModVars {
     public static final String MOD_ID = "Equivalency";
     public static final String MOD_NAME = MOD_ID;
 
-    public static final int MAJOR = 1, MINOR = 5, REVISION = 2;
+    public static final int MAJOR = 1, MINOR = 5, REVISION = 3;
 
     public static final String VERSION = MAJOR + "." + MINOR + "." + REVISION;
 
@@ -24,6 +24,7 @@ public class ModVars {
     public static final String TC_ID = "Thaumcraft";
     public static final String TE_ID = "ThermalExpansion";
     public static final String DART_ID = "DartCraft";
+    public static final String TINKER_ID = "TConstruct";
 
     public static final String emeraldDesc = "Modifying this will change the emerald recipe. "
             + "True = 8 Gold Ingot <-> 1 Emerald False = 1 Diamond + 3 Cactus Green -> 1 Emerald";

@@ -3,7 +3,7 @@ package net.lomeli.equivalency.recipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.helper.TransmutationHelper;
+import net.lomeli.equivalency.api.TransmutationHelper;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,6 +22,7 @@ public class DartCraftRecipes {
 
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
+        
         // 1 Force Gem <=> 4 Redstone
         TransmutationHelper.addRecipe(forceGem, transmutationStone, new Object[] { Item.redstone, Item.redstone, Item.redstone,
                 Item.redstone });

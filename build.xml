@@ -14,6 +14,8 @@
         <delete dir="${dir.development}\forge\mcp\src\minecraft\thermalexpansion" />
         <delete dir="${dir.development}\forge\mcp\src\minecraft\appeng" />
         <delete dir="${dir.development}\forge\mcp\src\minecraft\ic2" />
+        <delete dir="${dir.development}\forge\mcp\src\minecraft\mods" />
+        <delete dir="${dir.development}\forge\mcp\src\minecraft\tconstruct" />
 		<delete dir="${dir.development}\forge\mcp\reobf\minecraft" />
 	</target>
 	
@@ -43,25 +45,6 @@
 		</exec>
 	</target>
 	
-	<target name="release-shared">
-		<!-- Prep for the release -->
-		<antcall target="clean" />
-		<antcall target="build" />
-		<antcall target="recompile" />		
-		<antcall target="reobfuscate" />
-		
-		<!-- Build the jar -->
-		<mkdir dir="..\..\${dir.share}\${dir.modname}\${release.minecraft.version}\${release.mod.version}" />
-		<jar destfile="..\..\${dir.share}\${dir.modname}\${release.minecraft.version}\${release.mod.version}\${release.mod.name}-universal-${release.mod.version}.jar">
-			<fileset dir="${dir.development}\forge\mcp\src\common\"	includes="mcmod.info" />
-            <fileset dir="${dir.development}\forge\mcp\src\common\"	includes="Recipes.txt" />
-			<fileset dir="${dir.development}\forge\mcp\reobf\minecraft" />
-		</jar>
-		
-		<!-- Clean up the MCP source now that we are done -->
-		<antcall target="clean" />
-	</target>
-	
 	<target name="release">
 		<!-- Prep for the release -->
 		<antcall target="clean" />
@@ -85,6 +68,8 @@
                 <exclude name="ic2/**"/>
                 <exclude name="net/lomeli/magiks/**" />
                 <exclude name="**/minecraft/**" />
+                <exclude name="mods/**" />
+                <exclude name="tconstruct/**" />
             </fileset>
 		</jar>
 		

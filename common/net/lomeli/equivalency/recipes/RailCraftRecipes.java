@@ -3,13 +3,14 @@ package net.lomeli.equivalency.recipes;
 import java.util.List;
 
 import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.helper.TransmutationHelper;
+import net.lomeli.equivalency.api.TransmutationHelper;
 import net.lomeli.equivalency.lib.ModVars;
 
 import net.lomeli.lomlib.util.ModLoaded;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RailCraftRecipes {

@@ -1,8 +1,10 @@
 package net.lomeli.equivalency.recipes;
 
 import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.helper.TransmutationHelper;
+import net.lomeli.equivalency.api.TransmutationHelper;
+
 import net.minecraft.item.ItemStack;
+
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 

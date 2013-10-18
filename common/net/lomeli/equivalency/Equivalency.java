@@ -2,14 +2,15 @@ package net.lomeli.equivalency;
 
 import java.util.logging.Level;
 
+import net.lomeli.equivalency.api.TransmutationHelper;
 import net.lomeli.equivalency.core.CommonProxy;
-import net.lomeli.equivalency.helper.TransmutationHelper;
 import net.lomeli.equivalency.lib.ModVars;
 import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
 import net.lomeli.equivalency.recipes.DartCraftRecipes;
 import net.lomeli.equivalency.recipes.RailCraftRecipes;
+import net.lomeli.equivalency.recipes.TConstructRecipes;
 import net.lomeli.equivalency.recipes.TERecipes;
 import net.lomeli.equivalency.recipes.ThaumCraftRecipes;
 import net.lomeli.equivalency.recipes.UniversalRecipes;
@@ -20,6 +21,7 @@ import net.lomeli.lomlib.util.ModLoaded;
 import net.lomeli.lomlib.util.UpdateHelper;
 
 import net.minecraft.item.ItemStack;
+
 import net.minecraftforge.common.Configuration;
 
 import cpw.mods.fml.common.Mod;
@@ -32,6 +34,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 @Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLib@[1.0.5,);required-after:EE3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency {
+    public static TransmutationHelper instance;
     public static boolean limitRecipes;
     public int numberInstalled;
 
@@ -41,7 +44,7 @@ public class Equivalency {
     @SidedProxy(clientSide = ModVars.CLIENT, serverSide = ModVars.COMMON)
     public static CommonProxy proxy;
 
-    public static boolean emeraldTransmute, blazeTransmute, cQTransmute, steelTransmute, quratzRecipe;
+    public static boolean emeraldTransmute, blazeTransmute, cQTransmute, steelTransmute, quratzRecipe, ic2Recipe;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -54,6 +57,8 @@ public class Equivalency {
         cQTransmute = config.get("general", "cqTransmute", true, ModVars.cQDesc).getBoolean(true);
         steelTransmute = config.get("general", "steelTransmute", true, "Disables steel transmutation").getBoolean(true);
         quratzRecipe = config.get("general", "enableAEQuratzRecipe", true).getBoolean(true);
+        ic2Recipe = config.get("general", "ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.")
+                .getBoolean(true);
 
         config.save();
 
@@ -91,6 +96,8 @@ public class Equivalency {
                     numberInstalled++;
                 if(ModLoaded.isModInstalled(ModVars.MM_ID))
                     numberInstalled++;
+                if(ModLoaded.isModInstalled(ModVars.TINKER_ID))
+                    numberInstalled++;
 
                 if(numberInstalled > 1)
                     limitRecipes = true;
@@ -104,7 +111,7 @@ public class Equivalency {
                 if(ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
                     ForestryRecipes.loadRecipes(transmutationStone, ModVars.FORESTRY_ID);
 
-                if(ModLoaded.isModInstalled(ModVars.DART_ID, false))
+                if(ModLoaded.isModInstalled(ModVars.DART_ID))
                     DartCraftRecipes.loadRecipes(transmutationStone, ModVars.DART_ID);
 
                 if(ModLoaded.isModInstalled(ModVars.TC_ID))
@@ -115,9 +122,15 @@ public class Equivalency {
 
                 if(ModLoaded.isModInstalled(ModVars.AE_ID))
                     AppliedEnergisticsRecipes.loadRecipes(transmutationStone, ModVars.AE_ID);
+                
+                if(ModLoaded.isModInstalled(ModVars.TINKER_ID))
+                    TConstructRecipes.loadRecipes(transmutationStone, ModVars.TINKER_ID);
 
                 UniversalRecipes.loadRecipes(transmutationStone);
+
+                VanillaRecipes.smelting(transmutationStone);
             }
+
         }
     }
 

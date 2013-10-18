@@ -3,10 +3,11 @@ package net.lomeli.equivalency.recipes;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.lomeli.equivalency.helper.TransmutationHelper;
+import net.lomeli.equivalency.api.TransmutationHelper;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -17,6 +18,23 @@ public class UniversalRecipes {
         if(!uranium.isEmpty() && OreDictionary.getOres("uranium").isEmpty()) {
             for(ItemStack uraniumDrop : uranium) {
                 OreDictionary.registerOre("uranium", uraniumDrop.getItem());
+            }
+        }
+        
+        if(!OreDictionary.getOres("ingotTin").isEmpty()){
+            if(!OreDictionary.getOres("ingotAluminum").isEmpty()){
+                TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotAluminum").get(0), 
+                    transmutationStone, "ingotTin", "ingotTin","ingotTin", "ingotTin"));
+                TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(
+                        OreDictionary.getOres("ingotTin").get(0).getItem(), 4, OreDictionary.getOres("ingotTin").get(0)
+                                .getItemDamage()), transmutationStone, "ingotAluminum"));
+            }
+            if(!OreDictionary.getOres("ingotNaturalAluminum").isEmpty()){
+                TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotNaturalAluminum").get(0), 
+                        transmutationStone, "ingotTin", "ingotTin","ingotTin"));
+                TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(
+                            OreDictionary.getOres("ingotTin").get(0).getItem(), 3, OreDictionary.getOres("ingotTin").get(0)
+                                    .getItemDamage()), transmutationStone, "ingotNaturalAluminum"));
             }
         }
 

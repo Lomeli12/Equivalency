@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
+
 import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.helper.TransmutationHelper;
+import net.lomeli.equivalency.api.TransmutationHelper;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+
 import net.minecraftforge.oredict.OreDictionary;
 
 public class VanillaRecipes {
@@ -62,9 +65,9 @@ public class VanillaRecipes {
                 Block.glowStone });
 
         TransmutationHelper.addRecipe(Item.ingotIron, transmutationStone, new Object[] { Item.netherQuartz, Item.netherQuartz,
-                Item.netherQuartz, Item.netherQuartz, Item.netherQuartz });
+                Item.netherQuartz, Item.netherQuartz });
 
-        TransmutationHelper.addRecipe(new ItemStack(Item.netherQuartz, 15), transmutationStone, new Object[] { Item.ingotIron,
+        TransmutationHelper.addRecipe(new ItemStack(Item.netherQuartz, 4), transmutationStone, new Object[] { Item.ingotIron,
                 Item.ingotIron, Item.ingotIron });
 
         // 5 Blaze rods -> 1 Diamond Disabled due to exploit
@@ -99,7 +102,6 @@ public class VanillaRecipes {
     private static ItemStack anySandStone = new ItemStack(Block.sandStone, 1, OreDictionary.WILDCARD_VALUE);
     private static ItemStack dyeBoneMeal = new ItemStack(Item.dyePowder, 1, 15);
 
-    @SuppressWarnings("rawtypes")
     public static void oldRecipes(ItemStack transmutationStone) {
         TransmutationHelper.addRecipe(Item.flint, transmutationStone, new Object[] { Block.cobblestone, Block.cobblestone,
                 Block.cobblestone, Block.cobblestone });
@@ -240,8 +242,10 @@ public class VanillaRecipes {
                 TransmutationHelper.addRecipe(new ItemStack(Block.planks, 1, (i + 1)), transmutationStone, new ItemStack(
                         Block.planks, 1, i));
         }
-
-        /* smelting stuff */
+    }
+    
+    @SuppressWarnings("rawtypes")
+    public static void smelting(ItemStack transmutationStone){
         Map furnaceMap = FurnaceRecipes.smelting().getSmeltingList();
         Map furnaceMetaMap = ObfuscationReflectionHelper.getPrivateValue(FurnaceRecipes.class, FurnaceRecipes.smelting(),
                 "metaSmeltingList");

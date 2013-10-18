@@ -3,7 +3,7 @@ package net.lomeli.equivalency.recipes;
 import java.util.logging.Level;
 
 import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.helper.TransmutationHelper;
+import net.lomeli.equivalency.api.TransmutationHelper;
 
 import ic2.api.item.Items;
 
@@ -23,13 +23,15 @@ public class IC2Recipes {
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
         boolean canGetUranium = false;
-
-        try {
-            uraniumDrop = Items.getItem("Uran238");
-            canGetUranium = true;
-        }catch(Exception e) {
-            Equivalency.logger.log(Level.SEVERE, "Could not get IC2 Uranium, disabling recipes!");
-            canGetUranium = false;
+        
+        if(Equivalency.ic2Recipe) {
+            try {
+                uraniumDrop = Items.getItem("Uran238");
+                canGetUranium = (uraniumDrop != null);
+            }catch(Exception e) {
+                Equivalency.logger.log(Level.SEVERE, "Could not get IC2 Uranium, disabling recipes!");
+                canGetUranium = false;
+            }
         }
 
         // 3 Resin -> Leather
@@ -37,7 +39,7 @@ public class IC2Recipes {
         // Leather -> 3 Resin
         TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 3), transmutationStone, new Object[] { Item.leather });
 
-        if(canGetUranium)
+        if(canGetUranium && Equivalency.ic2Recipe)
             UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
 
         if(!Equivalency.limitRecipes) {

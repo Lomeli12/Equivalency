@@ -3,9 +3,8 @@ package net.lomeli.equivalency.recipes;
 import net.lomeli.lomlib.util.ModLoaded;
 
 import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.helper.TransmutationHelper;
+import net.lomeli.equivalency.api.TransmutationHelper;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -15,20 +14,14 @@ import appeng.api.Materials;
 public class AppliedEnergisticsRecipes {
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
-        ItemStack iron;
-
-        if(Equivalency.cQTransmute)
-            iron = new ItemStack(Item.ingotIron);
-        else
-            iron = new ItemStack(Block.blockIron);
 
         if(Equivalency.quratzRecipe) {
             if(ModLoaded.isModInstalled("IC2")) {
-                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 10, 1), transmutationStone,
+                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 5, 1), transmutationStone,
                         new Object[] { Materials.matQuartz });
             }else {
                 // 1 Quartz Crystal -> 10 Quartz Dust
-                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 10, 7), transmutationStone,
+                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 7, 7), transmutationStone,
                         new Object[] { Materials.matQuartz });
             }
         }
@@ -37,12 +30,12 @@ public class AppliedEnergisticsRecipes {
         TransmutationHelper.addRecipe(new ItemStack(Item.ingotIron), transmutationStone, new Object[] { Materials.matQuartzDust,
                 Materials.matQuartzDust, Materials.matQuartzDust, Materials.matQuartzDust, Materials.matQuartzDust });
 
-        // 2 Iron -> 1 Quartz Crystal
+        // 5 Iron -> 1 Quartz Crystal
         TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartz.getItem(), 1, 6), transmutationStone, new Object[] {
-                iron, iron });
+                Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron });
 
         // 1 Quartz Crystal -> 2 Iron
-        TransmutationHelper.addRecipe(new ItemStack(iron.getItem(), 2), transmutationStone, new Object[] { Materials.matQuartz });
+        TransmutationHelper.addRecipe(new ItemStack(Item.ingotIron, 5), transmutationStone, new Object[] { Materials.matQuartz });
 
         int k = Blocks.blkCable_Colored.length;
 
