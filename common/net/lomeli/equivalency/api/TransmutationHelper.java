@@ -106,11 +106,11 @@ public class TransmutationHelper {
             list[i] = new ItemStack(input.getItem(), 1, input.getItemDamage());
         }
 
-        if(result.stackSize * 7 <= result.getItem().maxStackSize)
+        if(result.stackSize * 7 <= result.getItem().getItemStackLimit())
             GameRegistry.addShapelessRecipe(new ItemStack(result.getItem(), result.stackSize * 7, result.getItemDamage()), list);
         else
             GameRegistry.addShapelessRecipe(
-                    new ItemStack(result.getItem(), result.getItem().maxStackSize, result.getItemDamage()), list);
+                    new ItemStack(result.getItem(), result.getItem().getItemStackLimit(), result.getItemDamage()), list);
     }
     
     private static ItemStack getItem(String itemString, String itemClassLoc) {
