@@ -6,6 +6,7 @@ import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.lib.ModVars;
 
 import net.lomeli.lomlib.util.ToolTipUtil;
+import net.lomeli.lomlib.util.XMLUtil;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
@@ -30,6 +31,11 @@ public class VersionTickHandler implements ITickHandler {
                             FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(
                                     ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE
                                             + "]: There is a new version available at " + Equivalency.updater.getDownloadURL());
+                            for(int i = 1; i <= 3; i++){
+                                FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(
+                                        ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE
+                                                + "]: * " +  XMLUtil.getShort(ModVars.UPDATE_XML, ("updateInfo" + i)));
+                            }
                         }
                     }
                 }

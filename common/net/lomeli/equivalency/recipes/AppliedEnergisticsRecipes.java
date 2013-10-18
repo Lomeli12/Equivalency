@@ -17,12 +17,11 @@ public class AppliedEnergisticsRecipes {
 
         if(Equivalency.quratzRecipe) {
             if(ModLoaded.isModInstalled("IC2")) {
-                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 5, 1), transmutationStone,
-                        new Object[] { Materials.matQuartz });
+                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 4, 7), transmutationStone,
+                        new Object[] { Materials.matQuartz, Materials.matQuartz });
             }else {
-                // 1 Quartz Crystal -> 10 Quartz Dust
-                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 7, 7), transmutationStone,
-                        new Object[] { Materials.matQuartz });
+                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 6, 7), transmutationStone,
+                        new Object[] { Materials.matQuartz, Materials.matQuartz });
             }
         }
 
