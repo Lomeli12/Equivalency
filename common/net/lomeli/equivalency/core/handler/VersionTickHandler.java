@@ -31,10 +31,12 @@ public class VersionTickHandler implements ITickHandler {
                             FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(
                                     ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE
                                             + "]: There is a new version available at " + Equivalency.updater.getDownloadURL());
-                            for(int i = 1; i <= 3; i++){
-                                FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(
-                                        ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE
-                                                + "]: * " +  XMLUtil.getShort(ModVars.UPDATE_XML, ("updateInfo" + i)));
+                            for(int i = 1; i <= 3; i++) {
+                                if(!XMLUtil.getString(ModVars.UPDATE_XML, ("updateInfo" + i)).isEmpty()) {
+                                    FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(
+                                            ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE
+                                                    + "]: * " + XMLUtil.getString(ModVars.UPDATE_XML, ("updateInfo" + i)));
+                                }
                             }
                         }
                     }
