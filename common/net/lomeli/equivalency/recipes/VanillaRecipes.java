@@ -6,8 +6,8 @@ import java.util.Map;
 
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
 
-import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.api.TransmutationHelper;
+import net.lomeli.equivalency.lib.ModVars;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -41,7 +41,7 @@ public class VanillaRecipes {
         TransmutationHelper.addRecipe(new ItemStack(Item.coal, 16), transmutationStone, new Object[] {
                 (new ItemStack(Item.dyePowder, 1, 4)), (new ItemStack(Item.dyePowder, 1, 4)) });
 
-        if(Equivalency.emeraldTransmute) {
+        if(ModVars.emeraldTransmute) {
             // 8 Gold Ingot -> 1 Emerald
             TransmutationHelper.addRecipe(Item.emerald, transmutationStone, new Object[] { Item.ingotGold, Item.ingotGold,
                     Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold, Item.ingotGold });
@@ -54,11 +54,13 @@ public class VanillaRecipes {
                     cactusGreen, cactusGreen });
         }
 
-        // 1 Redstone Block -> 1 Glowstone dust
-        TransmutationHelper.addRecipe(Item.glowstone, transmutationStone, new Object[] { Block.blockRedstone });
+        if(ModVars.glowStone) {
+            // 1 Redstone Block -> 1 Glowstone dust
+            TransmutationHelper.addRecipe(Item.glowstone, transmutationStone, new Object[] { Block.blockRedstone });
 
-        // 1 Glowstone dust -> 1 Redstone Block
-        TransmutationHelper.addRecipe(Block.blockRedstone, transmutationStone, new Object[] { Item.glowstone });
+            // 1 Glowstone dust -> 1 Redstone Block
+            TransmutationHelper.addRecipe(Block.blockRedstone, transmutationStone, new Object[] { Item.glowstone });
+        }
 
         // 2 Glowstone block -> 36 redstone dust
         TransmutationHelper.addRecipe(new ItemStack(Item.redstone, 64), transmutationStone, new Object[] { Block.glowStone,
@@ -71,7 +73,7 @@ public class VanillaRecipes {
                 Item.ingotIron, Item.ingotIron });
 
         // 5 Blaze rods -> 1 Diamond Disabled due to exploit
-        if(Equivalency.blazeTransmute)
+        if(ModVars.blazeTransmute)
             TransmutationHelper.addRecipe(Item.diamond, transmutationStone, new Object[] { Item.blazeRod, Item.blazeRod,
                     Item.blazeRod, Item.blazeRod, Item.blazeRod });
 
@@ -243,9 +245,9 @@ public class VanillaRecipes {
                         Block.planks, 1, i));
         }
     }
-    
+
     @SuppressWarnings("rawtypes")
-    public static void smelting(ItemStack transmutationStone){
+    public static void smelting(ItemStack transmutationStone) {
         Map furnaceMap = FurnaceRecipes.smelting().getSmeltingList();
         Map furnaceMetaMap = ObfuscationReflectionHelper.getPrivateValue(FurnaceRecipes.class, FurnaceRecipes.smelting(),
                 "metaSmeltingList");

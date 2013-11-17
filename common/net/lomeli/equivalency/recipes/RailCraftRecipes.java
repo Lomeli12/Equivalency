@@ -21,7 +21,7 @@ public class RailCraftRecipes {
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
         for(ItemStack steel : steelIngot) {
-            if(ModLoaded.isModInstalled(ModVars.IC2_ID) && Equivalency.steelTransmute) {
+            if(ModLoaded.isModInstalled(ModVars.IC2_ID) && ModVars.steelTransmute) {
                 TransmutationHelper.addRecipe(new ItemStack(steel.getItem(), 2, steel.getItemDamage()), transmutationStone,
                         new Object[] { IC2Recipes.machineBlock, IC2Recipes.machineBlock, IC2Recipes.machineBlock });
 

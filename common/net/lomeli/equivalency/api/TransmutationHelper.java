@@ -92,6 +92,7 @@ public class TransmutationHelper {
      * @param stone
      * @param fuel
      */
+    @SuppressWarnings("deprecation")
     public static void addSmeltingRecipe(ItemStack input, ItemStack stone, ItemStack fuel) {
         ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(input);
 

@@ -4,6 +4,7 @@ import java.util.logging.Level;
 
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.api.TransmutationHelper;
+import net.lomeli.equivalency.lib.ModVars;
 
 import ic2.api.item.Items;
 
@@ -24,7 +25,7 @@ public class IC2Recipes {
         Equivalency.loadModRecipes(modName);
         boolean canGetUranium = false;
         
-        if(Equivalency.ic2Recipe) {
+        if(ModVars.ic2Recipe) {
             try {
                 uraniumDrop = Items.getItem("Uran238");
                 canGetUranium = (uraniumDrop != null);
@@ -35,14 +36,14 @@ public class IC2Recipes {
         }
 
         // 3 Resin -> Leather
-        TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[] { stickyResin, stickyResin, stickyResin });
+        TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[] { stickyResin, stickyResin });
         // Leather -> 3 Resin
-        TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 3), transmutationStone, new Object[] { Item.leather });
+        TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 2), transmutationStone, new Object[] { Item.leather });
 
-        if(canGetUranium && Equivalency.ic2Recipe)
+        if(canGetUranium && ModVars.ic2Recipe)
             UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
 
-        if(!Equivalency.limitRecipes) {
+        if(!ModVars.limitRecipes) {
             UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
             UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
 

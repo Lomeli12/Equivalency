@@ -4,6 +4,7 @@ import net.lomeli.lomlib.util.ModLoaded;
 
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.api.TransmutationHelper;
+import net.lomeli.equivalency.lib.ModVars;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,7 @@ public class AppliedEnergisticsRecipes {
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
 
-        if(Equivalency.quratzRecipe) {
+        if(ModVars.quratzRecipe) {
             if(ModLoaded.isModInstalled("IC2")) {
                 TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 4, 7), transmutationStone,
                         new Object[] { Materials.matQuartz, Materials.matQuartz });

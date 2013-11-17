@@ -35,7 +35,6 @@ import cpw.mods.fml.common.network.NetworkMod;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency {
     public static TransmutationHelper instance;
-    public static boolean limitRecipes;
     public int numberInstalled;
 
     public static LogHelper logger = new LogHelper(ModVars.MOD_NAME);
@@ -44,21 +43,20 @@ public class Equivalency {
     @SidedProxy(clientSide = ModVars.CLIENT, serverSide = ModVars.COMMON)
     public static CommonProxy proxy;
 
-    public static boolean emeraldTransmute, blazeTransmute, cQTransmute, steelTransmute, quratzRecipe, ic2Recipe;
-
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
         config.load();
 
-        emeraldTransmute = config.get("general", "defaultEmeraldTransmute", true, ModVars.emeraldDesc).getBoolean(true);
-        blazeTransmute = config.get("general", "blazeTransmute", false, ModVars.blazeDesc).getBoolean(false);
-        cQTransmute = config.get("general", "cqTransmute", true, ModVars.cQDesc).getBoolean(true);
-        steelTransmute = config.get("general", "steelTransmute", true, "Disables steel transmutation").getBoolean(true);
-        quratzRecipe = config.get("general", "enableAEQuratzRecipe", true).getBoolean(true);
-        ic2Recipe = config.get("general", "ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.")
+        ModVars.emeraldTransmute = config.get("general", "defaultEmeraldTransmute", true, ModVars.emeraldDesc).getBoolean(true);
+        ModVars.blazeTransmute = config.get("general", "blazeTransmute", false, ModVars.blazeDesc).getBoolean(false);
+        ModVars.cQTransmute = config.get("general", "cqTransmute", true, ModVars.cQDesc).getBoolean(true);
+        ModVars.steelTransmute = config.get("general", "steelTransmute", true, "Disables steel transmutation").getBoolean(true);
+        ModVars.quratzRecipe = config.get("general", "enableAEQuratzRecipe", true).getBoolean(true);
+        ModVars.ic2Recipe = config.get("general", "ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.")
                 .getBoolean(true);
+        ModVars.glowStone = config.get("general", "glowredstone", true, "Enables glowstone to redstone transmutation").getBoolean(true);
 
         config.save();
 
@@ -74,7 +72,7 @@ public class Equivalency {
     public void main(FMLInitializationEvent event) {
         if(ModLoaded.isModInstalled(ModVars.EE3_ID, true)) {
             numberInstalled = 0;
-            limitRecipes = false;
+            ModVars.limitRecipes = false;
             TransmutationHelper.addStones();
             logger.log(Level.INFO, "Loading Vanilla Recipes.");
             for(ItemStack transmutationStone : TransmutationHelper.transmutationStones) {
@@ -100,7 +98,7 @@ public class Equivalency {
                     numberInstalled++;
 
                 if(numberInstalled > 1)
-                    limitRecipes = true;
+                    ModVars.limitRecipes = true;
 
                 if(ModLoaded.isModInstalled(ModVars.IC2_ID))
                     IC2Recipes.loadRecipes(transmutationStone, ModVars.IC2_ID);

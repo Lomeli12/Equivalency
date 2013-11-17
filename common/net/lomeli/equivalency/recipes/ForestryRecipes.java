@@ -3,6 +3,8 @@ package net.lomeli.equivalency.recipes;
 import forestry.api.core.ItemInterface;
 
 import net.lomeli.equivalency.Equivalency;
+import net.lomeli.equivalency.lib.ModVars;
+
 import net.minecraft.item.ItemStack;
 
 public class ForestryRecipes {
@@ -12,7 +14,7 @@ public class ForestryRecipes {
 
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
-        if(!Equivalency.limitRecipes) {
+        if(!ModVars.limitRecipes) {
             UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
             UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
         }

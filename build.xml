@@ -70,6 +70,8 @@
                 <exclude name="**/minecraft/**" />
                 <exclude name="mods/**" />
                 <exclude name="tconstruct/**" />
+                <exclude name="**/minecraftforge/**" />
+                <exclude name="cpw/**" />
             </fileset>
 		</jar>
 		

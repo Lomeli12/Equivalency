@@ -31,4 +31,6 @@ public class ModVars {
     public static final String blazeDesc = "Enabling this will allow you to craft Diamonds from Blaze rods";
     public static final String cQDesc = "Modifying this will change the Iron to Certus Quartz recipe"
             + "True = 1 Certus Quartz <-> 2 Iron || False = 1 Certus Quartz <-> 2 Iron Blocks";
+    
+    public static boolean emeraldTransmute, blazeTransmute, cQTransmute, steelTransmute, quratzRecipe, ic2Recipe, limitRecipes, glowStone;
 }

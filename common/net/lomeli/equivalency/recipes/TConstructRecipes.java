@@ -4,6 +4,7 @@ import tconstruct.library.TConstructRegistry;
 
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.api.TransmutationHelper;
+import net.lomeli.equivalency.lib.ModVars;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -54,7 +55,7 @@ public class TConstructRecipes {
         TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ardite.getItem(), 8, ardite.getItemDamage()),
                 transmutationStone, "ingotManyullyn", "ingotManyullyn"));
 
-        if(!Equivalency.limitRecipes) {
+        if(!ModVars.limitRecipes) {
             UniversalRecipes.bronzeTin(bronze, tin, transmutationStone);
             UniversalRecipes.copperTin(copper, tin, transmutationStone);
             TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotNaturalAluminum").get(0),
