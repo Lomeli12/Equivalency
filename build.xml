@@ -1,7 +1,28 @@
 <?xml version="1.0" ?>
 <project name="Equivalency">
 	<property file="build.properties"/>
-	
+    
+    <target name="build_gradle">
+        <antcall target="increment_build_number" />
+        <mkdir dir="..\..\${dir.release}\${dir.modname}\${release.minecraft.version}\${release.mod.version}" />
+		<jar destfile="..\..\${dir.release}\${dir.modname}\${release.minecraft.version}\${release.mod.version}\${release.mod.name}-universal-${release.mod.version}-${build_number.build_number}.jar">
+			<fileset dir="${dir.development}\eclipse\${dir.modname}\bin"> 
+                <exclude name="**/lomlib/**" /> 
+                <exclude name="appeng/**" />
+                <exclude name="mods/battlegear2/**" />
+                <exclude name="ic2/**" />
+                <exclude name="forestry/**" />
+                <exclude name="tconstruct/**" />
+                <exclude name="thaumcraft/**" />
+                <exclude name="**/minecraft/**" />
+                <exclude name="**/minecraftforge/**" />
+                <exclude name="cpw/**" />
+                <exclude name="ReadMe." />
+            </fileset>
+		</jar>
+    </target>
+    
+    <!-- Legacy Ant Build. ForgeGradle pretty much does all the work now
 	<target name="clean">
         <delete file="${dir.development}\forge\mcp\src\minecraft\mcmod.info" />
         <delete dir="${dir.development}\forge\mcp\src\minecraft\net\lomeli" />
@@ -46,13 +67,11 @@
 	</target>
 	
 	<target name="release">
-		<!-- Prep for the release -->
 		<antcall target="clean" />
 		<antcall target="build" />
 		<antcall target="recompile" />		
 		<antcall target="reobfuscate" />
 		
-		<!-- Build the jar -->
 		<mkdir dir="..\..\${dir.release}\${dir.modname}\${release.minecraft.version}\${release.mod.version}" />
 		<jar destfile="..\..\${dir.release}\${dir.modname}\${release.minecraft.version}\${release.mod.version}\${release.mod.name}-universal-${release.mod.version}.jar">
 			<fileset dir="${dir.development}\forge\mcp\src\minecraft\">
@@ -75,7 +94,7 @@
             </fileset>
 		</jar>
 		
-		<!-- Clean up the MCP source now that we are done -->
 		<antcall target="clean" />
 	</target>
+    -->
 </project>
