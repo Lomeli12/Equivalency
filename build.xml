@@ -22,7 +22,7 @@
 		</jar>
     </target>
     
-    <!-- Legacy Ant Build. ForgeGradle pretty much does all the work now
+    <!-- Legacy Ant Build. ForgeGradle pretty much does all the work now -->
 	<target name="clean">
         <delete file="${dir.development}\forge\mcp\src\minecraft\mcmod.info" />
         <delete dir="${dir.development}\forge\mcp\src\minecraft\net\lomeli" />
@@ -96,5 +96,4 @@
 		
 		<antcall target="clean" />
 	</target>
-    -->
 </project>

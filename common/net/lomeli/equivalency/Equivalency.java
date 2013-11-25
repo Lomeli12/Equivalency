@@ -19,10 +19,10 @@ import net.lomeli.equivalency.recipes.VanillaRecipes;
 import net.lomeli.lomlib.util.LogHelper;
 import net.lomeli.lomlib.util.ModLoaded;
 import net.lomeli.lomlib.util.UpdateHelper;
+import net.lomeli.lomlib.util.XMLConfiguration;
+import net.lomeli.lomlib.util.XMLConfiguration.ConfigEnum;
 
 import net.minecraft.item.ItemStack;
-
-import net.minecraftforge.common.Configuration;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -45,20 +45,23 @@ public class Equivalency {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+        XMLConfiguration config = new XMLConfiguration(event.getSuggestedConfigurationFile());
 
-        config.load();
+        config.loadXml();
 
-        ModVars.emeraldTransmute = config.get("general", "defaultEmeraldTransmute", true, ModVars.emeraldDesc).getBoolean(true);
-        ModVars.blazeTransmute = config.get("general", "blazeTransmute", false, ModVars.blazeDesc).getBoolean(false);
-        ModVars.cQTransmute = config.get("general", "cqTransmute", true, ModVars.cQDesc).getBoolean(true);
-        ModVars.steelTransmute = config.get("general", "steelTransmute", true, "Disables steel transmutation").getBoolean(true);
-        ModVars.quratzRecipe = config.get("general", "enableAEQuratzRecipe", true).getBoolean(true);
-        ModVars.ic2Recipe = config.get("general", "ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.")
-                .getBoolean(true);
-        ModVars.glowStone = config.get("general", "glowredstone", true, "Enables glowstone to redstone transmutation").getBoolean(true);
+        ModVars.emeraldTransmute = config.getBoolean("defaultEmeraldTransmute", true, ModVars.emeraldDesc,
+                ConfigEnum.GENERAL_CONFIG);
+        ModVars.blazeTransmute = config.getBoolean("blazeTransmute", false, ModVars.blazeDesc, ConfigEnum.GENERAL_CONFIG);
+        ModVars.cQTransmute = config.getBoolean("cqTransmute", true, ModVars.cQDesc, ConfigEnum.GENERAL_CONFIG);
+        ModVars.steelTransmute = config.getBoolean("steelTransmute", true, "Disables steel transmutation",
+                ConfigEnum.GENERAL_CONFIG);
+        ModVars.quratzRecipe = config.getBoolean("enableAEQuratzRecipe", true, ConfigEnum.GENERAL_CONFIG);
+        ModVars.ic2Recipe = config.getBoolean("ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.",
+                ConfigEnum.GENERAL_CONFIG);
+        ModVars.glowStone = config.getBoolean("glowredstone", true, "Enables glowstone to redstone transmutation",
+                ConfigEnum.GENERAL_CONFIG);
 
-        config.save();
+        config.saveXML();
 
         try {
             updater.check(ModVars.MOD_NAME, ModVars.UPDATE_XML, ModVars.MAJOR, ModVars.MINOR, ModVars.REVISION);
@@ -75,8 +78,10 @@ public class Equivalency {
             ModVars.limitRecipes = false;
             TransmutationHelper.addStones();
             logger.log(Level.INFO, "Loading Vanilla Recipes.");
-            for(ItemStack transmutationStone : TransmutationHelper.transmutationStones) {
-                VanillaRecipes.loadRecipes(transmutationStone);
+            if(!TransmutationHelper.transmutationStones.isEmpty()) {
+                for(ItemStack transmutationStone : TransmutationHelper.transmutationStones) {
+                    VanillaRecipes.loadRecipes(transmutationStone);
+                }
             }
         }
     }
@@ -85,50 +90,51 @@ public class Equivalency {
     public void postLoad(FMLPostInitializationEvent event) {
         if(ModLoaded.isModInstalled(ModVars.EE3_ID)) {
             logger.log(Level.INFO, "Searching for additional mods and loading additional recipes.");
-            for(ItemStack transmutationStone : TransmutationHelper.transmutationStones) {
-                if(ModLoaded.isModInstalled(ModVars.IC2_ID))
-                    numberInstalled++;
-                if(ModLoaded.isModInstalled(ModVars.TE_ID))
-                    numberInstalled++;
-                if(ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
-                    numberInstalled++;
-                if(ModLoaded.isModInstalled(ModVars.MM_ID))
-                    numberInstalled++;
-                if(ModLoaded.isModInstalled(ModVars.TINKER_ID))
-                    numberInstalled++;
+            if(!TransmutationHelper.transmutationStones.isEmpty()) {
+                for(ItemStack transmutationStone : TransmutationHelper.transmutationStones) {
+                    if(ModLoaded.isModInstalled(ModVars.IC2_ID))
+                        numberInstalled++;
+                    if(ModLoaded.isModInstalled(ModVars.TE_ID))
+                        numberInstalled++;
+                    if(ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
+                        numberInstalled++;
+                    if(ModLoaded.isModInstalled(ModVars.MM_ID))
+                        numberInstalled++;
+                    if(ModLoaded.isModInstalled(ModVars.TINKER_ID))
+                        numberInstalled++;
 
-                if(numberInstalled > 1)
-                    ModVars.limitRecipes = true;
+                    if(numberInstalled > 1)
+                        ModVars.limitRecipes = true;
 
-                if(ModLoaded.isModInstalled(ModVars.IC2_ID))
-                    IC2Recipes.loadRecipes(transmutationStone, ModVars.IC2_ID);
+                    if(ModLoaded.isModInstalled(ModVars.IC2_ID))
+                        IC2Recipes.loadRecipes(transmutationStone, ModVars.IC2_ID);
 
-                if(ModLoaded.isModInstalled(ModVars.TE_ID))
-                    TERecipes.loadRecipes(transmutationStone, ModVars.TE_ID);
+                    if(ModLoaded.isModInstalled(ModVars.TE_ID))
+                        TERecipes.loadRecipes(transmutationStone, ModVars.TE_ID);
 
-                if(ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
-                    ForestryRecipes.loadRecipes(transmutationStone, ModVars.FORESTRY_ID);
+                    if(ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
+                        ForestryRecipes.loadRecipes(transmutationStone, ModVars.FORESTRY_ID);
 
-                if(ModLoaded.isModInstalled(ModVars.DART_ID))
-                    DartCraftRecipes.loadRecipes(transmutationStone, ModVars.DART_ID);
+                    if(ModLoaded.isModInstalled(ModVars.DART_ID))
+                        DartCraftRecipes.loadRecipes(transmutationStone, ModVars.DART_ID);
 
-                if(ModLoaded.isModInstalled(ModVars.TC_ID))
-                    ThaumCraftRecipes.loadRecipes(transmutationStone, ModVars.TC_ID);
+                    if(ModLoaded.isModInstalled(ModVars.TC_ID))
+                        ThaumCraftRecipes.loadRecipes(transmutationStone, ModVars.TC_ID);
 
-                if(ModLoaded.isModInstalled(ModVars.RC_ID))
-                    RailCraftRecipes.loadRecipes(transmutationStone, ModVars.RC_ID);
+                    if(ModLoaded.isModInstalled(ModVars.RC_ID))
+                        RailCraftRecipes.loadRecipes(transmutationStone, ModVars.RC_ID);
 
-                if(ModLoaded.isModInstalled(ModVars.AE_ID))
-                    AppliedEnergisticsRecipes.loadRecipes(transmutationStone, ModVars.AE_ID);
-                
-                if(ModLoaded.isModInstalled(ModVars.TINKER_ID))
-                    TConstructRecipes.loadRecipes(transmutationStone, ModVars.TINKER_ID);
+                    if(ModLoaded.isModInstalled(ModVars.AE_ID))
+                        AppliedEnergisticsRecipes.loadRecipes(transmutationStone, ModVars.AE_ID);
 
-                UniversalRecipes.loadRecipes(transmutationStone);
+                    if(ModLoaded.isModInstalled(ModVars.TINKER_ID))
+                        TConstructRecipes.loadRecipes(transmutationStone, ModVars.TINKER_ID);
 
-                VanillaRecipes.smelting(transmutationStone);
+                    UniversalRecipes.loadRecipes(transmutationStone);
+
+                    VanillaRecipes.smelting(transmutationStone);
+                }
             }
-
         }
     }
 
