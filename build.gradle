@@ -1,8 +1,3 @@
-copy {
-    from '../LomLib/src/main/java'
-    into 'src/main/java'
-}
-
 def loadProperties(String sourceFileName) {
     def config = new Properties()
         def propFile = new File(sourceFileName)
@@ -15,6 +10,11 @@ def loadProperties(String sourceFileName) {
 }
 
 loadProperties 'build.properties'
+
+copy {
+    from "$lomLib"
+    into 'src/main/java'
+}
 
 buildscript {
     repositories {
