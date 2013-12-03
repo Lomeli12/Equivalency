@@ -85,15 +85,22 @@ public class VanillaRecipes {
                 TransmutationHelper.addRecipe(new ItemStack(Block.carpet, 1, (i + 1)), transmutationStone, new ItemStack(
                         Block.carpet, 1, i));
         }
+        
+        TransmutationHelper.addRecipe(new ItemStack(Block.stainedClay), transmutationStone, new ItemStack(Block.hardenedClay));
 
         for(int i = 0; i < 16; i++) {
             if(i == 15)
-                TransmutationHelper.addRecipe(new ItemStack(Block.hardenedClay, 1, 0), transmutationStone, new ItemStack(
-                        Block.hardenedClay, 1, 15));
+                TransmutationHelper.addRecipe(new ItemStack(Block.hardenedClay), transmutationStone, new ItemStack(
+                        Block.stainedClay, 1, 15));
             else
-                TransmutationHelper.addRecipe(new ItemStack(Block.hardenedClay, 1, (i + 1)), transmutationStone, new ItemStack(
-                        Block.hardenedClay, 1, i));
+                TransmutationHelper.addRecipe(new ItemStack(Block.stainedClay, 1, (i + 1)), transmutationStone, new ItemStack(
+                        Block.stainedClay, 1, i));
         }
+        
+        TransmutationHelper.addRecipe(new ItemStack(Block.melon), transmutationStone, new ItemStack(Block.pumpkin));
+        TransmutationHelper.addRecipe(new ItemStack(Block.pumpkin), transmutationStone, new ItemStack(Block.melon));
+        TransmutationHelper.addRecipe(new ItemStack(Item.pumpkinSeeds), transmutationStone, new ItemStack(Item.melonSeeds));
+        TransmutationHelper.addRecipe(new ItemStack(Item.melonSeeds), transmutationStone, new ItemStack(Item.pumpkinSeeds));
 
         oldRecipes(transmutationStone);
     }

@@ -1,0 +1,73 @@
+copy {
+    from '../LomLib/src/main/java'
+    into 'src/main/java'
+}
+
+def loadProperties(String sourceFileName) {
+    def config = new Properties()
+        def propFile = new File(sourceFileName)
+            if (propFile.canRead()) {
+                config.load(new FileInputStream(propFile))
+                    for (Map.Entry property in config) {
+                        ext[property.key] = property.value;
+                    }
+            }
+}
+
+loadProperties 'build.properties'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: "forge"
+
+group = 'net.lomeli.equivalency'
+archivesBaseName = 'Equivalency-universal'
+version = "$releaseVersion"
+
+minecraft {
+    version = "$mcVersion-$forgeVersion" // grab latest forge
+    assetDir = "build/vanilla/assets"
+}
+
+processResources {
+    exclude '**/xcf/**'
+
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+jar {
+	appendix = 'universal'
+    exclude('appeng/**')
+    exclude('forestry/**')
+    exclude('ic2/**')
+    exclude('mods/**')
+    exclude('tconstruct/**')
+    exclude('thaumcraft/**')
+    exclude('net/lomeli/lomlib/**')
+}
+
+task compileMod (dependsOn: build) {
+    doLast {
+        delete('src/main/java/net/lomeli/lomlib')
+    }
+}

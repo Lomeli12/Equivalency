@@ -58,11 +58,11 @@ public class TConstructRecipes {
         if(!ModVars.limitRecipes) {
             UniversalRecipes.bronzeTin(bronze, tin, transmutationStone);
             UniversalRecipes.copperTin(copper, tin, transmutationStone);
-            TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotNaturalAluminum").get(0),
+            TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotAluminum").get(0),
                     transmutationStone, "ingotTin", "ingotTin", "ingotTin"));
             TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(
                     OreDictionary.getOres("ingotTin").get(0).getItem(), 3, OreDictionary.getOres("ingotTin").get(0)
-                            .getItemDamage()), transmutationStone, "ingotNaturalAluminum"));
+                            .getItemDamage()), transmutationStone, "ingotAluminum"));
         }
     }
 }
