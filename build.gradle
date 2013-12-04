@@ -1,21 +1,3 @@
-def loadProperties(String sourceFileName) {
-    def config = new Properties()
-        def propFile = new File(sourceFileName)
-            if (propFile.canRead()) {
-                config.load(new FileInputStream(propFile))
-                    for (Map.Entry property in config) {
-                        ext[property.key] = property.value;
-                    }
-            }
-}
-
-loadProperties 'build.properties'
-
-copy {
-    from "$lomLib"
-    into 'src/main/java'
-}
-
 buildscript {
     repositories {
         mavenCentral()
@@ -29,10 +11,35 @@ buildscript {
     }
 }
 
+repositories {
+    ivy {
+        name 'LomLib'
+        artifactPattern "http://anthony-lomeli.net/MinecraftMods/LomLib/dev/[module]-dev-[revision].[ext]"
+    }
+}
+
+
 apply plugin: "forge"
 
+def loadProperties(String sourceFileName) {
+    def config = new Properties()
+        def propFile = new File(sourceFileName)
+            if (propFile.canRead()) {
+                config.load(new FileInputStream(propFile))
+                    for (Map.Entry property in config) {
+                        ext[property.key] = property.value;
+                    }
+            }
+}
+
+loadProperties 'build.properties'
+
+dependencies {
+    compile name: 'LomLib', version: '15-1.0.8', ext: 'jar'
+}
+
 group = 'net.lomeli.equivalency'
-archivesBaseName = 'Equivalency-universal'
+archivesBaseName = 'Equivalency'
 version = "$releaseVersion"
 
 minecraft {
@@ -49,10 +56,6 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude '**/*.info'
     }
-}
-
-repositories {
-	mavenCentral()
 }
 
 jar {
