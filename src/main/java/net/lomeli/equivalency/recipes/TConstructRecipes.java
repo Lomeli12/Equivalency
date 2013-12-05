@@ -27,42 +27,31 @@ public class TConstructRecipes {
         Equivalency.loadModRecipes(modName);
 
         TransmutationHelper.addRecipe(alumite, transmutationStone, new Object[] { Block.blockGold, Block.blockGold });
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.blockGold, 2), transmutationStone,
-                "ingotAlumite"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.blockGold, 2), transmutationStone, "ingotAlumite"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(aluminumBrass, transmutationStone, "ingotCopper", "ingotCopper",
-                "ingotCopper", "ingotCopper", "ingotCopper"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(copper.getItem(), 5, copper.getItemDamage()),
-                transmutationStone, "ingotAluminumBrass"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(aluminumBrass, transmutationStone, "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(copper.getItem(), 5, copper.getItemDamage()), transmutationStone, "ingotAluminumBrass"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(cobalt, transmutationStone, "ingotAlumite", "ingotAlumite",
-                "ingotAlumite", "ingotAlumite"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(alumite.getItem(), 4, alumite.getItemDamage()),
-                transmutationStone, "ingotCobalt"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(cobalt, transmutationStone, "ingotAlumite", "ingotAlumite", "ingotAlumite", "ingotAlumite"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(alumite.getItem(), 4, alumite.getItemDamage()), transmutationStone, "ingotCobalt"));
 
         TransmutationHelper.addRecipe(new ShapelessOreRecipe(ardite, transmutationStone, "ingotAlumite", "ingotAlumite"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(alumite.getItem(), 2, alumite.getItemDamage()),
-                transmutationStone, "ingotArdite"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(alumite.getItem(), 2, alumite.getItemDamage()), transmutationStone, "ingotArdite"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()),
-                transmutationStone, "ingotCobalt", "ingotCobalt", "ingotCobalt", "ingotCobalt"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(cobalt.getItem(), 2, cobalt.getItemDamage()),
-                transmutationStone, "ingotManyullyn"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()), transmutationStone, "ingotCobalt", "ingotCobalt",
+                "ingotCobalt", "ingotCobalt"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(cobalt.getItem(), 2, cobalt.getItemDamage()), transmutationStone, "ingotManyullyn"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()),
-                transmutationStone, "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite",
-                "ingotArdite", "ingotArdite"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ardite.getItem(), 8, ardite.getItemDamage()),
-                transmutationStone, "ingotManyullyn", "ingotManyullyn"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()), transmutationStone, "ingotArdite", "ingotArdite",
+                "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ardite.getItem(), 8, ardite.getItemDamage()), transmutationStone, "ingotManyullyn", "ingotManyullyn"));
 
-        if(!ModVars.limitRecipes) {
+        if (!ModVars.limitRecipes) {
             UniversalRecipes.bronzeTin(bronze, tin, transmutationStone);
             UniversalRecipes.copperTin(copper, tin, transmutationStone);
-            TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotAluminum").get(0),
-                    transmutationStone, "ingotTin", "ingotTin", "ingotTin"));
-            TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(
-                    OreDictionary.getOres("ingotTin").get(0).getItem(), 3, OreDictionary.getOres("ingotTin").get(0)
-                            .getItemDamage()), transmutationStone, "ingotAluminum"));
+            TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotAluminum").get(0), transmutationStone, "ingotTin", "ingotTin", "ingotTin"));
+            TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(OreDictionary.getOres("ingotTin").get(0).getItem(), 3, OreDictionary.getOres("ingotTin").get(0)
+                    .getItemDamage()), transmutationStone, "ingotAluminum"));
         }
     }
 }

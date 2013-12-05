@@ -24,12 +24,12 @@ public class IC2Recipes {
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
         boolean canGetUranium = false;
-        
-        if(ModVars.ic2Recipe) {
+
+        if (ModVars.ic2Recipe) {
             try {
                 uraniumDrop = Items.getItem("Uran238");
                 canGetUranium = (uraniumDrop != null);
-            }catch(Exception e) {
+            } catch (Exception e) {
                 Equivalency.logger.log(Level.SEVERE, "Could not get IC2 Uranium, disabling recipes!");
                 canGetUranium = false;
             }
@@ -40,14 +40,14 @@ public class IC2Recipes {
         // Leather -> 3 Resin
         TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 2), transmutationStone, new Object[] { Item.leather });
 
-        if(canGetUranium && ModVars.ic2Recipe)
+        if (canGetUranium && ModVars.ic2Recipe)
             UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
 
-        if(!ModVars.limitRecipes) {
+        if (!ModVars.limitRecipes) {
             UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
             UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
 
-            if(canGetUranium)
+            if (canGetUranium)
                 UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
         }
     }

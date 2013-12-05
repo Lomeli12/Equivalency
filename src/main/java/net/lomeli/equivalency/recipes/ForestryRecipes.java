@@ -14,7 +14,7 @@ public class ForestryRecipes {
 
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
-        if(!ModVars.limitRecipes) {
+        if (!ModVars.limitRecipes) {
             UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
             UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
         }

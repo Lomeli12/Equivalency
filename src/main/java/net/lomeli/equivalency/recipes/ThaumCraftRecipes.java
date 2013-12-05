@@ -16,21 +16,18 @@ public class ThaumCraftRecipes {
 
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
-        for(int i = 0; i < 4; i++) {
-            if(i == 3)
-                TransmutationHelper.addRecipe(new ItemStack(shard, 1, 0), transmutationStone, new Object[] { new ItemStack(shard,
-                        1, i) });
+        for (int i = 0; i < 4; i++) {
+            if (i == 3)
+                TransmutationHelper.addRecipe(new ItemStack(shard, 1, 0), transmutationStone, new Object[] { new ItemStack(shard, 1, i) });
             else
-                TransmutationHelper.addRecipe(new ItemStack(shard, 1, (i + 1)), transmutationStone, new Object[] { new ItemStack(
-                        shard, 1, i) });
+                TransmutationHelper.addRecipe(new ItemStack(shard, 1, (i + 1)), transmutationStone, new Object[] { new ItemStack(shard, 1, i) });
         }
 
-        for(int i = 0; i < 16; i++) {
-            if(i == 15) {
+        for (int i = 0; i < 16; i++) {
+            if (i == 15) {
                 TransmutationHelper.addRecipe(candle, transmutationStone, new Object[] { new ItemStack(candle.getItem(), 1, i) });
-            }else {
-                TransmutationHelper.addRecipe(new ItemStack(candle.getItem(), 1, (i + 1)), transmutationStone,
-                        new Object[] { new ItemStack(candle.getItem(), 1, i) });
+            } else {
+                TransmutationHelper.addRecipe(new ItemStack(candle.getItem(), 1, (i + 1)), transmutationStone, new Object[] { new ItemStack(candle.getItem(), 1, i) });
             }
         }
 

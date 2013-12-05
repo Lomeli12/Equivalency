@@ -22,20 +22,20 @@ public class VersionTickHandler implements ITickHandler {
 
     @Override
     public void tickEnd(EnumSet<TickType> type, Object... tickData) {
-        if(!Equivalency.updater.isUpdate()) {
-            if(!initialized) {
-                for(TickType tickType : type) {
-                    if(tickType == TickType.CLIENT) {
-                        if(FMLClientHandler.instance().getClient().currentScreen == null) {
+        if (!Equivalency.updater.isUpdate()) {
+            if (!initialized) {
+                for (TickType tickType : type) {
+                    if (tickType == TickType.CLIENT) {
+                        if (FMLClientHandler.instance().getClient().currentScreen == null) {
                             initialized = true;
                             FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(
-                                    ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE
-                                            + "]: There is a new version available at " + Equivalency.updater.getDownloadURL());
-                            for(int i = 1; i <= 3; i++) {
-                                if(!XMLUtil.getString(ModVars.UPDATE_XML, ("updateInfo" + i)).isEmpty()) {
+                                    ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE + "]: There is a new version available at "
+                                            + Equivalency.updater.getDownloadURL());
+                            for (int i = 1; i <= 3; i++) {
+                                if (!XMLUtil.getString(ModVars.UPDATE_XML, ("updateInfo" + i)).isEmpty()) {
                                     FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(
-                                            ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE
-                                                    + "]: * " + XMLUtil.getString(ModVars.UPDATE_XML, ("updateInfo" + i)));
+                                            ToolTipUtil.BLUE + "[" + ToolTipUtil.ORANGE + ModVars.MOD_NAME + ToolTipUtil.BLUE + "]: * "
+                                                    + XMLUtil.getString(ModVars.UPDATE_XML, ("updateInfo" + i)));
                                 }
                             }
                         }
