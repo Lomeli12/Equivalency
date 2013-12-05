@@ -88,8 +88,11 @@ jar {
 	appendix = 'universal'
 }
 
-task compileMod (dependsOn: build) {
-    doLast {
-        delete('src/main/java/net/lomeli/lomlib')
-    }
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    appendix = "dev-$buildNumber"
+}
+
+artifacts {
+    archives deobfJar
 }
