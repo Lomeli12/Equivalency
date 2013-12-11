@@ -37,6 +37,14 @@ repositories {
         name 'ThaumCraft'
         artifactPattern "https://dl.dropboxusercontent.com/u/47135879/[module][revision].[ext]"
     }
+    ivy {
+        name 'COFH'
+        artifactPattern "http://addons.cursecdn.com/files/756/554/[module]-[revision].[ext]"
+    }
+    ivy {
+        name 'ThermalExpansion'
+        artifactPattern "http://addons.cursecdn.com/files/756/540/[module]-[revision].[ext]"
+    }
 }
 
 
@@ -56,12 +64,14 @@ def loadProperties(String sourceFileName) {
 loadProperties 'build.properties'
 
 dependencies {
-    compile name: 'LomLib', version: '16-1.0.8', ext: 'jar'
+    compile name: 'LomLib', version: '21-1.0.8', ext: 'jar'
     compile name: 'industrialcraft', version: '307', ext: 'jar'
     compile name: 'forestry', version: '2.3.0.5', ext: 'jar'
     compile name: 'TConstruct-1.6.4', version: '46c90ff', ext: 'jar'
     compile name: 'Thaumcraft', version: '4.0.5b', ext: 'zip'
     compile name: 'appeng', version: '14', ext: 'jar'
+    compile name: 'ThermalExpansion', version: '3.0.0.b8', ext: 'jar'
+    compile name: 'CoFHCore', version: '2.0.0.b8a', ext: 'jar'
 }
 
 group = 'net.lomeli.equivalency'
@@ -90,7 +100,7 @@ jar {
 
 task deobfJar(type: Jar) {
     from sourceSets.main.output
-    appendix = "dev-$buildNumber"
+    appendix = "dev"
 }
 
 artifacts {

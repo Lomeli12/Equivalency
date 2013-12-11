@@ -1,6 +1,6 @@
 package net.lomeli.equivalency.recipes;
 
-import net.lomeli.lomlib.item.ItemUtil;
+//import net.lomeli.lomlib.item.ItemUtil;
 
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.api.TransmutationHelper;
@@ -11,15 +11,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+import thermalexpansion.item.TEItems;
+
 public class TERecipes {
     public static String ThermalItemClass = "thermalexpansion.item.TEItems";
-    public static ItemStack copperIngot = ItemUtil.getItem("ingotCopper", ThermalItemClass);
-    public static ItemStack tinIngot = ItemUtil.getItem("ingotTin", ThermalItemClass);
-    public static ItemStack silverIngot = ItemUtil.getItem("ingotSilver", ThermalItemClass);
-    public static ItemStack leadIngot = ItemUtil.getItem("ingotLead", ThermalItemClass);
-    public static ItemStack electrumIngot = ItemUtil.getItem("ingotElectrum", ThermalItemClass);
-    public static ItemStack invarIngot = ItemUtil.getItem("ingotInvar", ThermalItemClass);
-    public static ItemStack ingotNickel = ItemUtil.getItem("ingotNickel", ThermalItemClass);
+    public static ItemStack copperIngot = TEItems.ingotCopper;//ItemUtil.getItem("ingotCopper", ThermalItemClass);
+    public static ItemStack tinIngot = TEItems.ingotTin;//ItemUtil.getItem("ingotTin", ThermalItemClass);
+    public static ItemStack silverIngot = TEItems.ingotSilver;//ItemUtil.getItem("ingotSilver", ThermalItemClass);
+    public static ItemStack leadIngot = TEItems.ingotLead;//ItemUtil.getItem("ingotLead", ThermalItemClass);
+    public static ItemStack electrumIngot = TEItems.ingotElectrum;//ItemUtil.getItem("ingotElectrum", ThermalItemClass);
+    public static ItemStack invarIngot = TEItems.ingotInvar;//ItemUtil.getItem("ingotInvar", ThermalItemClass);
+    public static ItemStack ingotNickel = TEItems.ingotNickel;//ItemUtil.getItem("ingotNickel", ThermalItemClass);
 
     public static void loadRecipes(ItemStack transmutationStone, String modName) {
         Equivalency.loadModRecipes(modName);
