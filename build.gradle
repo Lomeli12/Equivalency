@@ -39,11 +39,11 @@ repositories {
     }
     ivy {
         name 'COFH'
-        artifactPattern "http://addons.cursecdn.com/files/756/554/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/762/49/[module]-[revision].[ext]"
     }
     ivy {
         name 'ThermalExpansion'
-        artifactPattern "http://addons.cursecdn.com/files/756/540/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/762/50/[module]-[revision].[ext]"
     }
 }
 
@@ -70,8 +70,8 @@ dependencies {
     compile name: 'TConstruct-1.6.4', version: '46c90ff', ext: 'jar'
     compile name: 'Thaumcraft', version: '4.0.5b', ext: 'zip'
     compile name: 'appeng', version: '14', ext: 'jar'
-    compile name: 'ThermalExpansion', version: '3.0.0.b8', ext: 'jar'
-    compile name: 'CoFHCore', version: '2.0.0.b8a', ext: 'jar'
+    compile name: 'ThermalExpansion', version: '3.0.0.b11b', ext: 'jar'
+    compile name: 'CoFHCore', version: '2.0.0.b11b', ext: 'jar'
 }
 
 group = 'net.lomeli.equivalency'
