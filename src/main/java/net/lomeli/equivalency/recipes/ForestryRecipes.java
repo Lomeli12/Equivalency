@@ -12,11 +12,11 @@ public class ForestryRecipes {
     public static ItemStack tinIngot = ItemInterface.getItem("ingotTin");
     public static ItemStack bronzeIngot = ItemInterface.getItem("ingotBronze");
 
-    public static void loadRecipes(ItemStack transmutationStone, String modName) {
+    public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);
         if (!ModVars.limitRecipes) {
-            UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
-            UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
+            UniversalRecipes.copperTin(copperIngot, tinIngot);
+            UniversalRecipes.bronzeTin(bronzeIngot, tinIngot);
         }
     }
 }

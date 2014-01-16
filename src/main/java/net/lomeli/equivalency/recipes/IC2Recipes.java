@@ -21,7 +21,7 @@ public class IC2Recipes {
     public static ItemStack refinedIronIngot = Items.getItem("refinedIronIngot");
     public static ItemStack machineBlock = Items.getItem("machine");
 
-    public static void loadRecipes(ItemStack transmutationStone, String modName) {
+    public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);
         boolean canGetUranium = false;
 
@@ -36,19 +36,19 @@ public class IC2Recipes {
         }
 
         // 3 Resin -> Leather
-        TransmutationHelper.addRecipe(Item.leather, transmutationStone, new Object[] { stickyResin, stickyResin });
+        TransmutationHelper.addRecipe(Item.leather, new Object[] { stickyResin, stickyResin });
         // Leather -> 3 Resin
-        TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 2), transmutationStone, new Object[] { Item.leather });
+        TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 2), new Object[] { Item.leather });
 
         if (canGetUranium && ModVars.ic2Recipe)
-            UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
+            UniversalRecipes.uraniumDiamond(uraniumDrop);
 
         if (!ModVars.limitRecipes) {
-            UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
-            UniversalRecipes.bronzeTin(bronzeIngot, tinIngot, transmutationStone);
+            UniversalRecipes.copperTin(copperIngot, tinIngot);
+            UniversalRecipes.bronzeTin(bronzeIngot, tinIngot);
 
             if (canGetUranium)
-                UniversalRecipes.uraniumDiamond(uraniumDrop, transmutationStone);
+                UniversalRecipes.uraniumDiamond(uraniumDrop);
         }
     }
 }

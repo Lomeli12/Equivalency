@@ -1,9 +1,10 @@
 package net.lomeli.equivalency.api;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import net.minecraft.block.Block;
@@ -11,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
+
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 /**
  * Allows people to add their own transmutations. Most people should use the
@@ -30,8 +33,14 @@ public class TransmutationHelper {
      * for addon recipes.
      */
     public static void addStones() {
-        transmutationStones.add(new ItemStack(getItem("miniumStone", ITEM_LOC).getItem(), 1, WILDCARD));
-        transmutationStones.add(new ItemStack(getItem("philStone", ITEM_LOC).getItem(), 1, WILDCARD));
+        for (Item stone : Item.itemsList) {
+            try {
+                if (Class.forName("com.pahimar.ee3.item.ITransmutationStone").isAssignableFrom(stone.getClass())) {
+                    transmutationStones.add(new ItemStack(stone, 1, WILDCARD));
+                }
+            } catch (Exception e) {
+            }
+        }
     }
 
     /**
@@ -58,22 +67,44 @@ public class TransmutationHelper {
      * @param transmutationStone
      * @param input
      */
-    public static void addRecipe(ItemStack output, ItemStack transmutationStone, Object... input) {
-        Object[] inputs = new Object[input.length + 1];
-        System.arraycopy(input, 0, inputs, 0, input.length);
-        inputs[input.length] = new ItemStack(transmutationStone.getItem(), 1, WILDCARD);
+    public static void addRecipe(ItemStack output, Object... input) {
+        if (!transmutationStones.isEmpty()) {
+            for (ItemStack stone : transmutationStones) {
+                Object[] inputs = new Object[input.length + 1];
+                System.arraycopy(input, 0, inputs, 0, input.length);
+                inputs[input.length] = new ItemStack(stone.itemID, 1, WILDCARD);
 
-        GameRegistry.addShapelessRecipe(output, inputs);
+                GameRegistry.addShapelessRecipe(output, inputs);
+            }
+        }
     }
 
     /**
      * Used by Equvalency to add recipes. Only use this if you need to do
-     * OreDictionary recipes.
+     * OreDictionary recipes, and always use ShapelessOreRecipe. If you use a
+     * custom IRecipe, include an instance of a transmutation stone
      * 
      * @param recipe
      */
     public static void addRecipe(IRecipe recipe) {
-        GameRegistry.addRecipe(recipe);
+        if (recipe instanceof ShapelessOreRecipe) {
+            ShapelessOreRecipe oreRecipe = (ShapelessOreRecipe) recipe;
+            if (!transmutationStones.isEmpty()) {
+                for (ItemStack stone : transmutationStones) {
+                    try {
+                        ShapelessOreRecipe newRecipe = oreRecipe;
+                        Field inputs = getHackedField(2, newRecipe);
+                        Method add = ArrayList.class.getDeclaredMethod("add", Object.class);
+                        add.invoke(inputs, stone);
+                        inputs.set(newRecipe, inputs);
+                        GameRegistry.addRecipe(newRecipe);
+                    } catch (Exception e) {
+                    }
+                }
+            }
+
+        } else
+            GameRegistry.addRecipe(recipe);
     }
 
     /**
@@ -84,8 +115,8 @@ public class TransmutationHelper {
      * @param transmutationStone
      * @param input
      */
-    public static void addRecipe(Item output, ItemStack transmutationStone, Object... input) {
-        addRecipe(new ItemStack(output), transmutationStone, input);
+    public static void addRecipe(Item output, Object... input) {
+        addRecipe(new ItemStack(output), input);
     }
 
     /**
@@ -96,8 +127,8 @@ public class TransmutationHelper {
      * @param transmutationStone
      * @param input
      */
-    public static void addRecipe(Block output, ItemStack transmutationStone, Object... input) {
-        addRecipe(new ItemStack(output), transmutationStone, input);
+    public static void addRecipe(Block output, Object... input) {
+        addRecipe(new ItemStack(output), input);
     }
 
     /**
@@ -127,21 +158,10 @@ public class TransmutationHelper {
             GameRegistry.addShapelessRecipe(new ItemStack(result.getItem(), result.getItem().getItemStackLimit(result), result.getItemDamage()), list);
     }
 
-    private static ItemStack getItem(String itemString, String itemClassLoc) {
-        ItemStack item = null;
-
-        try {
-            String itemClass = itemClassLoc;
-            Object obj = Class.forName(itemClass).getField(itemString).get(null);
-            if (obj instanceof Item)
-                item = new ItemStack((Item) obj);
-            else if (obj instanceof ItemStack)
-                item = (ItemStack) obj;
-
-        } catch (Exception ex) {
-            FMLLog.warning("Could not retrieve item identified by: " + itemString);
-        }
-        return item;
+    private static Field getHackedField(int i, Object obj) {
+        Field f = obj.getClass().getDeclaredFields()[i];
+        f.setAccessible(true);
+        return f;
     }
 
 }

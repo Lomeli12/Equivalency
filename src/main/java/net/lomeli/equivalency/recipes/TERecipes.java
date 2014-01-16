@@ -23,27 +23,27 @@ public class TERecipes {
     public static ItemStack invarIngot = TEItems.ingotInvar;//ItemUtil.getItem("ingotInvar", ThermalItemClass);
     public static ItemStack ingotNickel = TEItems.ingotNickel;//ItemUtil.getItem("ingotNickel", ThermalItemClass);
 
-    public static void loadRecipes(ItemStack transmutationStone, String modName) {
+    public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);
         OreDictionary.registerOre("ingotLead", leadIngot);
 
         // 3 Lead = 1 Electrum
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(electrumIngot, transmutationStone, "ingotLead", "ingotLead", "ingotLead"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(electrumIngot, "ingotLead", "ingotLead", "ingotLead"));
         // 1 Electrum = 3 Lead
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 3, leadIngot.getItemDamage()), transmutationStone, "ingotElectrum"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 3, leadIngot.getItemDamage()), "ingotElectrum"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(invarIngot.getItem(), 3, invarIngot.getItemDamage()), transmutationStone, "ingotNickel", "ingotNickel"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(invarIngot.getItem(), 3, invarIngot.getItemDamage()), "ingotNickel", "ingotNickel"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ingotNickel.getItem(), 2, ingotNickel.getItemDamage()), transmutationStone, "ingotInvar", "ingotInvar",
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ingotNickel.getItem(), 2, ingotNickel.getItemDamage()), "ingotInvar", "ingotInvar",
                 "ingotInvar"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(ingotNickel, transmutationStone, "ingotLead", "ingotLead"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(ingotNickel, "ingotLead", "ingotLead"));
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 2, leadIngot.getItemDamage()), transmutationStone, "ingotNickel"));
+        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 2, leadIngot.getItemDamage()), "ingotNickel"));
 
         if (!ModVars.limitRecipes) {
-            UniversalRecipes.copperTin(copperIngot, tinIngot, transmutationStone);
-            UniversalRecipes.leadSilver(leadIngot, silverIngot, transmutationStone);
+            UniversalRecipes.copperTin(copperIngot, tinIngot);
+            UniversalRecipes.leadSilver(leadIngot, silverIngot);
         }
     }
 }

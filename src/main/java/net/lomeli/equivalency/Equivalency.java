@@ -22,8 +22,6 @@ import net.lomeli.lomlib.util.UpdateHelper;
 import net.lomeli.lomlib.util.XMLConfiguration;
 import net.lomeli.lomlib.util.XMLConfiguration.ConfigEnum;
 
-import net.minecraft.item.ItemStack;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -31,7 +29,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLib@[1.0.5,);required-after:EE3")
+@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLib@[1.0.9,);required-after:EE3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency {
     public static TransmutationHelper instance;
@@ -75,9 +73,7 @@ public class Equivalency {
             TransmutationHelper.addStones();
             logger.log(Level.INFO, "Loading Vanilla Recipes.");
             if (!TransmutationHelper.transmutationStones.isEmpty()) {
-                for (ItemStack transmutationStone : TransmutationHelper.transmutationStones) {
-                    VanillaRecipes.loadRecipes(transmutationStone);
-                }
+                VanillaRecipes.loadRecipes();
             }
         }
     }
@@ -87,49 +83,47 @@ public class Equivalency {
         if (ModLoaded.isModInstalled(ModVars.EE3_ID)) {
             logger.log(Level.INFO, "Searching for additional mods and loading additional recipes.");
             if (!TransmutationHelper.transmutationStones.isEmpty()) {
-                for (ItemStack transmutationStone : TransmutationHelper.transmutationStones) {
-                    if (ModLoaded.isModInstalled(ModVars.IC2_ID))
-                        numberInstalled++;
-                    if (ModLoaded.isModInstalled(ModVars.TE_ID))
-                        numberInstalled++;
-                    if (ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
-                        numberInstalled++;
-                    if (ModLoaded.isModInstalled(ModVars.MM_ID))
-                        numberInstalled++;
-                    if (ModLoaded.isModInstalled(ModVars.TINKER_ID))
-                        numberInstalled++;
+                if (ModLoaded.isModInstalled(ModVars.IC2_ID))
+                    numberInstalled++;
+                if (ModLoaded.isModInstalled(ModVars.TE_ID))
+                    numberInstalled++;
+                if (ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
+                    numberInstalled++;
+                if (ModLoaded.isModInstalled(ModVars.MM_ID))
+                    numberInstalled++;
+                if (ModLoaded.isModInstalled(ModVars.TINKER_ID))
+                    numberInstalled++;
 
-                    if (numberInstalled > 1)
-                        ModVars.limitRecipes = true;
+                if (numberInstalled > 1)
+                    ModVars.limitRecipes = true;
 
-                    if (ModLoaded.isModInstalled(ModVars.IC2_ID))
-                        IC2Recipes.loadRecipes(transmutationStone, ModVars.IC2_ID);
+                if (ModLoaded.isModInstalled(ModVars.IC2_ID))
+                    IC2Recipes.loadRecipes(ModVars.IC2_ID);
 
-                    if (ModLoaded.isModInstalled(ModVars.TE_ID))
-                        TERecipes.loadRecipes(transmutationStone, ModVars.TE_ID);
+                if (ModLoaded.isModInstalled(ModVars.TE_ID))
+                    TERecipes.loadRecipes(ModVars.TE_ID);
 
-                    if (ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
-                        ForestryRecipes.loadRecipes(transmutationStone, ModVars.FORESTRY_ID);
+                if (ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
+                    ForestryRecipes.loadRecipes(ModVars.FORESTRY_ID);
 
-                    if (ModLoaded.isModInstalled(ModVars.DART_ID))
-                        DartCraftRecipes.loadRecipes(transmutationStone, ModVars.DART_ID);
+                if (ModLoaded.isModInstalled(ModVars.DART_ID))
+                    DartCraftRecipes.loadRecipes(ModVars.DART_ID);
 
-                    if (ModLoaded.isModInstalled(ModVars.TC_ID))
-                        ThaumCraftRecipes.loadRecipes(transmutationStone, ModVars.TC_ID);
+                if (ModLoaded.isModInstalled(ModVars.TC_ID))
+                    ThaumCraftRecipes.loadRecipes(ModVars.TC_ID);
 
-                    if (ModLoaded.isModInstalled(ModVars.RC_ID))
-                        RailCraftRecipes.loadRecipes(transmutationStone, ModVars.RC_ID);
+                if (ModLoaded.isModInstalled(ModVars.RC_ID))
+                    RailCraftRecipes.loadRecipes(ModVars.RC_ID);
 
-                    if (ModLoaded.isModInstalled(ModVars.AE_ID))
-                        AppliedEnergisticsRecipes.loadRecipes(transmutationStone, ModVars.AE_ID);
+                if (ModLoaded.isModInstalled(ModVars.AE_ID))
+                    AppliedEnergisticsRecipes.loadRecipes(ModVars.AE_ID);
 
-                    if (ModLoaded.isModInstalled(ModVars.TINKER_ID))
-                        TConstructRecipes.loadRecipes(transmutationStone, ModVars.TINKER_ID);
+                if (ModLoaded.isModInstalled(ModVars.TINKER_ID))
+                    TConstructRecipes.loadRecipes(ModVars.TINKER_ID);
 
-                    UniversalRecipes.loadRecipes(transmutationStone);
+                UniversalRecipes.loadRecipes();
 
-                    VanillaRecipes.smelting(transmutationStone);
-                }
+                VanillaRecipes.smelting();
             }
         }
     }
