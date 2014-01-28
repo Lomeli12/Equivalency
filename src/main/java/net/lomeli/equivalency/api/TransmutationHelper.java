@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import net.minecraft.block.Block;
@@ -33,6 +34,8 @@ public class TransmutationHelper {
      * for addon recipes.
      */
     public static void addStones() {
+        transmutationStones.add(new ItemStack(getItem("miniumStone", ITEM_LOC).getItem(), 1, WILDCARD));
+        transmutationStones.add(new ItemStack(getItem("philStone", ITEM_LOC).getItem(), 1, WILDCARD));
         for (Item stone : Item.itemsList) {
             try {
                 if (Class.forName("com.pahimar.ee3.item.ITransmutationStone").isAssignableFrom(stone.getClass())) {
@@ -164,4 +167,20 @@ public class TransmutationHelper {
         return f;
     }
 
+    private static ItemStack getItem(String itemString, String itemClassLoc) {
+        ItemStack item = null;
+
+        try {
+            String itemClass = itemClassLoc;
+            Object obj = Class.forName(itemClass).getField(itemString).get(null);
+            if (obj instanceof Item)
+                item = new ItemStack((Item) obj);
+            else if (obj instanceof ItemStack)
+                item = (ItemStack) obj;
+
+        } catch (Exception ex) {
+            FMLLog.warning("Could not retrieve item identified by: " + itemString);
+        }
+        return item;
+    }
 }
