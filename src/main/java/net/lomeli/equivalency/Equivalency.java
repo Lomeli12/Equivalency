@@ -3,6 +3,7 @@ package net.lomeli.equivalency;
 import java.util.logging.Level;
 
 import net.lomeli.equivalency.api.TransmutationHelper;
+import net.lomeli.equivalency.core.AludelRecipeHelper;
 import net.lomeli.equivalency.core.CommonProxy;
 import net.lomeli.equivalency.lib.ModVars;
 import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
@@ -29,7 +30,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLib@[1.0.9,);required-after:EE3")
+@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLib;required-after:EE3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency {
     public static TransmutationHelper instance;
@@ -70,7 +71,10 @@ public class Equivalency {
         if (ModLoaded.isModInstalled(ModVars.EE3_ID, true)) {
             numberInstalled = 0;
             ModVars.limitRecipes = false;
+            logger.log(Level.INFO, "Getting transmutation stones");
             TransmutationHelper.addStones();
+            logger.log(Level.INFO, "Adding Aludel Recipes");
+            AludelRecipeHelper.loadMiniumRecipe();
             logger.log(Level.INFO, "Loading Vanilla Recipes.");
             if (!TransmutationHelper.transmutationStones.isEmpty()) {
                 VanillaRecipes.loadRecipes();

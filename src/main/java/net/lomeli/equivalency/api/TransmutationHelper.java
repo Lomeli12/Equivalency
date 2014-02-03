@@ -167,7 +167,7 @@ public class TransmutationHelper {
         return f;
     }
 
-    private static ItemStack getItem(String itemString, String itemClassLoc) {
+    public static ItemStack getItem(String itemString, String itemClassLoc) {
         ItemStack item = null;
 
         try {

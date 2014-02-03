@@ -58,7 +58,7 @@ archivesBaseName = 'Equivalency'
 version = "$releaseVersion"
 
 minecraft {
-    version = "$mcVersion-$forgeVersion" // grab latest forge
+    version = "$mcVersion-$forgeVersion"
     assetDir = "build/vanilla/assets"
 }
 
