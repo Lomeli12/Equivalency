@@ -31,7 +31,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLib;required-after:EE3")
+@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLibCore;required-after:EE3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency {
     public static TransmutationHelper instance;
@@ -57,7 +57,7 @@ public class Equivalency {
         ModVars.quratzRecipe = config.getBoolean("enableAEQuratzRecipe", true, ConfigEnum.GENERAL_CONFIG);
         ModVars.ic2Recipe = config.getBoolean("ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.", ConfigEnum.GENERAL_CONFIG);
         ModVars.glowStone = config.getBoolean("glowredstone", true, "Enables glowstone to redstone transmutation", ConfigEnum.GENERAL_CONFIG);
-        checkUpdate = config.getBoolean("updateCheck", false, "Check for Updates", ConfigEnum.GENERAL_CONFIG);
+        checkUpdate = config.getBoolean("updateCheck", true, "Check for Updates", ConfigEnum.GENERAL_CONFIG);
 
         config.saveXML();
 
