@@ -13,7 +13,7 @@ import net.lomeli.equivalency.api.TransmutationHelper;
 public class ArsMagicaRecipes {
     private static ItemStack sunStone = OreDictionary.getOres("gemSunstone").get(0);
     private static ItemStack moonStone = OreDictionary.getOres("gemMoonstone").get(0);
-    
+
     public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);
 

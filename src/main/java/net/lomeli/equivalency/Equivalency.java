@@ -130,7 +130,7 @@ public class Equivalency {
 
                 if (ModLoaded.isModInstalled(ModVars.ARS_ID))
                     ArsMagicaRecipes.loadRecipes(ModVars.ARS_ID);
-                
+
                 if (ModLoaded.isModInstalled(ModVars.PRED_ID))
                     ProjectRedRecipes.loadRecipes(ModVars.PRED_ID);
 

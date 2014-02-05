@@ -88,7 +88,7 @@ public class VanillaRecipes {
         TransmutationHelper.addRecipe(new ItemStack(Item.pumpkinSeeds), new ItemStack(Item.melonSeeds));
         TransmutationHelper.addRecipe(new ItemStack(Item.melonSeeds), new ItemStack(Item.pumpkinSeeds));
 
-        //oldRecipes();
+        // oldRecipes();
 
     }
 

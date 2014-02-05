@@ -18,11 +18,9 @@ public class AppliedEnergisticsRecipes {
 
         if (ModVars.quratzRecipe) {
             if (ModLoaded.isModInstalled("IC2")) {
-                TransmutationHelper
-                        .addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 4, 7), new Object[] { Materials.matQuartz, Materials.matQuartz });
+                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 4, 7), new Object[] { Materials.matQuartz, Materials.matQuartz });
             } else {
-                TransmutationHelper
-                        .addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 6, 7), new Object[] { Materials.matQuartz, Materials.matQuartz });
+                TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartzDust.getItem(), 6, 7), new Object[] { Materials.matQuartz, Materials.matQuartz });
             }
         }
 
@@ -31,8 +29,8 @@ public class AppliedEnergisticsRecipes {
                 Materials.matQuartzDust, Materials.matQuartzDust });
 
         // 5 Iron -> 1 Quartz Crystal
-        TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartz.getItem(), 1, 6), new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron,
-                Item.ingotIron, Item.ingotIron });
+        TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartz.getItem(), 1, 6), new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron, Item.ingotIron,
+                Item.ingotIron });
 
         // 1 Quartz Crystal -> 5 Iron
         TransmutationHelper.addRecipe(new ItemStack(Item.ingotIron, 5), new Object[] { Materials.matQuartz });

@@ -28,14 +28,13 @@ public class DartCraftRecipes {
 
         // 2 Force Logs <=> 8 Force Sticks
         TransmutationHelper.addRecipe(new ItemStack(forceStick.getItem(), 8), new Object[] { forceLog, forceLog });
-        TransmutationHelper.addRecipe(new ItemStack(forceLog.getItem(), 2, forceLog.getItemDamage()), new Object[] { forceStick, forceStick, forceStick,
-                forceStick, forceStick, forceStick, forceStick, forceStick });
+        TransmutationHelper.addRecipe(new ItemStack(forceLog.getItem(), 2, forceLog.getItemDamage()), new Object[] { forceStick, forceStick, forceStick, forceStick, forceStick,
+                forceStick, forceStick, forceStick });
 
         // 4 Force Gem <=> 6 Force Ingot
-        TransmutationHelper.addRecipe(new ItemStack(ingotForce.getItem(), 6, ingotForce.getItemDamage()), "gemForce", "gemForce",
-                "gemForce", "gemForce");
-        TransmutationHelper.addRecipe(new ItemStack(forceGem.getItem(), 4, forceGem.getItemDamage()), "ingotForce", "ingotForce",
-                "ingotForce", "ingotForce", "ingotForce", "ingotForce");
+        TransmutationHelper.addRecipe(new ItemStack(ingotForce.getItem(), 6, ingotForce.getItemDamage()), "gemForce", "gemForce", "gemForce", "gemForce");
+        TransmutationHelper.addRecipe(new ItemStack(forceGem.getItem(), 4, forceGem.getItemDamage()), "ingotForce", "ingotForce", "ingotForce", "ingotForce", "ingotForce",
+                "ingotForce");
 
         // 4 Claw <=> 2 Flint
         TransmutationHelper.addRecipe(new ItemStack(Item.flint, 2), "itemClaw", "itemClaw", "itemClaw", "itemClaw");
