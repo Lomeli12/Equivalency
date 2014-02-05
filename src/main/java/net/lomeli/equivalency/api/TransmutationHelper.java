@@ -34,8 +34,6 @@ public class TransmutationHelper {
      * for addon recipes.
      */
     public static void addStones() {
-        transmutationStones.add(new ItemStack(getItem("miniumStone", ITEM_LOC).getItem(), 1, WILDCARD));
-        transmutationStones.add(new ItemStack(getItem("philStone", ITEM_LOC).getItem(), 1, WILDCARD));
         for (Item stone : Item.itemsList) {
             try {
                 if (Class.forName("com.pahimar.ee3.item.ITransmutationStone").isAssignableFrom(stone.getClass())) {

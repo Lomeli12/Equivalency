@@ -1,7 +1,5 @@
 package net.lomeli.equivalency.recipes;
 
-//import net.lomeli.lomlib.item.ItemUtil;
-
 import net.lomeli.equivalency.Equivalency;
 import net.lomeli.equivalency.api.TransmutationHelper;
 import net.lomeli.equivalency.lib.ModVars;

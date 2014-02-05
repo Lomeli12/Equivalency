@@ -3,10 +3,10 @@ package net.lomeli.equivalency;
 import java.util.logging.Level;
 
 import net.lomeli.equivalency.api.TransmutationHelper;
-import net.lomeli.equivalency.core.AludelRecipeHelper;
 import net.lomeli.equivalency.core.CommonProxy;
 import net.lomeli.equivalency.lib.ModVars;
 import net.lomeli.equivalency.recipes.AppliedEnergisticsRecipes;
+import net.lomeli.equivalency.recipes.ArsMagicaRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
 import net.lomeli.equivalency.recipes.DartCraftRecipes;
@@ -35,6 +35,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 public class Equivalency {
     public static TransmutationHelper instance;
     public int numberInstalled;
+    private boolean checkUpdate;
 
     public static LogHelper logger = new LogHelper(ModVars.MOD_NAME);
     public static UpdateHelper updater = new UpdateHelper();
@@ -55,12 +56,15 @@ public class Equivalency {
         ModVars.quratzRecipe = config.getBoolean("enableAEQuratzRecipe", true, ConfigEnum.GENERAL_CONFIG);
         ModVars.ic2Recipe = config.getBoolean("ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.", ConfigEnum.GENERAL_CONFIG);
         ModVars.glowStone = config.getBoolean("glowredstone", true, "Enables glowstone to redstone transmutation", ConfigEnum.GENERAL_CONFIG);
+        checkUpdate = config.getBoolean("updateCheck", false, "Check for Updates", ConfigEnum.GENERAL_CONFIG);
 
         config.saveXML();
 
-        try {
-            updater.check(ModVars.MOD_NAME, ModVars.UPDATE_XML, ModVars.MAJOR, ModVars.MINOR, ModVars.REVISION);
-        } catch (Exception e) {
+        if (checkUpdate) {
+            try {
+                updater.check(ModVars.MOD_NAME, ModVars.UPDATE_XML, ModVars.MAJOR, ModVars.MINOR, ModVars.REVISION);
+            } catch (Exception e) {
+            }
         }
 
         proxy.registerTickHandler();
@@ -73,8 +77,6 @@ public class Equivalency {
             ModVars.limitRecipes = false;
             logger.log(Level.INFO, "Getting transmutation stones");
             TransmutationHelper.addStones();
-            logger.log(Level.INFO, "Adding Aludel Recipes");
-            AludelRecipeHelper.loadMiniumRecipe();
             logger.log(Level.INFO, "Loading Vanilla Recipes.");
             if (!TransmutationHelper.transmutationStones.isEmpty()) {
                 VanillaRecipes.loadRecipes();
@@ -124,6 +126,9 @@ public class Equivalency {
 
                 if (ModLoaded.isModInstalled(ModVars.TINKER_ID))
                     TConstructRecipes.loadRecipes(ModVars.TINKER_ID);
+
+                if (ModLoaded.isModInstalled(ModVars.ARS_ID))
+                    ArsMagicaRecipes.loadRecipes(ModVars.ARS_ID);
 
                 UniversalRecipes.loadRecipes();
 
