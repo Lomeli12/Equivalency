@@ -10,7 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class TConstructRecipes {
     public static ItemStack aluminum = TConstructRegistry.getItemStack("ingotAluminum");
@@ -27,31 +26,30 @@ public class TConstructRecipes {
         Equivalency.loadModRecipes(modName);
 
         TransmutationHelper.addRecipe(alumite, new Object[] { Block.blockGold, Block.blockGold });
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.blockGold, 2), "ingotAlumite"));
+        TransmutationHelper.addRecipe(new ItemStack(Block.blockGold, 2), "ingotAlumite");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(aluminumBrass, "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(copper.getItem(), 5, copper.getItemDamage()), "ingotAluminumBrass"));
+        TransmutationHelper.addRecipe(aluminumBrass, "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper");
+        TransmutationHelper.addRecipe(new ItemStack(copper.getItem(), 5, copper.getItemDamage()), "ingotAluminumBrass");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(cobalt, "ingotAlumite", "ingotAlumite", "ingotAlumite", "ingotAlumite"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(alumite.getItem(), 4, alumite.getItemDamage()), "ingotCobalt"));
+        TransmutationHelper.addRecipe(cobalt, "ingotAlumite", "ingotAlumite", "ingotAlumite", "ingotAlumite");
+        TransmutationHelper.addRecipe(new ItemStack(alumite.getItem(), 4, alumite.getItemDamage()), "ingotCobalt");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(ardite, "ingotAlumite", "ingotAlumite"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(alumite.getItem(), 2, alumite.getItemDamage()), "ingotArdite"));
+        TransmutationHelper.addRecipe(ardite, "ingotAlumite", "ingotAlumite");
+        TransmutationHelper.addRecipe(new ItemStack(alumite.getItem(), 2, alumite.getItemDamage()), "ingotArdite");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()), "ingotCobalt", "ingotCobalt",
-                "ingotCobalt", "ingotCobalt"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(cobalt.getItem(), 2, cobalt.getItemDamage()), "ingotManyullyn"));
+        TransmutationHelper.addRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()), "ingotCobalt", "ingotCobalt", "ingotCobalt", "ingotCobalt");
+        TransmutationHelper.addRecipe(new ItemStack(cobalt.getItem(), 2, cobalt.getItemDamage()), "ingotManyullyn");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()), "ingotArdite", "ingotArdite",
-                "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ardite.getItem(), 8, ardite.getItemDamage()), "ingotManyullyn", "ingotManyullyn"));
+        TransmutationHelper.addRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()), "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite",
+                "ingotArdite", "ingotArdite", "ingotArdite");
+        TransmutationHelper.addRecipe(new ItemStack(ardite.getItem(), 8, ardite.getItemDamage()), "ingotManyullyn", "ingotManyullyn");
 
         if (!ModVars.limitRecipes) {
             UniversalRecipes.bronzeTin(bronze, tin);
             UniversalRecipes.copperTin(copper, tin);
-            TransmutationHelper.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("ingotAluminum").get(0), "ingotTin", "ingotTin", "ingotTin"));
-            TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(OreDictionary.getOres("ingotTin").get(0).getItem(), 3, OreDictionary.getOres("ingotTin").get(0)
-                    .getItemDamage()), "ingotAluminum"));
+            TransmutationHelper.addRecipe(OreDictionary.getOres("ingotAluminum").get(0), "ingotTin", "ingotTin", "ingotTin");
+            TransmutationHelper.addRecipe(new ItemStack(OreDictionary.getOres("ingotTin").get(0).getItem(), 3, OreDictionary.getOres("ingotTin").get(0).getItemDamage()),
+                    "ingotAluminum");
         }
     }
 }

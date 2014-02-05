@@ -9,7 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class DartCraftRecipes {
 
@@ -25,7 +24,7 @@ public class DartCraftRecipes {
 
         // 1 Force Gem <=> 4 Redstone
         TransmutationHelper.addRecipe(forceGem, new Object[] { Item.redstone, Item.redstone, Item.redstone, Item.redstone });
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.redstone, 4), "gemForce"));
+        TransmutationHelper.addRecipe(new ItemStack(Item.redstone, 4), "gemForce");
 
         // 2 Force Logs <=> 8 Force Sticks
         TransmutationHelper.addRecipe(new ItemStack(forceStick.getItem(), 8), new Object[] { forceLog, forceLog });
@@ -33,13 +32,13 @@ public class DartCraftRecipes {
                 forceStick, forceStick, forceStick, forceStick, forceStick });
 
         // 4 Force Gem <=> 6 Force Ingot
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ingotForce.getItem(), 6, ingotForce.getItemDamage()), "gemForce", "gemForce",
-                "gemForce", "gemForce"));
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(forceGem.getItem(), 4, forceGem.getItemDamage()), "ingotForce", "ingotForce",
-                "ingotForce", "ingotForce", "ingotForce", "ingotForce"));
+        TransmutationHelper.addRecipe(new ItemStack(ingotForce.getItem(), 6, ingotForce.getItemDamage()), "gemForce", "gemForce",
+                "gemForce", "gemForce");
+        TransmutationHelper.addRecipe(new ItemStack(forceGem.getItem(), 4, forceGem.getItemDamage()), "ingotForce", "ingotForce",
+                "ingotForce", "ingotForce", "ingotForce", "ingotForce");
 
         // 4 Claw <=> 2 Flint
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.flint, 2), "itemClaw", "itemClaw", "itemClaw", "itemClaw"));
+        TransmutationHelper.addRecipe(new ItemStack(Item.flint, 2), "itemClaw", "itemClaw", "itemClaw", "itemClaw");
         TransmutationHelper.addRecipe(new ItemStack(claw.getItem(), 4), new Object[] { Item.flint, Item.flint });
     }
 }

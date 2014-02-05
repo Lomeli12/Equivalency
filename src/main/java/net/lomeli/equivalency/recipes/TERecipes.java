@@ -7,7 +7,6 @@ import net.lomeli.equivalency.lib.ModVars;
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import thermalexpansion.item.TEItems;
 
@@ -26,18 +25,18 @@ public class TERecipes {
         OreDictionary.registerOre("ingotLead", leadIngot);
 
         // 3 Lead = 1 Electrum
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(electrumIngot, "ingotLead", "ingotLead", "ingotLead"));
+        TransmutationHelper.addRecipe(electrumIngot, "ingotLead", "ingotLead", "ingotLead");
         // 1 Electrum = 3 Lead
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 3, leadIngot.getItemDamage()), "ingotElectrum"));
+        TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 3, leadIngot.getItemDamage()), "ingotElectrum");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(invarIngot.getItem(), 3, invarIngot.getItemDamage()), "ingotNickel", "ingotNickel"));
+        TransmutationHelper.addRecipe(new ItemStack(invarIngot.getItem(), 3, invarIngot.getItemDamage()), "ingotNickel", "ingotNickel");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(ingotNickel.getItem(), 2, ingotNickel.getItemDamage()), "ingotInvar", "ingotInvar",
-                "ingotInvar"));
+        TransmutationHelper.addRecipe(new ItemStack(ingotNickel.getItem(), 2, ingotNickel.getItemDamage()), "ingotInvar", "ingotInvar",
+                "ingotInvar");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(ingotNickel, "ingotLead", "ingotLead"));
+        TransmutationHelper.addRecipe(ingotNickel, "ingotLead", "ingotLead");
 
-        TransmutationHelper.addRecipe(new ShapelessOreRecipe(new ItemStack(leadIngot.getItem(), 2, leadIngot.getItemDamage()), "ingotNickel"));
+        TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 2, leadIngot.getItemDamage()), "ingotNickel");
 
         if (!ModVars.limitRecipes) {
             UniversalRecipes.copperTin(copperIngot, tinIngot);

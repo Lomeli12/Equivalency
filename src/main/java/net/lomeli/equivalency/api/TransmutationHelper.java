@@ -75,7 +75,7 @@ public class TransmutationHelper {
                 System.arraycopy(input, 0, inputs, 0, input.length);
                 inputs[input.length] = new ItemStack(stone.itemID, 1, WILDCARD);
 
-                GameRegistry.addShapelessRecipe(output, inputs);
+                GameRegistry.addRecipe(new ShapelessOreRecipe(output, inputs));
             }
         }
     }

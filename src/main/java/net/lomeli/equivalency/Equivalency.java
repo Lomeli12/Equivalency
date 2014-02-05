@@ -10,6 +10,7 @@ import net.lomeli.equivalency.recipes.ArsMagicaRecipes;
 import net.lomeli.equivalency.recipes.ForestryRecipes;
 import net.lomeli.equivalency.recipes.IC2Recipes;
 import net.lomeli.equivalency.recipes.DartCraftRecipes;
+import net.lomeli.equivalency.recipes.ProjectRedRecipes;
 import net.lomeli.equivalency.recipes.RailCraftRecipes;
 import net.lomeli.equivalency.recipes.TConstructRecipes;
 import net.lomeli.equivalency.recipes.TERecipes;
@@ -129,6 +130,9 @@ public class Equivalency {
 
                 if (ModLoaded.isModInstalled(ModVars.ARS_ID))
                     ArsMagicaRecipes.loadRecipes(ModVars.ARS_ID);
+                
+                if (ModLoaded.isModInstalled(ModVars.PRED_ID))
+                    ProjectRedRecipes.loadRecipes(ModVars.PRED_ID);
 
                 UniversalRecipes.loadRecipes();
 

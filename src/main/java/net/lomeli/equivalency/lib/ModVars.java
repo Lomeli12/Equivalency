@@ -26,6 +26,7 @@ public class ModVars {
     public static final String DART_ID = "DartCraft";
     public static final String TINKER_ID = "TConstruct";
     public static final String ARS_ID = "arsmagica2";
+    public static final String PRED_ID = "ProjRed|Core";
 
     public static final String emeraldDesc = "Modifying this will change the emerald recipe. "
             + "True = 8 Gold Ingot <-> 1 Emerald False = 1 Diamond + 3 Cactus Green -> 1 Emerald";

@@ -34,7 +34,7 @@ public class AppliedEnergisticsRecipes {
         TransmutationHelper.addRecipe(new ItemStack(Materials.matQuartz.getItem(), 1, 6), new Object[] { Item.ingotIron, Item.ingotIron, Item.ingotIron,
                 Item.ingotIron, Item.ingotIron });
 
-        // 1 Quartz Crystal -> 2 Iron
+        // 1 Quartz Crystal -> 5 Iron
         TransmutationHelper.addRecipe(new ItemStack(Item.ingotIron, 5), new Object[] { Materials.matQuartz });
 
         int k = Blocks.blkCable_Colored.length;
