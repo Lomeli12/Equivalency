@@ -67,35 +67,46 @@ public class UniversalRecipes {
     }
 
     public static void copperTin(ItemStack copper, ItemStack tin) {
-        // 3 Copper Ingot -> Tin Ingot
-        TransmutationHelper.addRecipe(tin, copper, copper, copper);
-        // 1 Tin Ingot -> 3 Copper Ingot
-        TransmutationHelper.addRecipe(new ItemStack(copper.getItem(), 3), new Object[] { tin });
+        try {
+            // 3 Copper Ingot -> Tin Ingot
+            TransmutationHelper.addRecipe(tin, copper, copper, copper);
+            // 1 Tin Ingot -> 3 Copper Ingot
+            TransmutationHelper.addRecipe(new ItemStack(copper.getItem(), 3), new Object[] { tin });
+        } catch (Exception e) {
+        }
     }
 
     public static void bronzeTin(ItemStack bronze, ItemStack tin) {
-        // 1 Bronze -> 2 Tin
-        TransmutationHelper.addRecipe(new ItemStack(tin.getItem(), 2), new Object[] { bronze });
-        // 2 Tin -> 1 Bronze
-        TransmutationHelper.addRecipe(new ItemStack(bronze.getItem(), 4), new Object[] { tin, tin });
+        try {
+            // 1 Bronze -> 2 Tin
+            TransmutationHelper.addRecipe(new ItemStack(tin.getItem(), 2), new Object[] { bronze });
+            // 2 Tin -> 1 Bronze
+            TransmutationHelper.addRecipe(new ItemStack(bronze.getItem(), 4), new Object[] { tin, tin });
+        } catch (Exception e) {
+        }
     }
 
     public static void uraniumDiamond(ItemStack uranium) {
-        // 4 Uranium -> 2 Diamond
-        TransmutationHelper.addRecipe(new ItemStack(Item.diamond, 2), new Object[] { uranium, uranium, uranium, uranium });
-        // 2 Diamond -> 4 Uranium
-        TransmutationHelper.addRecipe(new ItemStack(uranium.getItem(), 4), new Object[] { Item.diamond, Item.diamond });
-        // 2 Gold -> 1 Uranium
-        TransmutationHelper.addRecipe(uranium, new Object[] { Item.ingotGold, Item.ingotGold });
-        // 2 Uranium -> 4 Gold
-        TransmutationHelper.addRecipe((new ItemStack(Item.ingotGold, 4)), new Object[] { uranium, uranium });
+        try {
+            // 4 Uranium -> 2 Diamond
+            TransmutationHelper.addRecipe(new ItemStack(Item.diamond, 2), new Object[] { uranium, uranium, uranium, uranium });
+            // 2 Diamond -> 4 Uranium
+            TransmutationHelper.addRecipe(new ItemStack(uranium.getItem(), 4), new Object[] { Item.diamond, Item.diamond });
+            // 2 Gold -> 1 Uranium
+            TransmutationHelper.addRecipe(uranium, new Object[] { Item.ingotGold, Item.ingotGold });
+            // 2 Uranium -> 4 Gold
+            TransmutationHelper.addRecipe((new ItemStack(Item.ingotGold, 4)), new Object[] { uranium, uranium });
+        } catch (Exception e) {
+        }
     }
 
     public static void leadSilver(ItemStack leadIngot, ItemStack silverIngot) {
-        // 2 Silver Ingot -> 4 Lead Ingot
-        TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 4, leadIngot.getItemDamage()), new Object[] { silverIngot, silverIngot });
-        // 4 Lead -> 2 Silver Ingot
-        TransmutationHelper.addRecipe(new ItemStack(silverIngot.getItem(), 2, silverIngot.getItemDamage()), new Object[] { leadIngot, leadIngot, leadIngot, leadIngot });
-
+        try {
+            // 2 Silver Ingot -> 4 Lead Ingot
+            TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 4, leadIngot.getItemDamage()), new Object[] { silverIngot, silverIngot });
+            // 4 Lead -> 2 Silver Ingot
+            TransmutationHelper.addRecipe(new ItemStack(silverIngot.getItem(), 2, silverIngot.getItemDamage()), new Object[] { leadIngot, leadIngot, leadIngot, leadIngot });
+        } catch (Exception e) {
+        }
     }
 }
