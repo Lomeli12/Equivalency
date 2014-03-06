@@ -50,13 +50,17 @@ public class Equivalency {
 
         config.loadXml();
 
-        ModVars.emeraldTransmute = config.getBoolean("defaultEmeraldTransmute", true, ModVars.emeraldDesc, ConfigEnum.GENERAL_CONFIG);
+        ModVars.emeraldTransmute = config.getBoolean("defaultEmeraldTransmute", true, ModVars.emeraldDesc,
+                ConfigEnum.GENERAL_CONFIG);
         ModVars.blazeTransmute = config.getBoolean("blazeTransmute", false, ModVars.blazeDesc, ConfigEnum.GENERAL_CONFIG);
         ModVars.cQTransmute = config.getBoolean("cqTransmute", true, ModVars.cQDesc, ConfigEnum.GENERAL_CONFIG);
-        ModVars.steelTransmute = config.getBoolean("steelTransmute", true, "Disables steel transmutation", ConfigEnum.GENERAL_CONFIG);
+        ModVars.steelTransmute = config.getBoolean("steelTransmute", true, "Disables steel transmutation",
+                ConfigEnum.GENERAL_CONFIG);
         ModVars.quratzRecipe = config.getBoolean("enableAEQuratzRecipe", true, ConfigEnum.GENERAL_CONFIG);
-        ModVars.ic2Recipe = config.getBoolean("ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.", ConfigEnum.GENERAL_CONFIG);
-        ModVars.glowStone = config.getBoolean("glowredstone", true, "Enables glowstone to redstone transmutation", ConfigEnum.GENERAL_CONFIG);
+        ModVars.ic2Recipe = config.getBoolean("ic2Uranium", true, "Disable Uranium transmutations if they cause you to crash.",
+                ConfigEnum.GENERAL_CONFIG);
+        ModVars.glowStone = config.getBoolean("glowredstone", true, "Enables glowstone to redstone transmutation",
+                ConfigEnum.GENERAL_CONFIG);
         checkUpdate = config.getBoolean("updateCheck", true, "Check for Updates", ConfigEnum.GENERAL_CONFIG);
 
         config.saveXML();
@@ -64,7 +68,7 @@ public class Equivalency {
         if (checkUpdate) {
             try {
                 updater.check(ModVars.MOD_NAME, ModVars.UPDATE_XML, ModVars.MAJOR, ModVars.MINOR, ModVars.REVISION);
-            } catch (Exception e) {
+            }catch (Exception e) {
             }
         }
 
@@ -78,18 +82,17 @@ public class Equivalency {
             ModVars.limitRecipes = false;
             logger.log(Level.INFO, "Getting transmutation stones");
             TransmutationHelper.addStones();
-            logger.log(Level.INFO, "Loading Vanilla Recipes.");
-            if (!TransmutationHelper.transmutationStones.isEmpty()) {
-                VanillaRecipes.loadRecipes();
-            }
         }
     }
 
     @Mod.EventHandler
     public void postLoad(FMLPostInitializationEvent event) {
         if (ModLoaded.isModInstalled(ModVars.EE3_ID)) {
-            logger.log(Level.INFO, "Searching for additional mods and loading additional recipes.");
             if (!TransmutationHelper.transmutationStones.isEmpty()) {
+                logger.log(Level.INFO, "Loading Vanilla Recipes.");
+                VanillaRecipes.loadRecipes();
+
+                logger.log(Level.INFO, "Searching for additional mods and loading additional recipes.");
                 if (ModLoaded.isModInstalled(ModVars.IC2_ID))
                     numberInstalled++;
                 if (ModLoaded.isModInstalled(ModVars.TE_ID))

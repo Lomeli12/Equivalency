@@ -21,7 +21,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
  * apiRecipe method.
  * 
  * @author Lomeli12
- * 
  */
 public class TransmutationHelper {
     public static final String ITEM_LOC = "com.pahimar.ee3.item.ModItems";
@@ -36,9 +35,8 @@ public class TransmutationHelper {
     public static void addStones() {
         for (Item stone : Item.itemsList) {
             try {
-                if (Class.forName("com.pahimar.ee3.item.ITransmutationStone").isAssignableFrom(stone.getClass())) {
+                if (Class.forName("com.pahimar.ee3.item.ITransmutationStone").isAssignableFrom(stone.getClass()))
                     transmutationStones.add(new ItemStack(stone, 1, WILDCARD));
-                }
             } catch (Exception e) {
             }
         }

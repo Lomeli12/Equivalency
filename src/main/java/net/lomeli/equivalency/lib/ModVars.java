@@ -4,7 +4,7 @@ public class ModVars {
     public static final String MOD_ID = "Equivalency";
     public static final String MOD_NAME = MOD_ID;
 
-    public static final int MAJOR = 1, MINOR = 6, REVISION = 1;
+    public static final int MAJOR = 1, MINOR = 6, REVISION = 3;
 
     public static final String VERSION = MAJOR + "." + MINOR + "." + REVISION;
 
