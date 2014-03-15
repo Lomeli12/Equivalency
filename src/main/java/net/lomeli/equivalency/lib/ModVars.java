@@ -4,7 +4,7 @@ public class ModVars {
     public static final String MOD_ID = "Equivalency";
     public static final String MOD_NAME = MOD_ID;
 
-    public static final int MAJOR = 1, MINOR = 6, REVISION = 3;
+    public static final int MAJOR = 1, MINOR = 6, REVISION = 4;
 
     public static final String VERSION = MAJOR + "." + MINOR + "." + REVISION;
 
@@ -34,5 +34,5 @@ public class ModVars {
     public static final String cQDesc = "Modifying this will change the Iron to Certus Quartz recipe"
             + "True = 1 Certus Quartz <-> 2 Iron || False = 1 Certus Quartz <-> 2 Iron Blocks";
 
-    public static boolean emeraldTransmute, blazeTransmute, cQTransmute, steelTransmute, quratzRecipe, ic2Recipe, limitRecipes, glowStone;
+    public static boolean emeraldTransmute, blazeTransmute, cQTransmute, steelTransmute, quratzRecipe, ic2Recipe, glowStone;
 }

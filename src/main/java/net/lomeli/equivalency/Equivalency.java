@@ -31,11 +31,11 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLibCore;required-after:EE3")
+@Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_NAME, version = ModVars.VERSION, dependencies = "required-after:LomLib;required-after:EE3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Equivalency {
     public static TransmutationHelper instance;
-    public int numberInstalled;
+    
     private boolean checkUpdate;
 
     public static LogHelper logger = new LogHelper(ModVars.MOD_NAME);
@@ -78,8 +78,6 @@ public class Equivalency {
     @Mod.EventHandler
     public void main(FMLInitializationEvent event) {
         if (ModLoaded.isModInstalled(ModVars.EE3_ID, true)) {
-            numberInstalled = 0;
-            ModVars.limitRecipes = false;
             logger.log(Level.INFO, "Getting transmutation stones");
             TransmutationHelper.addStones();
         }
@@ -93,20 +91,6 @@ public class Equivalency {
                 VanillaRecipes.loadRecipes();
 
                 logger.log(Level.INFO, "Searching for additional mods and loading additional recipes.");
-                if (ModLoaded.isModInstalled(ModVars.IC2_ID))
-                    numberInstalled++;
-                if (ModLoaded.isModInstalled(ModVars.TE_ID))
-                    numberInstalled++;
-                if (ModLoaded.isModInstalled(ModVars.FORESTRY_ID))
-                    numberInstalled++;
-                if (ModLoaded.isModInstalled(ModVars.MM_ID))
-                    numberInstalled++;
-                if (ModLoaded.isModInstalled(ModVars.TINKER_ID))
-                    numberInstalled++;
-
-                if (numberInstalled > 1)
-                    ModVars.limitRecipes = true;
-
                 if (ModLoaded.isModInstalled(ModVars.IC2_ID))
                     IC2Recipes.loadRecipes(ModVars.IC2_ID);
 

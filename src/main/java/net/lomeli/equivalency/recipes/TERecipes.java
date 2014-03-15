@@ -36,10 +36,5 @@ public class TERecipes {
         TransmutationHelper.addRecipe(ingotNickel, "ingotLead", "ingotLead");
 
         TransmutationHelper.addRecipe(new ItemStack(leadIngot.getItem(), 2, leadIngot.getItemDamage()), "ingotNickel");
-
-        if (!ModVars.limitRecipes) {
-            UniversalRecipes.copperTin(copperIngot, tinIngot);
-            UniversalRecipes.leadSilver(leadIngot, silverIngot);
-        }
     }
 }

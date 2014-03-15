@@ -43,13 +43,5 @@ public class TConstructRecipes {
         TransmutationHelper.addRecipe(new ItemStack(manyullyn.getItem(), 2, manyullyn.getItemDamage()), "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite", "ingotArdite",
                 "ingotArdite", "ingotArdite", "ingotArdite");
         TransmutationHelper.addRecipe(new ItemStack(ardite.getItem(), 8, ardite.getItemDamage()), "ingotManyullyn", "ingotManyullyn");
-
-        if (!ModVars.limitRecipes) {
-            UniversalRecipes.bronzeTin(bronze, tin);
-            UniversalRecipes.copperTin(copper, tin);
-            TransmutationHelper.addRecipe(OreDictionary.getOres("ingotAluminum").get(0), "ingotTin", "ingotTin", "ingotTin");
-            TransmutationHelper.addRecipe(new ItemStack(OreDictionary.getOres("ingotTin").get(0).getItem(), 3, OreDictionary.getOres("ingotTin").get(0).getItemDamage()),
-                    "ingotAluminum");
-        }
     }
 }

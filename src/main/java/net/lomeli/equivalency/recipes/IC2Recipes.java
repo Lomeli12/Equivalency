@@ -23,32 +23,17 @@ public class IC2Recipes {
 
     public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);
-        boolean canGetUranium = false;
 
         if (ModVars.ic2Recipe) {
             try {
                 uraniumDrop = Items.getItem("Uran238");
-                canGetUranium = (uraniumDrop != null);
-            } catch (Exception e) {
+            }catch (Exception e) {
                 Equivalency.logger.log(Level.SEVERE, "Could not get IC2 Uranium, disabling recipes!");
-                canGetUranium = false;
             }
         }
-
         // 3 Resin -> Leather
         TransmutationHelper.addRecipe(Item.leather, new Object[] { stickyResin, stickyResin });
         // Leather -> 3 Resin
         TransmutationHelper.addRecipe(new ItemStack(stickyResin.getItem(), 2), new Object[] { Item.leather });
-
-        if (canGetUranium && ModVars.ic2Recipe)
-            UniversalRecipes.uraniumDiamond(uraniumDrop);
-
-        if (!ModVars.limitRecipes) {
-            UniversalRecipes.copperTin(copperIngot, tinIngot);
-            UniversalRecipes.bronzeTin(bronzeIngot, tinIngot);
-
-            if (canGetUranium)
-                UniversalRecipes.uraniumDiamond(uraniumDrop);
-        }
     }
 }

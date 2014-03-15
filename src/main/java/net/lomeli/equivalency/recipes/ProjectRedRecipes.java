@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.oredict.OreDictionary;
 
+import net.lomeli.lomlib.item.ItemUtil;
+
 import cpw.mods.fml.common.FMLLog;
 
 import net.lomeli.equivalency.Equivalency;
@@ -13,10 +15,18 @@ import net.lomeli.equivalency.api.TransmutationHelper;
 
 public class ProjectRedRecipes {
 
-    private static ItemStack prItem = getItem("itemComponent", "mrtjp.projectred.ProjectRedCore");
+    private static ItemStack prItem;
 
     public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);
+
+        try {
+            prItem = getItem("itemComponent", "mrtjp.projectred.ProjectRedCore");
+            if (prItem == null)
+                prItem = ItemUtil.getItem("itemComponent", "mrtjp.projectred.ProjectRedCore");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
 
         if (prItem != null) {
             OreDictionary.registerOre("gemRuby", new ItemStack(prItem.getItem(), 1, 37));
