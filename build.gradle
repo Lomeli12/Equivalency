@@ -7,7 +7,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
     }
 }
 
@@ -44,17 +44,19 @@ version = "$releaseVersion"
 
 minecraft {
     version = "$mcVersion-$forgeVersion"
-    assetDir = "build/vanilla/assets"
+    runDir = "build/vanilla/assets"
 }
 
 processResources {
     exclude '**/xcf/**'
 
     from(sourceSets.main.resources.srcDirs) {
-        include '**/*.info'
+        include 'mcmod.info'
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
     }
     from(sourceSets.main.resources.srcDirs) {
-        exclude '**/*.info'
+        exclude  'mcmod.info'
     }
 }
 
