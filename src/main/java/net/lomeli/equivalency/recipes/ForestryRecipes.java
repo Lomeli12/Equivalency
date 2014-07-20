@@ -1,12 +1,10 @@
 package net.lomeli.equivalency.recipes;
 
 import java.lang.reflect.Method;
-import java.util.logging.Level;
-
-import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.lib.ModVars;
 
 import net.minecraft.item.ItemStack;
+
+import net.lomeli.equivalency.Equivalency;
 
 public class ForestryRecipes {
     public static ItemStack copperIngot = getForestryItem("ingotCopper");
@@ -28,7 +26,7 @@ public class ForestryRecipes {
                     return (ItemStack) m.invoke(e, new Object[0]);
                 }
         } catch (Exception e) {
-            Equivalency.logger.log(Level.WARNING, "Could not retrieve Forestry item identified by: " + ident);
+            Equivalency.logger.logWarning("Could not retrieve Forestry item identified by: " + ident);
         }
         return item;
     }

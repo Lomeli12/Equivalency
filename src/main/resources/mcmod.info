@@ -2,11 +2,10 @@
 {
   "modid": "Equivalency",
   "name": "Equivalency",
-  "version": "1.6.4",
-  
+  "version" : "${version}",
+  "mcversion": "${mcversion}",
   "description": "Addon for EE3 that adds more transmutations and adds better compatibility with other mods. Currently supports the following mods:\n* Applied Energistics\n* Forestry\n* Industrial Craft 2\n* Mechro Magiks\n* RailCraft\n* Thermal Expansion\n* Thaumcraft 3.0.5\n* DartCraft\n* Tinker's Construct",  
   "credits": "Created by Lomeli12, special thanks to creators of all the mods.",
-  "mcversion": "1.6.x",
   "authors": [ "Lomeli12" ],
   "parent":"ee3",
   "requiredMods": [ "ee3"],

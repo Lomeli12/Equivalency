@@ -3,12 +3,12 @@ package net.lomeli.equivalency.recipes;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.lomeli.equivalency.api.TransmutationHelper;
-
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.oredict.OreDictionary;
+
+import net.lomeli.equivalency.api.TransmutationHelper;
 
 public class UniversalRecipes {
     public static List<ItemStack> uranium = new ArrayList<ItemStack>();
@@ -60,7 +60,7 @@ public class UniversalRecipes {
             TransmutationHelper.addRecipe(tin, "ingotCopper", "ingotCopper", "ingotCopper");
             // 1 Tin Ingot -> 3 Copper Ingot
             TransmutationHelper.addRecipe(new ItemStack(copper.getItem(), 3, copper.getItemDamage()), "ingotTin");
-        }catch (Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -70,21 +70,21 @@ public class UniversalRecipes {
             TransmutationHelper.addRecipe(new ItemStack(tin.getItem(), 2, tin.getItemDamage()), "ingotBronze");
             // 2 Tin -> 1 Bronze
             TransmutationHelper.addRecipe(new ItemStack(bronze.getItem(), 4, bronze.getItemDamage()), "ingotTin", "ingotTin");
-        }catch (Exception e) {
+        } catch (Exception e) {
         }
     }
 
     public static void uraniumDiamond(ItemStack uranium) {
         try {
             // 4 Uranium -> 2 Diamond
-            TransmutationHelper.addRecipe(new ItemStack(Item.diamond, 2), "uranium", "uranium", "uranium", "uranium");
+            TransmutationHelper.addRecipe(new ItemStack(Items.diamond, 2), "uranium", "uranium", "uranium", "uranium");
             // 2 Diamond -> 4 Uranium
-            TransmutationHelper.addRecipe(new ItemStack(uranium.getItem(), 4), new Object[] { Item.diamond, Item.diamond });
+            TransmutationHelper.addRecipe(new ItemStack(uranium.getItem(), 4), new Object[]{Items.diamond, Items.diamond});
             // 2 Gold -> 1 Uranium
-            TransmutationHelper.addRecipe(uranium, new Object[] { Item.ingotGold, Item.ingotGold });
+            TransmutationHelper.addRecipe(uranium, new Object[]{Items.gold_ingot, Items.gold_ingot});
             // 2 Uranium -> 4 Gold
-            TransmutationHelper.addRecipe((new ItemStack(Item.ingotGold, 4)), "uranium", "uranium");
-        }catch (Exception e) {
+            TransmutationHelper.addRecipe((new ItemStack(Items.gold_ingot, 4)), "uranium", "uranium");
+        } catch (Exception e) {
         }
     }
 
@@ -96,7 +96,7 @@ public class UniversalRecipes {
             // 4 Lead -> 2 Silver Ingot
             TransmutationHelper.addRecipe(new ItemStack(silverIngot.getItem(), 2, silverIngot.getItemDamage()), "ingotLead",
                     "ingotLead", "ingotLead", "ingotLead");
-        }catch (Exception e) {
+        } catch (Exception e) {
         }
     }
 }

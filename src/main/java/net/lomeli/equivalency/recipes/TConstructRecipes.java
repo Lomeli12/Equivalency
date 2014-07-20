@@ -2,14 +2,11 @@ package net.lomeli.equivalency.recipes;
 
 import tconstruct.library.TConstructRegistry;
 
-import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.api.TransmutationHelper;
-import net.lomeli.equivalency.lib.ModVars;
-
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
-import net.minecraftforge.oredict.OreDictionary;
+import net.lomeli.equivalency.Equivalency;
+import net.lomeli.equivalency.api.TransmutationHelper;
 
 public class TConstructRecipes {
     public static ItemStack aluminum = TConstructRegistry.getItemStack("ingotAluminum");
@@ -25,8 +22,8 @@ public class TConstructRecipes {
     public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);
 
-        TransmutationHelper.addRecipe(alumite, new Object[] { Block.blockGold, Block.blockGold });
-        TransmutationHelper.addRecipe(new ItemStack(Block.blockGold, 2), "ingotAlumite");
+        TransmutationHelper.addRecipe(alumite, new Object[]{Blocks.gold_block, Blocks.gold_block});
+        TransmutationHelper.addRecipe(new ItemStack(Blocks.gold_block, 2), "ingotAlumite");
 
         TransmutationHelper.addRecipe(aluminumBrass, "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper", "ingotCopper");
         TransmutationHelper.addRecipe(new ItemStack(copper.getItem(), 5, copper.getItemDamage()), "ingotAluminumBrass");

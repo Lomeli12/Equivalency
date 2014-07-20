@@ -14,19 +14,7 @@ buildscript {
 repositories {
     ivy {
         name 'LomLib'
-        artifactPattern "http://anthony-lomeli.net/MinecraftMods/LomLib/dev/[module]-dev-[revision].[ext]"
-    }
-    ivy {
-        name 'ThaumCraft'
-        artifactPattern "https://dl.dropboxusercontent.com/u/47135879/[module][revision].[ext]"
-    }
-    ivy {
-        name 'COFH'
-        artifactPattern "http://addons.cursecdn.com/files/762/49/[module]-[revision].[ext]"
-    }
-    ivy {
-        name 'ThermalExpansion'
-        artifactPattern "http://addons.cursecdn.com/files/762/50/[module]-[revision].[ext]"
+        artifactPattern "http://lomeli12.net:8080/job/LomLib/lastSuccessfulBuild/artifact/build/libs/[module]-dev-[revision].[ext]"
     }
 }
 
@@ -47,10 +35,7 @@ def loadProperties(String sourceFileName) {
 loadProperties 'build.properties'
 
 dependencies {
-    compile name: 'LomLib', version: '9-1.1.0', ext: 'jar'
-    compile name: 'Thaumcraft', version: '4.0.5b', ext: 'zip'
-    compile name: 'ThermalExpansion', version: '3.0.0.b11b', ext: 'jar'
-    compile name: 'CoFHCore', version: '2.0.0.b11b', ext: 'jar'
+    compile name: 'LomLib', version: '3.0.0', ext: 'jar'
 }
 
 group = 'net.lomeli.equivalency'

@@ -1,24 +1,23 @@
 package net.lomeli.equivalency.recipes;
 
-import net.lomeli.equivalency.Equivalency;
-import net.lomeli.equivalency.api.TransmutationHelper;
-import net.lomeli.equivalency.lib.ModVars;
-
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.oredict.OreDictionary;
 
-import thermalexpansion.item.TEItems;
+import net.lomeli.lomlib.util.ItemUtil;
 
-public class TERecipes {
-    public static String ThermalItemClass = "thermalexpansion.item.TEItems";
-    public static ItemStack copperIngot = TEItems.ingotCopper;
-    public static ItemStack tinIngot = TEItems.ingotTin;
-    public static ItemStack silverIngot = TEItems.ingotSilver;
-    public static ItemStack leadIngot = TEItems.ingotLead;
-    public static ItemStack electrumIngot = TEItems.ingotElectrum;
-    public static ItemStack invarIngot = TEItems.ingotInvar;
-    public static ItemStack ingotNickel = TEItems.ingotNickel;
+import net.lomeli.equivalency.Equivalency;
+import net.lomeli.equivalency.api.TransmutationHelper;
+
+public class TFRecipes {
+    public static String ThermalItemClass = "thermalfoundation.item.TFItems";
+    public static ItemStack copperIngot = ItemUtil.getItem("ingotCopper", ThermalItemClass);
+    public static ItemStack tinIngot = ItemUtil.getItem("ingotTin", ThermalItemClass);
+    public static ItemStack silverIngot = ItemUtil.getItem("ingotSilver", ThermalItemClass);
+    public static ItemStack leadIngot = ItemUtil.getItem("ingotLead", ThermalItemClass);
+    public static ItemStack electrumIngot = ItemUtil.getItem("ingotElectrum", ThermalItemClass);
+    public static ItemStack invarIngot = ItemUtil.getItem("ingotInvar", ThermalItemClass);
+    public static ItemStack ingotNickel = ItemUtil.getItem("ingotNickel", ThermalItemClass);
 
     public static void loadRecipes(String modName) {
         Equivalency.loadModRecipes(modName);

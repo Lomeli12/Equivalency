@@ -6,3 +6,4 @@ libs
 *.jar
 *.war
 *.ear
+*.iml

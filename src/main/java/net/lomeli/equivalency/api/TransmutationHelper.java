@@ -5,9 +5,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.registry.GameRegistry;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,14 +13,17 @@ import net.minecraft.item.crafting.IRecipe;
 
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.registry.GameRegistry;
+
 /**
  * Allows people to add their own transmutations. Most people should use the
  * apiRecipe method.
- * 
+ *
  * @author Lomeli12
  */
 public class TransmutationHelper {
-    public static final String ITEM_LOC = "com.pahimar.ee3.item.ModItems";
+    public static final String ITEM_LOC = "com.pahimar.ee3.init.ModItems";
     public static final int WILDCARD = Short.MAX_VALUE;
 
     public static List<ItemStack> transmutationStones = new ArrayList<ItemStack>();
@@ -33,19 +33,19 @@ public class TransmutationHelper {
      * for addon recipes.
      */
     public static void addStones() {
-        for (Item stone : Item.itemsList) {
-            try {
-                if (Class.forName("com.pahimar.ee3.item.ITransmutationStone").isAssignableFrom(stone.getClass()))
-                    transmutationStones.add(new ItemStack(stone, 1, WILDCARD));
-            } catch (Exception e) {
-            }
-        }
+        addTransmucationStone(getItem("stoneMinium", ITEM_LOC));
+        addTransmucationStone(getItem("stonePhilosophers", ITEM_LOC));
+    }
+
+    public static void addTransmucationStone(ItemStack stack) {
+        if (stack != null)
+            transmutationStones.add(stack);
     }
 
     /**
      * Allows one to add their own recipes. Should be use on the
      * FMLPostInitializationEvent.
-     * 
+     *
      * @param output
      * @param input
      */
@@ -61,9 +61,8 @@ public class TransmutationHelper {
     /**
      * Used by Equvalency to add recipes. If adding custom recipe, use apiRecipe
      * method instead.
-     * 
+     *
      * @param output
-     * @param transmutationStone
      * @param input
      */
     public static void addRecipe(ItemStack output, Object... input) {
@@ -71,7 +70,7 @@ public class TransmutationHelper {
             for (ItemStack stone : transmutationStones) {
                 Object[] inputs = new Object[input.length + 1];
                 System.arraycopy(input, 0, inputs, 0, input.length);
-                inputs[input.length] = new ItemStack(stone.itemID, 1, WILDCARD);
+                inputs[input.length] = new ItemStack(stone.getItem(), 1, WILDCARD);
 
                 GameRegistry.addRecipe(new ShapelessOreRecipe(output, inputs));
             }
@@ -82,7 +81,7 @@ public class TransmutationHelper {
      * Used by Equvalency to add recipes. Only use this if you need to do
      * OreDictionary recipes, and always use ShapelessOreRecipe. If you use a
      * custom IRecipe, include an instance of a transmutation stone
-     * 
+     *
      * @param recipe
      */
     public static void addRecipe(IRecipe recipe) {
@@ -109,9 +108,8 @@ public class TransmutationHelper {
     /**
      * Used by Equvalency to add recipes. If adding custom recipe, use apiRecipe
      * method instead.
-     * 
+     *
      * @param output
-     * @param transmutationStone
      * @param input
      */
     public static void addRecipe(Item output, Object... input) {
@@ -121,9 +119,8 @@ public class TransmutationHelper {
     /**
      * Used by Equvalency to add recipes. If adding custom recipe, use apiRecipe
      * method instead.
-     * 
+     *
      * @param output
-     * @param transmutationStone
      * @param input
      */
     public static void addRecipe(Block output, Object... input) {
@@ -132,7 +129,7 @@ public class TransmutationHelper {
 
     /**
      * Copied and updated from EE3 for easier recipe registering.
-     * 
+     *
      * @param input
      * @param stone
      * @param fuel

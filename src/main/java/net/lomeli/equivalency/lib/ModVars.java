@@ -4,25 +4,19 @@ public class ModVars {
     public static final String MOD_ID = "Equivalency";
     public static final String MOD_NAME = MOD_ID;
 
-    public static final int MAJOR = 1, MINOR = 6, REVISION = 4;
+    public static final int MAJOR = 2, MINOR = 0, REVISION = 0;
 
     public static final String VERSION = MAJOR + "." + MINOR + "." + REVISION;
 
     public static final String UPDATE_XML = "https://dl.dropboxusercontent.com/u/17430088/Minecraft%20Mods/Equivalency/updateXML.xml";
 
-    public static final String CORE = "net.lomeli.equivalency.core.";
-
-    public static final String CLIENT = CORE + "ClientProxy";
-    public static final String COMMON = CORE + "CommonProxy";
-
     public static final String EE3_ID = "EE3";
     public static final String AE_ID = "AppliedEnergistics";
     public static final String FORESTRY_ID = "Forestry";
     public static final String IC2_ID = "IC2";
-    public static final String MM_ID = "magiks";
     public static final String RC_ID = "Railcraft";
     public static final String TC_ID = "Thaumcraft";
-    public static final String TE_ID = "ThermalExpansion";
+    public static final String TF_ID = "ThermalFoundation";
     public static final String DART_ID = "DartCraft";
     public static final String TINKER_ID = "TConstruct";
     public static final String ARS_ID = "arsmagica2";
