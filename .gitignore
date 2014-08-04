@@ -5,4 +5,4 @@ libs
 # Package Files #
 *.war
 *.ear
-*.iml
+Equivalency.iml

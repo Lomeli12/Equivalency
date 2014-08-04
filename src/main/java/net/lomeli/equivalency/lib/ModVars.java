@@ -11,7 +11,7 @@ public class ModVars {
     public static final String UPDATE_XML = "https://dl.dropboxusercontent.com/u/17430088/Minecraft%20Mods/Equivalency/updateXML.xml";
 
     public static final String EE3_ID = "EE3";
-    public static final String AE_ID = "AppliedEnergistics";
+    public static final String AE_ID = "appliedenergistics2";
     public static final String FORESTRY_ID = "Forestry";
     public static final String IC2_ID = "IC2";
     public static final String RC_ID = "Railcraft";
